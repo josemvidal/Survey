@@ -1,4 +1,6 @@
 @CHARSET "UTF-8";
+
+
 /* 
     TagBox table styles
     written by TagBox http://www.tagbox.de
@@ -9,7 +11,7 @@ table {
   border: 1px solid #03476F;
   font: normal sans-serif;
   color: #363636;
-  background: #92C428;
+
   }
 caption {
   text-align: center;

@@ -248,7 +248,7 @@ new Ext.Application({
 	    },{
 	    xtype: 'button',
 	    margin: 10,
-	    text: 'Upload Survey Data',
+	    text: 'Upload Answers',
 	    handler: function(){
 	    	Ext.Msg.prompt("Filename", "Give this upload a name:", function(resp, fname) {
 	    			if (resp == "ok"){
