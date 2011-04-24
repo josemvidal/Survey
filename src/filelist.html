@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}Carolina Survey: Data List{% endblock %}
+{% block content %}
+<h1>Carolina Survey: Uploaded Data Files</h1>
+<table>
+	<thead><tr>
+		<th>FileId</th>
+		<th>Filename</th>
+		<th>Date Uploaded</th></tr>
+	</thead>
+	<tbody>
+		{% for up in uploads %}
+		<tr>
+		<td>{{ up.id }}</td>
+		<td><a href="/data/{{ up.id }}">{{ up.fileName }}</a></td>
+ 		<td>{{ up.date }}</td>
+ 		</tr>
+		{% endfor %}
+	</tbody>
+</table>
+</ul>
+{% endblock %}

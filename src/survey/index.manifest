@@ -3,3 +3,8 @@ CACHE MANIFEST
 isurvey.js
 sencha-touch.js
 sencha-touch.css
+
+NETWORK:
+data
+http://www.google.com
+http://carolina.appspot.com/data

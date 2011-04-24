@@ -9,6 +9,9 @@ handlers:
   mime_type: text/cache-manifest
   upload: survey/(.*\.manifest)
   
+- url: /css
+  static_dir: css
+  
 - url: /survey
   static_dir: survey
   

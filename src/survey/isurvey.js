@@ -244,9 +244,29 @@ new Ext.Application({
 			    setKey('answers',JSON.stringify([]));
 			    updateAnswerCount();
 			};
-		    });
-		    
-		}
+		    });}
+	    },{
+	    xtype: 'button',
+	    margin: 10,
+	    text: 'Upload Survey Data',
+	    handler: function(){
+	    	Ext.Msg.prompt("Filename", "Give this upload a name:", function(resp, fname) {
+	    			if (resp == "ok"){
+	    				Ext.Ajax.request({
+	    					url: '/data/',
+	    					params: {
+	    						filename: fname,
+	    						file: localStorage.getItem('answers'),},
+	    					success: function(){
+	    							Ext.Msg.alert('Success', 'Data file ' + fname + ' has been uploaded.', Ext.emptyFn);	    							
+	    						},
+	    					failure: function(){
+	    							Ext.Msg.alert('Error', 'Unable to upload data.', Ext.emptyFn);	    							
+	    						}
+	    			    });
+	    			};
+	    	});
+	    }
 	    }]
 	});
 
