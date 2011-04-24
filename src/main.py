@@ -85,28 +85,47 @@ class DataHandler(webapp.RequestHandler): #/data/*
             self.response.out.write(template.render(path,templateValues))
         else: #/data/3 return data in .csv format
             theFile = Upload.all().filter('id =',int(id)).get()
-            logging.info("theFile=")
-            logging.info(theFile)
-            if theFile:
-                contents = json.loads(theFile.file)
-                self.response.headers['Content-Type'] = 'text/plain'
-                questionKeys = [k for k in contents[0]['answers']]
-                questionKeys.sort()
-                self.response.out.write('"surveyId","surveyName"')
+            if not theFile:
+                self.response.out.write('No survey with id=%s' % id)
+                return
+            contents = json.loads(theFile.file)
+            questionKeys = [k for k in contents[0]['answers']]
+            questionKeys.sort()
+            if self.request.get('fmt') == 'csv':
+                self.response.headers['Content-Type'] = 'application/octet-stream'
+                self.response.headers['Content-Disposition'] = 'attachment;filename="%s.csv"' % theFile.fileName
+                self.response.out.write('"surveyId","surveyName","start time","end time"')
                 for k in questionKeys:
                     self.response.out.write(',"%s"' % k)
                 self.response.out.write('\n')                    
                 for survey in contents:                
-                    self.response.out.write('%s,%s' % (survey['surveyId'], survey['surveyName']))
+                    self.response.out.write('%s,"%s","%s","%s"' % (survey['surveyId'], survey['surveyName'],
+                                                                   survey['start'], survey['end']))
                     for k in questionKeys:
                         ans = survey['answers'][k]
                         if isInteger(ans):
                             self.response.out.write(',%s' % ans)
                         else:
                             self.response.out.write(',"%s"' % ans)
-                    self.response.out.write('\n')
-            else:
-                self.response.out.write('No survey with id=%s' % id)
+                    self.response.out.write('\n') 
+            else: #html
+                templateValues['fileName'] = theFile.fileName
+                table = '<table><thead><tr><th>surveyId</th><th>surveyName</th><th>start time</th><th>end time</th>'
+                for k in questionKeys:
+                    table += '<th>%s</th>' % k
+                table += '</tr></thead><tbody>'
+                for survey in contents:                
+                    table += '<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td>' % (survey['surveyId'], survey['surveyName'],
+                                                                   survey['start'], survey['end'])
+                    for k in questionKeys:
+                        ans = survey['answers'][k]
+                        table += '<td>%s</td>' % ans
+                    table += '</tr>'
+                table += '</tbody></table>'
+                templateValues['table'] = table
+                path = os.path.join(os.path.dirname(__file__), 'datatable.html')            
+                self.response.out.write(template.render(path,templateValues))
+                
             
     
     def post(self,id):

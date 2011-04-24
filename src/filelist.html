@@ -6,6 +6,7 @@
 	<thead><tr>
 		<th>FileId</th>
 		<th>Filename</th>
+		<th>Download</th>
 		<th>Date Uploaded</th></tr>
 	</thead>
 	<tbody>
@@ -13,6 +14,7 @@
 		<tr>
 		<td>{{ up.id }}</td>
 		<td><a href="/data/{{ up.id }}">{{ up.fileName }}</a></td>
+		<td><a href="/data/{{ up.id }}?fmt=csv">.csv</a></td>
  		<td>{{ up.date }}</td>
  		</tr>
 		{% endfor %}

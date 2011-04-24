@@ -258,7 +258,7 @@ new Ext.Application({
 	    						filename: fname,
 	    						file: localStorage.getItem('answers'),},
 	    					success: function(){
-	    							Ext.Msg.alert('Success', 'Data file ' + fname + ' has been uploaded.', Ext.emptyFn);	    							
+	    							Ext.Msg.alert('Success', 'Data file "' + fname + '" has been uploaded.', Ext.emptyFn);	    							
 	    						},
 	    					failure: function(){
 	    							Ext.Msg.alert('Error', 'Unable to upload data.', Ext.emptyFn);	    							
@@ -279,7 +279,7 @@ new Ext.Application({
 	    handler: function() {
 		if (currentSurvey) {
 		    Ext.Msg.confirm("Discard Survey?", 
-				    "All the answers you have entered will be lost if you quit now. Are you sure you want quit this survey?",
+				    "All the answers you have entered will be lost if you quit now.",
 				    function(response){
 					if (response == "yes"){
 					    var content = Ext.getCmp('content');
