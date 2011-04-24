@@ -1,0 +1,16 @@
+application: carolinasurvey
+version: 1
+runtime: python
+api_version: 1
+
+handlers:
+- url: /survey/(.*\.manifest)
+  static_files: survey/\1
+  mime_type: text/cache-manifest
+  upload: survey/(.*\.manifest)
+  
+- url: /survey
+  static_dir: survey
+  
+- url: /.*
+  script: main.py 
