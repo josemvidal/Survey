@@ -1,7 +1,8 @@
 '''
 Created on Apr 23, 2011
 
-@author: jmvidal
+@author: jmvidal@gmail.com
+http://jmvidal.cse.sc.edu
 '''
 import cgi
 import os
@@ -10,13 +11,10 @@ from google.appengine.ext import webapp
 from google.appengine.ext.webapp.util import run_wsgi_app
 from google.appengine.ext import db
 from google.appengine.ext.webapp import template
-from google.appengine.api import memcache
 from django.utils import simplejson as json
 from datetime import tzinfo, timedelta, datetime #@UnresolvedImport
 
 import logging
-
-
 
 class MainPage(webapp.RequestHandler):
     def get(self):
@@ -37,6 +35,7 @@ class Upload(db.Model):
     ownerNickname = db.StringProperty()
     date = db.DateTimeProperty() #time of submission
     file = db.TextProperty() # the file, its a json string
+    keys = db.TextProperty() # all the question ids.
     fileName = db.StringProperty()
     id = db.IntegerProperty()
     
@@ -89,8 +88,9 @@ class DataHandler(webapp.RequestHandler): #/data/*
                 self.response.out.write('No survey with id=%s' % id)
                 return
             contents = json.loads(theFile.file)
-            questionKeys = [k for k in contents[0]['answers']]
-            questionKeys.sort()
+            questionKeys = json.loads(theFile.keys)
+            #questionKeys = [k for k in contents[0]['answers']]
+            #questionKeys.sort()
             if self.request.get('fmt') == 'csv':
                 self.response.headers['Content-Type'] = 'application/octet-stream'
                 self.response.headers['Content-Disposition'] = 'attachment;filename="%s.csv"' % theFile.fileName
@@ -102,12 +102,15 @@ class DataHandler(webapp.RequestHandler): #/data/*
                     self.response.out.write('%s,"%s","%s","%s"' % (survey['surveyId'], survey['surveyName'],
                                                                    survey['start'], survey['end']))
                     for k in questionKeys:
-                        ans = survey['answers'][k]
-                        if isInteger(ans):
-                            self.response.out.write(',%s' % ans)
+                        if survey['answers'].has_key(k):                        
+                            ans = survey['answers'][k]
+                            if isInteger(ans):
+                                self.response.out.write(',%s' % ans)
+                            else:
+                                self.response.out.write(',"%s"' % ans)
                         else:
-                            self.response.out.write(',"%s"' % ans)
-                    self.response.out.write('\n') 
+                            self.response.out.write(',"N/A"')
+                    self.response.out.write('\n')
             else: #html
                 templateValues['fileName'] = theFile.fileName
                 table = '<table><thead><tr><th>surveyId</th><th>surveyName</th><th>start time</th><th>end time</th>'
@@ -118,8 +121,11 @@ class DataHandler(webapp.RequestHandler): #/data/*
                     table += '<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td>' % (survey['surveyId'], survey['surveyName'],
                                                                    survey['start'], survey['end'])
                     for k in questionKeys:
-                        ans = survey['answers'][k]
-                        table += '<td>%s</td>' % ans
+                        if survey['answers'].has_key(k):
+                            ans = survey['answers'][k]
+                            table += '<td>%s</td>' % ans
+                        else:
+                            table += '<td>N/A</td>'
                     table += '</tr>'
                 table += '</tbody></table>'
                 templateValues['table'] = table
@@ -131,11 +137,15 @@ class DataHandler(webapp.RequestHandler): #/data/*
     def post(self,id):
         file = self.request.get('file')
         fileName = self.request.get('filename')
+        keys = self.request.get('keys')
         user = users.get_current_user()
         if not user: 
+            logging.info('User is not logged in, so will not let him post.')
+            self.response.set_status(401)
+            self.response.out.write('Not authorized. Please log in with your browser.')
             return #only logged in users can post
         nickname = user.nickname() if user else None
-        up = Upload(date=datetime.now(), owner=user, ownerNickname=nickname, file=file, fileName=fileName, id=getNextId())
+        up = Upload(date=datetime.now(), owner=user, ownerNickname=nickname, file=file, keys=keys, fileName=fileName, id=getNextId())
         up.put()
 
         

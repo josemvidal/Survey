@@ -23,6 +23,7 @@ function errorCache(){
 webappCache.addEventListener("error", errorCache, false);
 function downloadinNewVersion(){
     console.log("Downloading new version...");
+    Ext.Msg.alert('Updating', 'Downloading New Version', Ext.emptyFn); //seems to work...
 }
 webappCache.addEventListener("progress", downloadinNewVersion, false);
 
@@ -45,6 +46,71 @@ var testSurvey = {
 	id: "q3",
 	text: "What did you think about this survey?"
     }]
+}
+
+
+function getStochasticChoice(probabilities){
+	var r = Math.random();
+	var i = 0;
+	var c = probabilities[0];
+	for (i = 1; i < probabilities.length; i++){
+		if (r < c) {
+			return i -1;
+		};
+		c += probabilities[i];
+	}
+	return probabilities.length - 1;
+}
+
+Array.prototype.chooseStochastically = function(probabilities){
+	var p = probabilities.length;
+	var a = this.length;
+	if (p != a) {
+		console.log("ERROR: chooseStochastically, probabilities don't match array length.")
+	};
+	return this[getStochasticChoice(probabilities)];
+}
+
+Array.prototype.shuffle = function() {
+	var s = [];
+	while (this.length) {s.push(this.splice(Math.random() * this.length, 1)[0])};
+	while (s.length) this.push(s.pop());
+	return this;
+}
+
+/** Returns a survey: an array of questions
+ * t is an array of questions
+ * 
+ */
+function flattenTemplateQuestions(t){
+	var result = [];
+	var chosenQuestionList;
+	if (!(t instanceof Array)) {
+		return t;
+	}
+	var type = t.shift();
+	if (type == ONE_OF) {
+		var probabilities = t.shift();
+		chosenOne = t.chooseStochastically(probabilities);
+		return flattenTemplateQuestions(chosenOne);
+	}
+	else if (type == RANDOM_ORDER) {
+		return flattenTemplateQuestions([SEQUENTIAL].concat(t.shuffle()));
+	}
+	else if (type == SEQUENTIAL) {
+		for (var i =0; i < t.length; i++){
+			result = result.concat(flattenTemplateQuestions(t[i]));
+		};
+		return result;
+	}
+	else {console.log('ERROR: unrecognized head of list.');}
+	return result;
+}
+
+function getNewSurvey(){
+	var st = surveyTemplate.clone();
+	st.questions = flattenTemplateQuestions(st.questions);
+	return st;
 }
 
 /** Points to the survey we are currently administering. */
@@ -92,22 +158,34 @@ function makeQuestion(q){
 	id: q["id"],
 	items: [{
 	    xtype: 'fieldset',
-	    defaults: {margin: 10, xtype: 'radiofield', labelWidth: '10%'},
+	    defaults: {margin: 10, xtype: 'radiofield', labelWidth: '70%'},
 	    title: q["text"],
 	    items: answerItems
 	}]};
 }
-
-function makeSurveyCarousel(survey){
+/**
+function makeSurveyCarousel(){
     return new Ext.Carousel({
-	id: survey['id'],
-	name: survey['name'],
+	id: 'survey',
+	name: currentSurvey['name'],
 	indicator: false,
-	items: survey['questions'].map(makeQuestion)
+	items: currentSurvey['questions'].map(makeQuestion)
     });
+}
+*/
 
+function makeSurveyCarousel(){
+    return new Ext.Carousel({
+	id: 'survey',
+	name: 'none yet',
+	indicator: false,
+    });
 }
 
+function resetQuestions(carous){
+	carous.removeAll();
+	currentSurvey['questions'].map(makeQuestion).map(function(q){carous.add(q);});
+}
 /** Returns a json object representing the answers to currentSurvey.
 */
 function getAnswers(){
@@ -138,205 +216,217 @@ function updateAnswerCount(){
 }
 
 new Ext.Application({
-    launch: function() {
-	this.carousel = makeSurveyCarousel(testSurvey);
-	car = this.carousel; //well need one of these for each survey
+	launch: function() {
+	car = makeSurveyCarousel(testSurvey); //global for debugging
 
 	car.on("cardswitch", function(){
-	    if (this.getActiveIndex() + 1 == this.items.items.length) { //at the last one
-		console.log("last one");
-		Ext.getCmp('nextButton').hide();
-		Ext.getCmp('doneButton').show();
-	    }
-	    else {
-		console.log(this.getActiveIndex());
-		Ext.getCmp('nextButton').show();
-		Ext.getCmp('doneButton').hide();
-	    }
+		if (this.getActiveIndex() + 1 == this.items.items.length) { //at the last one
+//			console.log("last one");
+			Ext.getCmp('nextButton').hide();
+			Ext.getCmp('doneButton').show();
+		}
+		else {
+//			console.log(this.getActiveIndex());
+			Ext.getCmp('nextButton').show();
+			Ext.getCmp('doneButton').hide();
+		}
 	});
 
 	var nextButton = new Ext.Button({
-	    text: 'Next',
-	    ui: 'action',
-	    hidden: true,
-	    id: 'nextButton',
-	    handler: function(){ car.next();},
+		text: 'Next',
+		ui: 'action',
+		hidden: true,
+		id: 'nextButton',
+		handler: function(){ car.next();},
 	}
 	);
 
 	var doneButton = new Ext.Button({
-	    text: 'Done',
-	    ui: 'confirm',
-	    hidden: true,
-	    id: 'doneButton',
-	    handler: function(){
+		text: 'Done',
+		ui: 'confirm',
+		hidden: true,
+		id: 'doneButton',
+		handler: function(){
 		//TODO: add an overlay Y/Cancel "Are you sure you want to quit and save?"
 		Ext.Msg.confirm("Save Answers?", "Are you sure you want to finish and save this survey?", function(response){
-		    if (response == "yes"){
-			endTime = new Date();
-			var pastAnswers = JSON.parse(localStorage.getItem('answers'));
-			pastAnswers.push(getAnswers());
-			setKey('answers', JSON.stringify(pastAnswers));
-			console.log('saved it');
-			var content = Ext.getCmp('content');
-			content.remove(car,false);
-			car.hide();
-			content.add(buttons);
-			buttons.show();
-			Ext.getCmp('backButton').hide();
-			nextButton.hide();
-			Ext.getCmp('doneButton').hide();
-			content.doLayout();
-			currentSurvey = null;
-			updateAnswerCount();
-		    }
+			if (response == "yes"){
+				endTime = new Date();
+				var pastAnswers = JSON.parse(localStorage.getItem('answers'));
+				pastAnswers.push(getAnswers());
+				setKey('answers', JSON.stringify(pastAnswers));
+				console.log('saved it');
+				var content = Ext.getCmp('content');
+				content.remove(car,false);
+				car.hide();
+				content.add(buttons);
+				buttons.show();
+				Ext.getCmp('backButton').hide();
+				nextButton.hide();
+				Ext.getCmp('doneButton').hide();
+				content.doLayout();
+				currentSurvey = null;
+				updateAnswerCount();
+			}
 		});
-	    }});
+	}});
 
 	buttons = new Ext.Panel({ //For the first panel.
-	    layout: {type: 'vbox', 
-		     pack: 'center',
-		    },
-	    defaults: {
+		layout: {type: 'vbox', 
+		pack: 'center',
+	},
+	defaults: {
 		cls: 'demobtn'
-	    },
-	    id: 'buttons',
-	    items: [{
+	},
+	id: 'buttons',
+	items: [{
 		xtype: 'button', //start survey Button
 		margin: 10,
 		text: 'Start ' + testSurvey.name,
 		handler: function() {
-		    currentSurvey = testSurvey;
-		    var content = Ext.getCmp('content');
-		    content.remove(buttons,false);
-		    buttons.hide();
-		    content.add(car);
-		    content.doLayout();
-		    car.show();
-		    Ext.getCmp('backButton').show();
-		    resetAnswers();
-		    nextButton.show();
-		    startTime = new Date();
-		    car.setActiveItem(0);
-//		    console.log(JSON.stringify(getAnswers()['answers']));
+			currentSurvey = getNewSurvey();
+			car.removeAll();
+			currentSurvey['questions'].map(makeQuestion).map(function(q){car.add(q);});			
+			var content = Ext.getCmp('content');
+			content.remove(buttons,false);
+			//mainPanel.setActiveItem('survey');
+			buttons.hide();
+			content.add(car);
+			content.doLayout();
+			car.show();
+			Ext.getCmp('backButton').show();
+			resetAnswers();
+			nextButton.show();
+			startTime = new Date();
+			car.update();
+			car.setActiveItem(0);
 		}
-	    }, {
-		xtype: 'button', //view Answers button
-		margin: 10,
-		text: 'View Answers',
-		handler: function(){
-		    var content = Ext.getCmp('content');
-		    content.remove(buttons,false);
-		    buttons.hide();
-		    content.add({
-			id: 'jsonanswers', 
-			html: '<p>Answers:</p><code style="width:100%;-webkit-user-select:text">' + localStorage.getItem('answers') + '</code>'});
-		    content.doLayout();
-		    Ext.getCmp('backButton').show();
-		}
-	    },{
+	}, 
+	//{
+//	xtype: 'button', //view Answers button
+//	margin: 10,
+//	text: 'View Answers',
+//	handler: function(){
+//	var content = Ext.getCmp('content');
+//	content.remove(buttons,false);
+//	buttons.hide();
+//	content.add({
+//	id: 'jsonanswers', 
+//	html: '<p>Answers:</p><code style="width:100%;-webkit-user-select:text">' + localStorage.getItem('answers') + '</code>'});
+//	content.doLayout();
+//	Ext.getCmp('backButton').show();
+//	}
+//	},
+	{
 		xtype: 'button', //delete surveys button
 		margin: 10,
 		text: 'Delete Answers',
 		handler: function() {
-		    Ext.Msg.confirm("Erase all Data?", "Are you sure you want to erase all the survey answers?", function(response){
+		Ext.Msg.confirm("Erase all Data?", "Are you sure you want to erase all the survey answers?", function(response){
 			if (response == "yes"){
-			    setKey('answers',JSON.stringify([]));
-			    updateAnswerCount();
+				setKey('answers',JSON.stringify([]));
+				updateAnswerCount();
 			};
-		    });}
-	    },{
-	    xtype: 'button',
-	    margin: 10,
-	    text: 'Upload Answers',
-	    handler: function(){
-	    	Ext.Msg.prompt("Filename", "Give this upload a name:", function(resp, fname) {
-	    			if (resp == "ok"){
-	    				Ext.Ajax.request({
-	    					url: '/data/',
-	    					params: {
-	    						filename: fname,
-	    						file: localStorage.getItem('answers'),},
-	    					success: function(){
-	    							Ext.Msg.alert('Success', 'Data file "' + fname + '" has been uploaded.', Ext.emptyFn);	    							
-	    						},
-	    					failure: function(){
-	    							Ext.Msg.alert('Error', 'Unable to upload data.', Ext.emptyFn);	    							
-	    						}
-	    			    });
-	    			};
-	    	});
-	    }
-	    }]
+		});}
+	},{
+		xtype: 'button',
+		margin: 10,
+		text: 'Upload Answers',
+		handler: function(){
+		Ext.Msg.prompt("Filename", "Give this upload a name:", function(resp, fname) {
+			if (resp == "ok"){
+				Ext.Ajax.request({
+					url: '/data/',
+					params: {
+					filename: fname,
+					file: localStorage.getItem('answers'),
+					keys: JSON.stringify(surveyTemplate.questionIds)},
+					success: function(){
+						Ext.Msg.alert('Success', 'Data file "' + fname + '" has been uploaded.', Ext.emptyFn);	    							
+					},
+					failure: function(resp,opt){
+						if (rest.status == 401) {
+							Ext.Msg.alert('Error', 'You are logged out. Use your browser to log into <a href="http://carolinasurvey.appspot.com">carolinasurvey.appspot.com</a>', Ext.emptyFn);
+						}
+						else if (rest.status == 0) {
+							Ext.Msg.alert('Error', 'Your Internet access is turned off.', Ext.emptyFn);
+						} 
+						else {
+						   Ext.Msg.alert('Error', 'Unable to upload data. Error code: ' + resp.status, Ext.emptyFn);
+						}
+					}
+				});
+			};
+		});
+	}
+	}]
 	});
 
 	var backButton = {
-            text: 'Back',
-	    ui: 'back',
-	    id: 'backButton',
-	    xtype: 'button',
-	    hidden: true,
-	    handler: function() {
+			text: 'Back',
+			ui: 'back',
+			id: 'backButton',
+			xtype: 'button',
+			hidden: true,
+			handler: function() {
 		if (currentSurvey) {
-		    Ext.Msg.confirm("Discard Survey?", 
-				    "All the answers you have entered will be lost if you quit now.",
-				    function(response){
-					if (response == "yes"){
-					    var content = Ext.getCmp('content');
-					    content.removeAll(false);
-					    car.hide();
-					    if (Ext.getCmp('jsonanswers')) { Ext.getCmp('jsonanswers').hide();}
-					    content.add(buttons);
-					    buttons.show();
-					    Ext.getCmp('backButton').hide();
-					    Ext.getCmp('doneButton').hide();
-					    nextButton.hide();
-					    content.doLayout();
-					    currentSurvey = null;
-					};
-				    });
+			Ext.Msg.confirm("Discard Survey?", 
+					"All the answers you have entered will be lost if you quit now.",
+					function(response){
+				if (response == "yes"){
+					var content = Ext.getCmp('content');
+					content.removeAll(false);
+					car.hide();
+					if (Ext.getCmp('jsonanswers')) { Ext.getCmp('jsonanswers').hide();}
+					content.add(buttons);
+					buttons.show();
+					Ext.getCmp('backButton').hide();
+					Ext.getCmp('doneButton').hide();
+					nextButton.hide();
+					content.doLayout();
+					currentSurvey = null;
+				};
+			});
 		}
 		else { //we are not doing a survey, so just go back to buttons
-		    var content = Ext.getCmp('content');
-		    content.removeAll(false);
-		    car.hide();
-		    if (Ext.getCmp('jsonanswers')) { Ext.getCmp('jsonanswers').hide();}
-		    content.add(buttons);
-		    buttons.show();
-		    Ext.getCmp('backButton').hide();
-		    nextButton.hide();
-		    content.doLayout();
-		    updateAnswerCount();
+			var content = Ext.getCmp('content');
+			content.removeAll(false);
+			car.hide();
+			if (Ext.getCmp('jsonanswers')) { Ext.getCmp('jsonanswers').hide();}
+			content.add(buttons);
+			buttons.show();
+			Ext.getCmp('backButton').hide();
+			nextButton.hide();
+			content.doLayout();
+			updateAnswerCount();
 		}
-            }
-	} 
+	}
+	}
 
-//Use Ext.getCmp('content').update(new panel);  to update the content (items) of the main panel.
-// flip back to this.button on quit.
-        mainPanel = new Ext.Panel({
-            fullscreen: true,
-	    layout: {
-		type: 'vbox',
+//	Use Ext.getCmp('content').update(new panel);  to update the content (items) of the main panel.
+//	flip back to this.button on quit.
+	mainPanel = new Ext.Panel({
+		fullscreen: true,
+		layout: {
+		type: 'card', //vbox
 		align: 'strech'
-	    },
-	    id: 'content',
-            defaults: {flex: 1},
-	    items: [buttons],
-            dockedItems: [{
+	},
+	id: 'content',
+	defaults: {flex: 1},
+	items: [buttons,car],
+	dockedItems: [{
 		dock: 'top',
-                xtype: 'toolbar',
-                title: 'Survey v.06',
-                items: [backButton,
-			{xtype: 'spacer'},
-			{text: '', id: 'surveyCount'}]
-            },{
+		xtype: 'toolbar',
+		title: 'Survey v.07',
+		items: [backButton,
+		        {xtype: 'spacer'},
+		        {text: '', id: 'surveyCount'}]
+	},{
 		dock: 'bottom',
-                xtype: 'toolbar',
-                items: [{xtype: 'spacer'}, doneButton, nextButton ]}
-            ]
-	    
-        });
+		xtype: 'toolbar',
+		items: [{xtype: 'spacer'}, doneButton, nextButton ]}
+	]
+
+	});
 	updateAnswerCount();
-    }
+}
 });
- 
