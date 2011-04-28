@@ -88,17 +88,17 @@ function flattenTemplateQuestions(t){
 	if (!(t instanceof Array)) {
 		return t;
 	}
-	var type = t.shift();
+	var type = t[0];
 	if (type == ONE_OF) {
-		var probabilities = t.shift();
-		chosenOne = t.chooseStochastically(probabilities);
+		var probabilities = t[1];
+		chosenOne = t.slice(2).chooseStochastically(probabilities);
 		return flattenTemplateQuestions(chosenOne);
 	}
 	else if (type == RANDOM_ORDER) {
-		return flattenTemplateQuestions([SEQUENTIAL].concat(t.shuffle()));
+		return flattenTemplateQuestions([SEQUENTIAL].concat(t.slice(1).shuffle()));
 	}
 	else if (type == SEQUENTIAL) {
-		for (var i =0; i < t.length; i++){
+		for (var i =1; i < t.length; i++){
 			result = result.concat(flattenTemplateQuestions(t[i]));
 		};
 		return result;
@@ -108,8 +108,9 @@ function flattenTemplateQuestions(t){
 }
 
 function getNewSurvey(){
-	var st = surveyTemplate.clone();
-	st.questions = flattenTemplateQuestions(st.questions);
+//	var st = surveyTemplate.clone();
+	var st = {id: surveyTemplate.id, name: surveyTemplate.name};
+	st.questions = flattenTemplateQuestions(surveyTemplate.questions);
 	return st;
 }
 
@@ -340,14 +341,15 @@ new Ext.Application({
 					filename: fname,
 					file: localStorage.getItem('answers'),
 					keys: JSON.stringify(surveyTemplate.questionIds)},
+					timeout: 5000, //5 seconds
 					success: function(){
 						Ext.Msg.alert('Success', 'Data file "' + fname + '" has been uploaded.', Ext.emptyFn);	    							
 					},
 					failure: function(resp,opt){
-						if (rest.status == 401) {
+						if (resp.status == 401) {
 							Ext.Msg.alert('Error', 'You are logged out. Use your browser to log into <a href="http://carolinasurvey.appspot.com">carolinasurvey.appspot.com</a>', Ext.emptyFn);
 						}
-						else if (rest.status == 0) {
+						else if (resp.status == 0) {
 							Ext.Msg.alert('Error', 'Your Internet access is turned off.', Ext.emptyFn);
 						} 
 						else {
