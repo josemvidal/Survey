@@ -9,7 +9,15 @@ Status 2 (CHECKING) is returned means there is a change in your manifest file an
 Status 3 (DOWNLOADING) is retuned means changes have been found and they are being added to your cache
 Status 4 (UPDATEREADY) is retuned means your new cache is ready to be updated and override your current cache
 Status 5 (OBSOLETE) is returned means your cache is no longer valid meaning it has been removed
+
+TODO: Have a question depend on the user's answer to a previous one: [SWITCH conditional-question case0-question case1-question....]
+
+TODO: 
+
 */
+
+
+
 var webappCache = window.applicationCache;
 function updateCache(){
 	console.log("New version available. Installing it...")
@@ -326,14 +334,12 @@ new Ext.Application({
 		margin: 10,
 		text: 'Start ' + testSurvey.name,
 		handler: function() {
-			mainPanel.setLoading(true);
 			currentSurvey = getNewSurvey();
 			car.removeAll();
-			currentSurvey['questions'].map(makeQuestion).map(function(q){car.add(q);});			
+			currentSurvey['questions'].map(makeQuestion).map(function(q){car.add(q);});
 			var content = Ext.getCmp('content');
 			content.remove(buttons,false);
 			//mainPanel.setActiveItem('survey');
-			mainPanel.setLoading(false);
 			buttons.hide();
 			content.add(car);
 			content.doLayout();

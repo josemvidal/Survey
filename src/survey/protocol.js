@@ -205,7 +205,7 @@ var healthTopicSHS = [
     	text: "7. Which of the three SHS images had the most impact?",  
     	answers: ["gruesome img", "human suffering image", "symbolic image"]
       },{
-    	id: "mostimapactCVD2", 
+    	id: "mostimapactSHS2", 
     	text: "7. Which of the three SHS images had the second-most impact?",  
     	answers: ["gruesome img", "human suffering image", "symbolic image"]} 
 ]
@@ -242,11 +242,16 @@ var surveyTemplate = {
 	]
 }
 
+surveyTemplate.keys = {}
 
 function getAllQuestionIds(t){
 	var result = [];
-		var chosenQuestionList;
+    var chosenQuestionList;
 	if (!(t instanceof Array)) {
+		if (surveyTemplate.keys[t.id]){
+			console.log("ERROR: surveyTemplate has repeated question id=" + t.id);
+		}
+		surveyTemplate.keys[t.id] = true;
 		return t.id;
 	}
 	var type = t.shift();
