@@ -12,8 +12,8 @@ Status 5 (OBSOLETE) is returned means your cache is no longer valid meaning it h
 */
 var webappCache = window.applicationCache;
 function updateCache(){
+	console.log("New version available. Installing it...")
     webappCache.swapCache();
-    console.log("New version downloaded, reloading");
     location.reload();
 }
 webappCache.addEventListener("updateready", updateCache, false);
@@ -23,7 +23,6 @@ function errorCache(){
 webappCache.addEventListener("error", errorCache, false);
 function downloadinNewVersion(){
     console.log("Downloading new version...");
-    Ext.Msg.alert('Updating', 'Downloading New Version', Ext.emptyFn); //seems to work...
 }
 webappCache.addEventListener("progress", downloadinNewVersion, false);
 
@@ -141,6 +140,19 @@ question =
 }
 
 */
+
+myLoadMask = Ext.extend(Ext.LoadMask, {
+	onBeforeLoad : function() {
+    if (!this.disabled) {
+        this.el.mask('<div class="x-loading-msg">' + this.msg + '</div>', this.msgCls, false);
+        this.fireEvent('show', this, this.el, this.store);
+    }
+},
+
+	
+});
+
+var o;
 function makeQuestion(q){
     var answerItems = [];
     if (q.answers) {
@@ -157,13 +169,43 @@ function makeQuestion(q){
     return  {
 	xtype: 'form',
 	id: q["id"],
+    listeners: {
+	     check: function(e,t) {
+    		var children = this.items.items[0].items.items
+    		o = children;
+    		for (var i=0;i<children.length;i++){
+    			//children[i].setLoading(false);
+    			Ext.destroy(children[i].loadMask);
+    			children[i].loadMask = null;
+    		}
+    		e.loadMask = e.loadMask || new myLoadMask(e.el, Ext.applyIf({msgCls: 'selected', msg: ''}));
+            e.loadMask.show();
+    	    },
+	     uncheck: function() {this.setLoading(false)},},
 	items: [{
 	    xtype: 'fieldset',
-	    defaults: {margin: 10, xtype: 'radiofield', labelWidth: '70%'},
-	    title: q["text"],
+	    defaults: {margin: 10, xtype: 'radiofield', labelWidth: '70%', bubbleEvents: ['check']},
+        title: q["text"],
 	    items: answerItems
 	}]};
 }
+/**
+ * 	    defaults: {margin: 10, xtype: 'radiofield', labelWidth: '70%', bubbleEvents: ['check']},
+    	listeners: {
+			   check: function(item){console.log('checked');
+			     o = this;
+			     console.debug(this);
+			     for (var i=0; i< this.items.items.length; i++){
+			    	 this.items.items[i].el.dom.style.setProperty('color', 'red');
+			         this.items.items[i].el.dom.style.setProperty('border', 'solid');
+			    	 this.items.items[i].el.dom.style.setProperty('border', '10px');
+			    	 console.debug(this.items.items[i]);
+			     }
+			   },
+			   uncheck: function(){console.log('unchecked')}},
+			   
+ */
+
 /**
 function makeSurveyCarousel(){
     return new Ext.Carousel({
@@ -284,12 +326,14 @@ new Ext.Application({
 		margin: 10,
 		text: 'Start ' + testSurvey.name,
 		handler: function() {
+			mainPanel.setLoading(true);
 			currentSurvey = getNewSurvey();
 			car.removeAll();
 			currentSurvey['questions'].map(makeQuestion).map(function(q){car.add(q);});			
 			var content = Ext.getCmp('content');
 			content.remove(buttons,false);
 			//mainPanel.setActiveItem('survey');
+			mainPanel.setLoading(false);
 			buttons.hide();
 			content.add(car);
 			content.doLayout();
@@ -360,7 +404,8 @@ new Ext.Application({
 			};
 		});
 	}
-	}]
+	}
+	]
 	});
 
 	var backButton = {
@@ -418,7 +463,7 @@ new Ext.Application({
 	dockedItems: [{
 		dock: 'top',
 		xtype: 'toolbar',
-		title: 'Survey v.07',
+		title: 'Survey v.11',
 		items: [backButton,
 		        {xtype: 'spacer'},
 		        {text: '', id: 'surveyCount'}]
@@ -430,5 +475,8 @@ new Ext.Application({
 
 	});
 	updateAnswerCount();
-}
+	}	
 });
+
+
+
