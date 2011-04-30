@@ -164,10 +164,11 @@ var o;
 function makeQuestion(q){
     var answerItems = [];
     if (q.answers) {
-	for (var i = 0; i < q.answers.length; i++){
-	    answerItems.push(
-		{ name: "answer", label: q.answers[i], value: String(i)});
-	};
+    	for (var i = 0; i < q.answers.length; i++){
+    		answerItems.push(
+    				{ name: "answer", label: q.answers[i], value: String(i)});
+    	};
+    	answerItems.push({name: "answer", label: "No Answer", value: String(i)});
     }
     else {
 	answerItems = [ new Ext.form.TextArea({
