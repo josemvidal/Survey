@@ -12,7 +12,7 @@ Status 5 (OBSOLETE) is returned means your cache is no longer valid meaning it h
 
 TODO: Have a question depend on the user's answer to a previous one: [SWITCH conditional-question case0-question case1-question....]
 
-TODO: 
+TODO: Add slider widget.
 
 */
 
@@ -273,13 +273,13 @@ new Ext.Application({
 	car.on("cardswitch", function(){
 		if (this.getActiveIndex() + 1 == this.items.items.length) { //at the last one
 //			console.log("last one");
-			Ext.getCmp('nextButton').hide();
-			Ext.getCmp('doneButton').show();
+//			Ext.getCmp('nextButton').hide();
+//			Ext.getCmp('doneButton').show();
 		}
 		else {
 //			console.log(this.getActiveIndex());
-			Ext.getCmp('nextButton').show();
-			Ext.getCmp('doneButton').hide();
+//			Ext.getCmp('nextButton').show();
+//			Ext.getCmp('doneButton').hide();
 		}
 	});
 
@@ -347,6 +347,7 @@ new Ext.Application({
 			Ext.getCmp('backButton').show();
 			resetAnswers();
 			nextButton.show();
+			doneButton.show();
 			startTime = new Date();
 			car.update();
 			car.setActiveItem(0);
@@ -476,7 +477,7 @@ new Ext.Application({
 	},{
 		dock: 'bottom',
 		xtype: 'toolbar',
-		items: [{xtype: 'spacer'}, doneButton, nextButton ]}
+		items: [doneButton, {xtype: 'spacer'}, nextButton ]}
 	]
 
 	});
