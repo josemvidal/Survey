@@ -162,40 +162,59 @@ myLoadMask = Ext.extend(Ext.LoadMask, {
 
 var o;
 function makeQuestion(q){
-    var answerItems = [];
-    if (q.answers) {
-    	for (var i = 0; i < q.answers.length; i++){
-    		answerItems.push(
-    				{ name: "answer", label: q.answers[i], value: String(i)});
-    	};
-    	answerItems.push({name: "answer", label: "No Answer", value: String(i)});
-    }
-    else {
-	answerItems = [ new Ext.form.TextArea({
-	    name: 'answer',
-	})];
-    }
-    return  {
-	xtype: 'form',
-	id: q["id"],
-    listeners: {
-	     check: function(e,t) {
-    		var children = this.items.items[0].items.items
-    		o = children;
-    		for (var i=0;i<children.length;i++){
-    			//children[i].setLoading(false);
-    			Ext.destroy(children[i].loadMask);
-    			children[i].loadMask = null;
-    		}
-    		e.loadMask = e.loadMask || new myLoadMask(e.el, Ext.applyIf({msgCls: 'selected', msg: ''}));
-            e.loadMask.show();
-    	    },
-	     uncheck: function() {this.setLoading(false)},},
+	var answerItems = [];
+	if (q.answers) {
+		for (var i = 0; i < q.answers.length; i++){
+			answerItems.push(
+					{ name: "answer", label: q.answers[i], value: String(i)});
+		};
+		answerItems.push({name: "answer", label: "No Answer", value: String(i)});
+	}
+	else if (q.value){
+		answerItems = [ new Ext.form.Slider({
+			name: "answer",
+            labelWidth: '20%',			
+			label: q.value,
+			value: q.value,
+			minValue: q.minValue,
+			maxValue: q.maxValue,
+			listeners: {
+				change: function(slider, thum, newValue, oldValue){
+				   console.log('changing to ' + newValue);
+				   this.labelEl.update(newValue);
+				},
+				drag: function(slider, thum, newValue, oldValue){
+				   console.log('changing to ' + newValue);
+				   this.labelEl.update(newValue);
+				}
+			}
+		})];
+	}
+	else // its a text question
+		answerItems = [ new Ext.form.TextArea({
+			name: 'answer',
+		})];
+	return  {
+		xtype: 'form',
+		id: q["id"],
+		listeners: {
+		check: function(e,t) {
+		var children = this.items.items[0].items.items
+		o = children;
+		for (var i=0;i<children.length;i++){
+			// children[i].setLoading(false);
+			Ext.destroy(children[i].loadMask);
+			children[i].loadMask = null;
+		}
+		e.loadMask = e.loadMask || new myLoadMask(e.el, Ext.applyIf({msgCls: 'selected', msg: ''}));
+		e.loadMask.show();
+	},
+	uncheck: function() {this.setLoading(false)},},
 	items: [{
-	    xtype: 'fieldset',
-	    defaults: {margin: 10, xtype: 'radiofield', labelWidth: '70%', bubbleEvents: ['check']},
-        title: q["text"],
-	    items: answerItems
+		xtype: 'fieldset',
+		defaults: {margin: 10, xtype: 'radiofield', bubbleEvents: ['check']},
+		title: q["text"],
+		items: answerItems
 	}]};
 }
 /**
@@ -471,7 +490,7 @@ new Ext.Application({
 	dockedItems: [{
 		dock: 'top',
 		xtype: 'toolbar',
-		title: 'Survey v.11',
+		title: 'Survey v.12',
 		items: [backButton,
 		        {xtype: 'spacer'},
 		        {text: '', id: 'surveyCount'}]

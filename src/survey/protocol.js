@@ -225,7 +225,17 @@ var surveyTemplate = {
 		id: "q0",
 		text: "How old are you?",
 		answers: ["<25", "26 to 40", "41 to 60", "61 or over"]
-	   },[
+	   }, {
+		id: "sliderq",
+		text: "Test slider question. How much do you like the slider?<br/>0=Not at all, 10=Excellent!",
+		value: 5,
+		minValue: 0,
+		maxValue: 10
+	   },{
+		   id: "sampletext",
+		   text: "Sample text question 1"
+	},
+	   [
 	      ONE_OF,
 		  [0.2, 0.8],
 		  controlGroupTemplate,
