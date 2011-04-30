@@ -166,7 +166,7 @@ function makeQuestion(q){
 	if (q.answers) {
 		for (var i = 0; i < q.answers.length; i++){
 			answerItems.push(
-					{ name: "answer", label: q.answers[i], value: String(i)});
+					{ name: "answer", labelWidth: '70%', label: q.answers[i], value: String(i)});
 		};
 		answerItems.push({name: "answer", label: "No Answer", value: String(i)});
 	}
@@ -490,7 +490,7 @@ new Ext.Application({
 	dockedItems: [{
 		dock: 'top',
 		xtype: 'toolbar',
-		title: 'Survey v.12',
+		title: 'Survey v.13',
 		items: [backButton,
 		        {xtype: 'spacer'},
 		        {text: '', id: 'surveyCount'}]
