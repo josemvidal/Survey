@@ -273,12 +273,12 @@ new Ext.Application({
 	car.on("cardswitch", function(){
 		if (this.getActiveIndex() + 1 == this.items.items.length) { //at the last one
 //			console.log("last one");
-//			Ext.getCmp('nextButton').hide();
+			Ext.getCmp('nextButton').hide();
 //			Ext.getCmp('doneButton').show();
 		}
 		else {
 //			console.log(this.getActiveIndex());
-//			Ext.getCmp('nextButton').show();
+			Ext.getCmp('nextButton').show();
 //			Ext.getCmp('doneButton').hide();
 		}
 	});
