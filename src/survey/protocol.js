@@ -37,8 +37,17 @@
 			insertafter: "sliderq"
 	}
  *
+ * To automatically generate all ordering questions, set switches=true, as in
+ * {
+		id: "ordering",
+		text: "Of these, which one is your favorite?",
+		answers: ["Kirby", "Mario", "Luigi", "Bowser"],
+		switches: true
+	   }
  *			   
- * 'id's should be unique. 
+ * 'id's should be unique
+ * 
+ * . 
  */
 var SEQUENTIAL = 0;  //constants
 var ONE_OF = 1;
@@ -275,15 +284,18 @@ var surveyTemplate = {
 			id: "chose-red",
 			text: "Which one of these is your most favorite?",
 			answers: ["blue", "green"],
-			insertafter: "sliderq"
+			insertafter: "sliderq",
+			starthidden: true
 		},{
 			id: "chose-blue",
 			text: "Which one of these is your most favorite?",
-			answers: ["red", "green"]
+			answers: ["red", "green"],
+			starthidden: true			
 		},{
 			id: "chose-green",
 			text: "Which one of these is your most favorite?",
-			answers: ["red", "blue"]
+			answers: ["red", "blue"],
+			starthidden: true,
 		},{
 		   id: "sampletext",
 		   text: "Sample text question 1"

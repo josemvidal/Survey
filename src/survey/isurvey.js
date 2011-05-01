@@ -10,7 +10,7 @@ Status 3 (DOWNLOADING) is retuned means changes have been found and they are bei
 Status 4 (UPDATEREADY) is retuned means your new cache is ready to be updated and override your current cache
 Status 5 (OBSOLETE) is returned means your cache is no longer valid meaning it has been removed
 
-TODO: Have a question depend on the user's answer to a previous one: 
+TODO: generate forms on load, store in surveyTemplate.forms
 
 can be done with car.insert(1,Ext.getCmp('qid')) and car.remove
 */
@@ -150,7 +150,6 @@ function expandQuestion(t){
 	for (var i=0; i<t.answers.length;i++){
 		choices.push(i);};
 	var allchoices = choices.combine(2);
-	console.log(allchoices);
 	var choice;
 	var nextChoices;
 	var nextChoicesToShow;
@@ -173,6 +172,9 @@ function expandQuestion(t){
 				answers: allchoices[i].map(function(idx){return t.answers[idx]}),
 		};
 		if (switches.length > 0) {newq.switches = switches;};
+		if (newq.answers.length < t.answers.length) { //all but the first question should be hidden at first
+			newq.starthidden = true;
+		};
 		result.unshift(newq);
 	}
 	result.unshift(SEQUENTIAL);
@@ -212,6 +214,7 @@ function getAllQuestionIds(t){
 			console.log("ERROR: surveyTemplate has repeated question id=" + t.id);
 		}
 		surveyTemplate.keys[t.id] = t;
+		surveyTemplate.forms[t.id] = makeQuestion(t);
 		return t.id;
 	}
 	var type = t.shift();
@@ -234,11 +237,12 @@ Object.prototype.clone = function() {
  */
 surveyTemplate.questions = expandAllQuestions(surveyTemplate.questions);
 surveyTemplate.keys = {}
+surveyTemplate.forms = {}
 surveyTemplate.questionIds = getAllQuestionIds(surveyTemplate.questions.clone());
 
 
-/** Returns a survey: an array of questions
- * t is an array of questions
+/** Returns a survey: an array of questions.
+ * @param t is an array of questions
  * 
  */
 function flattenTemplateQuestions(t){
@@ -337,7 +341,9 @@ function makeHandleChoiceCheck(switches){
 		console.log(switches);
 		var card;
 		for (var i=0; i < switches.show.length;i++){
-			card = Ext.getCmp(switches.show[i]);
+			console.log(switches.show[i]);
+//			card = Ext.getCmp(switches.show[i]);
+			card = surveyTemplate.forms[switches.show[i]];
 			console.log(card);
 			delete card.removed;
 			var question = surveyTemplate.keys[card.id];
@@ -355,14 +361,25 @@ function makeHandleChoiceCheck(switches){
 		}
 		for (var i=0; i < switches.hide.length;i++){
 			console.log('removing ' + switches.hide[i]);
-			card = Ext.getCmp(switches.hide[i]);
-			if (! card.removed){
+			card = car.getComponent(switches.hide[i]);
+//			card = Ext.getCmp(switches.hide[i]);
+//			card = surveyTemplate.forms[switches.hide[i]];
+			if (card && ! card.removed){
 				car.remove(card, false);
 				card.removed = true;
 			}
 		}
 		car.update();
 	}
+}
+
+/**
+ * Get the saved form for question q
+ * @param q
+ * @return
+ */
+function getQuestionForm(q){
+	return surveyTemplate.forms[q.id];
 }
 
 var o;
@@ -405,7 +422,7 @@ function makeQuestion(q){
 		answerItems = [ new Ext.form.TextArea({
 			name: 'answer',
 		})];
-	return  {
+	return {
 		xtype: 'form',
 		id: q["id"],
 		listeners: {
@@ -428,33 +445,6 @@ function makeQuestion(q){
 			items: answerItems
 	}]};
 }
-/**
- * 	    defaults: {margin: 10, xtype: 'radiofield', labelWidth: '70%', bubbleEvents: ['check']},
-    	listeners: {
-			   check: function(item){console.log('checked');
-			     o = this;
-			     console.debug(this);
-			     for (var i=0; i< this.items.items.length; i++){
-			    	 this.items.items[i].el.dom.style.setProperty('color', 'red');
-			         this.items.items[i].el.dom.style.setProperty('border', 'solid');
-			    	 this.items.items[i].el.dom.style.setProperty('border', '10px');
-			    	 console.debug(this.items.items[i]);
-			     }
-			   },
-			   uncheck: function(){console.log('unchecked')}},
-			   
- */
-
-/**
-function makeSurveyCarousel(){
-    return new Ext.Carousel({
-	id: 'survey',
-	name: currentSurvey['name'],
-	indicator: false,
-	items: currentSurvey['questions'].map(makeQuestion)
-    });
-}
-*/
 
 function makeSurveyCarousel(){
     return new Ext.Carousel({
@@ -476,33 +466,40 @@ function makeSurveyCarousel(){
     }
 	}});
 }
-
+/**
 function resetQuestions(carous){
 	carous.removeAll();
 	currentSurvey['questions'].map(makeQuestion).map(function(q){carous.add(q);});
 }
+*/
 /** Returns a json object representing the answers to currentSurvey.
 */
 function getAnswers(){
     var result = {};
     for (var i =0; i < currentSurvey.questions.length; i++){
-	var id = currentSurvey.questions[i].id;
-	var ans = Ext.getCmp(id).getValues().answer;
-	result[id] = ans instanceof Array ? null : ans;
+    	var id = currentSurvey.questions[i].id;
+    	var comp = Ext.getCmp(id);
+    	var ans;
+    	if (comp) {
+    		ans = comp.getValues().answer;}
+    	else {
+    		ans = 'N/A';};
+    	result[id] = ans instanceof Array ? null : ans;
     };
     return {
-	surveyId: currentSurvey.id,
-	surveyName: currentSurvey.name,
-	start: startTime,
-	end: endTime,
-	answers: result
+    	surveyId: currentSurvey.id,
+    	surveyName: currentSurvey.name,
+    	start: startTime,
+    	end: endTime,
+    	answers: result
     };
 }
 
 function resetAnswers(){
     for (var i =0; i < currentSurvey.questions.length; i++){
 	var id = currentSurvey.questions[i].id;
-	Ext.getCmp(id).reset();
+	var comp = Ext.getCmp(id);
+	if (comp) {	Ext.getCmp(id).reset(); };
     }
 }
 
@@ -567,8 +564,8 @@ new Ext.Application({
 		text: 'Start ' + testSurvey.name,
 		handler: function() {
 			currentSurvey = getNewSurvey();
-			car.removeAll();
-			currentSurvey['questions'].map(makeQuestion).map(function(q){car.add(q);});
+			car.removeAll(false);
+			currentSurvey['questions'].filter(function(q){return ! q.starthidden}).map(getQuestionForm).map(function(q){car.add(q);});
 			var content = Ext.getCmp('content');
 			content.remove(buttons,false);
 			//mainPanel.setActiveItem('survey');
@@ -630,7 +627,8 @@ new Ext.Application({
 					},
 					failure: function(resp,opt){
 						if (resp.status == 401) {
-							Ext.Msg.alert('Error', 'You are logged out. Use your browser to log into <a href="http://carolinasurvey.appspot.com">carolinasurvey.appspot.com</a>', Ext.emptyFn);
+							Ext.Msg.alert('Error', 
+'You are logged out. Use your browser to log into <a href="http://carolinasurvey.appspot.com">carolinasurvey.appspot.com</a>', Ext.emptyFn);
 						}
 						else if (resp.status == 0) {
 							Ext.Msg.alert('Error', 'Your Internet access is turned off.', Ext.emptyFn);
@@ -702,7 +700,7 @@ new Ext.Application({
 	dockedItems: [{
 		dock: 'top',
 		xtype: 'toolbar',
-		title: 'Survey v.14',
+		title: 'Survey v.15',
 		items: [backButton,
 		        {xtype: 'spacer'},
 		        {text: '', id: 'surveyCount'}]
