@@ -6,7 +6,7 @@
  *  [SEQUENTIAL, q1, q2, 3] = ask q1,q2,q3 in sequence.
  *  [ONE_OF, [1/3, 2/3], q1, q2] = ask one of q1 or q2, ask q1 with 1/3 probability and q2 with 2/3 probability
  *  [RANDOM_ORDER, q1, q2, q3] = ask all of q1,q2,q3 but in random order.
- *  
+ *  [SWITCH, cond-q, q1, q2, q3] = always show cond-q but the one after depends on the choice the user makes in cond-q
  *  They can be nested, arbitrarily deep.
  *  
  *  [SEQUENTIAL, q1, [RANDOM_ORDER, q2, q3], q4]
@@ -14,6 +14,30 @@
  * A question an abject, with an 'id', 'text', and optional 'answers'.
  * {id: "cancerGruesomeImage1", text: "Cancer Gruesome Image 1",  answers: ["alpha", "beta", "gamma", "delta"]},
  * 
+ * A question can turn on/off other questions based on the choice a user makes:
+ * {
+		   id: "switch-cond",
+		   text: "Which one of these is your most favorite?",
+		   answers: ["red", "blue", "green"],
+		   switches: [{
+			   show: ["chose-red"],
+			   hide: ["chose-blue", "chose-green"]},{
+			   show: ["chose-blue"],
+			   hide: ["chose-red", "chose-green"]},{
+			   show: ["chose-green"],
+			   hide: ["chose-red", "chose-blue"]}]}
+			   
+ *
+ * The inserted questions (in the switches above) can be inserted after any existing card, using 'insertafter':
+ * 
+ * {
+			id: "chose-red",
+			text: "Which one of these is your most favorite?",
+			answers: ["blue", "green"],
+			insertafter: "sliderq"
+	}
+ *
+ *			   
  * 'id's should be unique. 
  */
 var SEQUENTIAL = 0;  //constants
@@ -225,6 +249,11 @@ var surveyTemplate = {
 		id: "q0",
 		text: "How old are you?",
 		answers: ["<25", "26 to 40", "41 to 60", "61 or over"]
+	   },{
+		id: "ordering",
+		text: "Of these, which one is your favorite?",
+		answers: ["Kirby", "Mario", "Luigi", "Bowser"],
+		switches: true
 	   }, {
 		id: "sliderq",
 		text: "Test slider question. How much do you like the slider?<br/>0=Not at all, 10=Excellent!",
@@ -232,6 +261,30 @@ var surveyTemplate = {
 		minValue: 0,
 		maxValue: 10
 	   },{
+		   id: "switch-cond",
+		   text: "Which one of these is your most favorite?",
+		   answers: ["red", "blue", "green"],
+		   switches: [{
+			   show: ["chose-red"],
+			   hide: ["chose-blue", "chose-green"]},{
+			   show: ["chose-blue"],
+			   hide: ["chose-red", "chose-green"]},{
+			   show: ["chose-green"],
+			   hide: ["chose-red", "chose-blue"]}]
+		},{
+			id: "chose-red",
+			text: "Which one of these is your most favorite?",
+			answers: ["blue", "green"],
+			insertafter: "sliderq"
+		},{
+			id: "chose-blue",
+			text: "Which one of these is your most favorite?",
+			answers: ["red", "green"]
+		},{
+			id: "chose-green",
+			text: "Which one of these is your most favorite?",
+			answers: ["red", "blue"]
+		},{
 		   id: "sampletext",
 		   text: "Sample text question 1"
 	},
@@ -251,33 +304,4 @@ var surveyTemplate = {
 		}
 	]
 }
-
-surveyTemplate.keys = {}
-
-function getAllQuestionIds(t){
-	var result = [];
-    var chosenQuestionList;
-	if (!(t instanceof Array)) {
-		if (surveyTemplate.keys[t.id]){
-			console.log("ERROR: surveyTemplate has repeated question id=" + t.id);
-		}
-		surveyTemplate.keys[t.id] = true;
-		return t.id;
-	}
-	var type = t.shift();
-	if (type == ONE_OF) {
-		t.shift();
-	}
-	for (var i =0; i < t.length; i++){
-		result = result.concat(getAllQuestionIds(t[i]));
-	};
-	return result;
-}
-
-
-Object.prototype.clone = function() {
-	return JSON.parse(JSON.stringify(this));
-}
-
-surveyTemplate.questionIds = getAllQuestionIds(surveyTemplate.questions.clone());
 

@@ -10,10 +10,9 @@ Status 3 (DOWNLOADING) is retuned means changes have been found and they are bei
 Status 4 (UPDATEREADY) is retuned means your new cache is ready to be updated and override your current cache
 Status 5 (OBSOLETE) is returned means your cache is no longer valid meaning it has been removed
 
-TODO: Have a question depend on the user's answer to a previous one: [SWITCH conditional-question case0-question case1-question....]
+TODO: Have a question depend on the user's answer to a previous one: 
 
-TODO: Add slider widget.
-
+can be done with car.insert(1,Ext.getCmp('qid')) and car.remove
 */
 
 
@@ -78,12 +77,165 @@ Array.prototype.chooseStochastically = function(probabilities){
 	return this[getStochasticChoice(probabilities)];
 }
 
+Array.prototype.minus = function(e){
+	return this.filter(function(x){
+		return ! (x == e);
+	});
+}
+
 Array.prototype.shuffle = function() {
 	var s = [];
 	while (this.length) {s.push(this.splice(Math.random() * this.length, 1)[0])};
 	while (s.length) this.push(s.pop());
 	return this;
 }
+
+/**
+ * returns all subsets of size 'min' or more of the array
+ */
+Array.prototype.combine = function(min) {
+    var fn = function(n, src, got, all) {
+        if (n == 0) {
+            if (got.length > 0) {
+                all[all.length] = got;
+            }
+            return;
+        }
+        for (var j = 0; j < src.length; j++) {
+            fn(n - 1, src.slice(j + 1), got.concat([src[j]]), all);
+        }
+        return;
+    }
+    var all = [];
+    for (var i = min; i < this.length ; i++) {
+        fn(i, this, [], all);
+    }
+    all.push(this);
+    return all;
+}
+
+Array.prototype.toID = function(){
+	result = "";
+	for (var i=0; i < this.length; i++){
+		result += this[i];
+	}
+	return result;
+}
+
+Array.prototype.contains = function (x){
+	for (var i=0;i<this.length;i++){
+		if (x == this[i]) {return true;}};
+	return false;
+}
+
+Array.prototype.equals = function (a){
+	if (this.length != a.length) {return false;}
+	for (var i = 0; i < a.length; i++){
+		if (this[i] != a[i]) {return false;}}
+	return true;
+}
+
+q =  {
+		id: "ordering",
+		text: "Of these, which one is your favorite?",
+		answers: ["Kirby", "Mario", "Luigi", "Bowser"]
+	   };
+
+
+
+function expandQuestion(t){
+	var choices = [];
+	var switches = [];
+	var result = [];
+	for (var i=0; i<t.answers.length;i++){
+		choices.push(i);};
+	var allchoices = choices.combine(2);
+	console.log(allchoices);
+	var choice;
+	var nextChoices;
+	var nextChoicesToShow;
+	var nextChoicesToHide;
+	for (var i=0; i< allchoices.length; i++){
+		switches = [];
+		if (allchoices[i].length > 2){ // we need to add switches
+			for (var c=0; c < allchoices[i].length;c++){
+				choice = allchoices[i][c];
+				nextChoices = allchoices.filter(function(x){return x.length == allchoices[i].length - 1});
+				nextChoicesToShow = nextChoices.filter(function (l){return (l.equals(allchoices[i].minus(choice)))});
+				nextChoicesToHide = nextChoices.filter(function (l){return (! l.equals(allchoices[i].minus(choice)))});
+				switches.push({
+					show: nextChoicesToShow.map(function(x){return t.id + x.toID();}),
+					hide: nextChoicesToHide.map(function(x){return t.id + x.toID();})
+				});}};
+		var newq = {
+				id: t.id + allchoices[i].toID(),
+				text: t.text,
+				answers: allchoices[i].map(function(idx){return t.answers[idx]}),
+		};
+		if (switches.length > 0) {newq.switches = switches;};
+		result.unshift(newq);
+	}
+	result.unshift(SEQUENTIAL);
+	return result;
+}
+
+/**
+ * Expands all the macro questions (switches = true) in t
+ * @param t
+ * @return
+ */
+function expandAllQuestions(t){
+	var result = [];
+	if (!(t instanceof Array)) {
+		if (t.switches && (t.switches == true)){
+			return expandQuestion(t);
+		}
+		return t;
+	}
+	for (var i =0; i < t.length; i++){
+		result.push(expandAllQuestions(t[i]));
+	};
+	return result;
+}
+
+
+/**
+ * 
+ * @param t
+ * @return a list of all the question IDs, in order 
+ */
+function getAllQuestionIds(t){
+	var result = [];
+    var chosenQuestionList;
+	if (!(t instanceof Array)) {
+		if (surveyTemplate.keys[t.id]){
+			console.log("ERROR: surveyTemplate has repeated question id=" + t.id);
+		}
+		surveyTemplate.keys[t.id] = t;
+		return t.id;
+	}
+	var type = t.shift();
+	if (type == ONE_OF) {
+		t.shift();
+	}
+	for (var i =0; i < t.length; i++){
+		result = result.concat(getAllQuestionIds(t[i]));
+	};
+	return result;
+}
+
+
+Object.prototype.clone = function() {
+	return JSON.parse(JSON.stringify(this));
+}
+
+/**
+ * Expand the surveyTemplate and get all the questionIDs
+ */
+surveyTemplate.questions = expandAllQuestions(surveyTemplate.questions);
+surveyTemplate.keys = {}
+surveyTemplate.questionIds = getAllQuestionIds(surveyTemplate.questions.clone());
+
 
 /** Returns a survey: an array of questions
  * t is an array of questions
@@ -121,6 +273,20 @@ function getNewSurvey(){
 	return st;
 }
 
+/**
+ * 
+ * @param theID
+ * @return the ID of the question with theID in the carousel. null if not there.
+ */
+function getQuestionIndex(theID){
+	for (var i=0; i< car.items.items.length;i++){
+		if (car.items.items[i].id == theID){
+			return i;
+		}
+	}
+	return null;
+}
+
 /** Points to the survey we are currently administering. */
 var currentSurvey = null;
 /** Start time of currentSurvey */
@@ -149,44 +315,89 @@ question =
 
 */
 
+/**
+ * My own load mask which is just a gray screen. Part of an ugly hack to get the whole selection to 
+ * change color when a user clicks on a checkbox.
+ */
 myLoadMask = Ext.extend(Ext.LoadMask, {
 	onBeforeLoad : function() {
     if (!this.disabled) {
         this.el.mask('<div class="x-loading-msg">' + this.msg + '</div>', this.msgCls, false);
         this.fireEvent('show', this, this.el, this.store);
-    }
-},
-
-	
+    }},
 });
+
+/**
+ * Makes handler function for the 'switches' questions. Sets up the needed event handlers.
+ * @param switches
+ * @return
+ */
+function makeHandleChoiceCheck(switches){
+	return function(){
+		console.log(switches);
+		var card;
+		for (var i=0; i < switches.show.length;i++){
+			card = Ext.getCmp(switches.show[i]);
+			console.log(card);
+			delete card.removed;
+			var question = surveyTemplate.keys[card.id];
+			if (question.insertafter){
+				var position = getQuestionIndex(question.insertafter);
+				if (position) {
+					car.insert(position + 1,card);}
+				else {
+					console.log('ERROR: inserafter=' + question.insertafter + ' not found.');
+					car.insert(car.getActiveIndex() + 1,card);}
+			}
+			else { //if no insertafter, then insert after this card.
+				car.insert(car.getActiveIndex() + 1,card);
+			}
+		}
+		for (var i=0; i < switches.hide.length;i++){
+			console.log('removing ' + switches.hide[i]);
+			card = Ext.getCmp(switches.hide[i]);
+			if (! card.removed){
+				car.remove(card, false);
+				card.removed = true;
+			}
+		}
+		car.update();
+	}
+}
 
 var o;
 function makeQuestion(q){
 	var answerItems = [];
 	if (q.answers) {
 		for (var i = 0; i < q.answers.length; i++){
-			answerItems.push(
-					{ name: "answer", labelWidth: '70%', label: q.answers[i], value: String(i)});
+			if (q.switches){
+				answerItems.push({ 
+					name: "answer", labelWidth: '70%', label: q.answers[i], value: String(i),
+					listeners: {
+						check: makeHandleChoiceCheck(q.switches[i])
+					}});
+			}
+			else {
+				answerItems.push({ 
+					name: "answer", labelWidth: '70%', label: q.answers[i], value: String(i)});
+			}
 		};
-		answerItems.push({name: "answer", label: "No Answer", value: String(i)});
+		answerItems.push({name: "answer", labelWidth: '70%', label: "No Answer", value: String(i)});
 	}
 	else if (q.value){
 		answerItems = [ new Ext.form.Slider({
 			name: "answer",
-            labelWidth: '20%',			
+			labelWidth: '20%',			
 			label: q.value,
 			value: q.value,
 			minValue: q.minValue,
 			maxValue: q.maxValue,
 			listeners: {
-				change: function(slider, thum, newValue, oldValue){
-				   console.log('changing to ' + newValue);
-				   this.labelEl.update(newValue);
-				},
-				drag: function(slider, thum, newValue, oldValue){
-				   console.log('changing to ' + newValue);
-				   this.labelEl.update(newValue);
-				}
+			change: function(slider, thum, newValue, oldValue){
+		    	this.labelEl.update('<b>' + newValue + '</b>');},
+		    drag: function(slider, thum, newValue, oldValue){
+			    this.labelEl.update('<b>' + newValue + '</b>');
+		    }
 			}
 		})];
 	}
@@ -198,23 +409,23 @@ function makeQuestion(q){
 		xtype: 'form',
 		id: q["id"],
 		listeners: {
-		check: function(e,t) {
-		var children = this.items.items[0].items.items
-		o = children;
-		for (var i=0;i<children.length;i++){
-			// children[i].setLoading(false);
-			Ext.destroy(children[i].loadMask);
-			children[i].loadMask = null;
-		}
-		e.loadMask = e.loadMask || new myLoadMask(e.el, Ext.applyIf({msgCls: 'selected', msg: ''}));
-		e.loadMask.show();
-	},
-	uncheck: function() {this.setLoading(false)},},
-	items: [{
-		xtype: 'fieldset',
-		defaults: {margin: 10, xtype: 'radiofield', bubbleEvents: ['check']},
-		title: q["text"],
-		items: answerItems
+			check: function(e,t) {
+				var children = this.items.items[0].items.items
+				o = e;
+				for (var i=0;i<children.length;i++){
+					// children[i].setLoading(false);
+					Ext.destroy(children[i].loadMask);
+					children[i].loadMask = null;
+				}
+				e.loadMask = e.loadMask || new myLoadMask(e.el, Ext.applyIf({msgCls: 'selected', msg: ''}));
+				e.loadMask.show();
+			},
+			uncheck: function() {this.setLoading(false)},},
+		items: [{
+			xtype: 'fieldset',
+			defaults: {margin: 10, xtype: 'radiofield', bubbleEvents: ['check']},
+			title: q["text"],
+			items: answerItems
 	}]};
 }
 /**
@@ -250,7 +461,20 @@ function makeSurveyCarousel(){
 	id: 'survey',
 	name: 'none yet',
 	indicator: false,
-    });
+	listeners: {
+    	cardswitch: function(){
+		if (this.getActiveIndex() + 1 == this.items.items.length) { //at the last one
+//			console.log("last one");
+			Ext.getCmp('nextButton').hide();
+//			Ext.getCmp('doneButton').show();
+		}
+		else {
+//			console.log(this.getActiveIndex());
+			Ext.getCmp('nextButton').show();
+//			Ext.getCmp('doneButton').hide();
+		}
+    }
+	}});
 }
 
 function resetQuestions(carous){
@@ -286,22 +510,10 @@ function updateAnswerCount(){
     Ext.getCmp('surveyCount').setText('' + JSON.parse(localStorage.getItem('answers')).length);
 }
 
+var car; //the carousel
 new Ext.Application({
 	launch: function() {
 	car = makeSurveyCarousel(testSurvey); //global for debugging
-
-	car.on("cardswitch", function(){
-		if (this.getActiveIndex() + 1 == this.items.items.length) { //at the last one
-//			console.log("last one");
-			Ext.getCmp('nextButton').hide();
-//			Ext.getCmp('doneButton').show();
-		}
-		else {
-//			console.log(this.getActiveIndex());
-			Ext.getCmp('nextButton').show();
-//			Ext.getCmp('doneButton').hide();
-		}
-	});
 
 	var nextButton = new Ext.Button({
 		text: 'Next',
@@ -490,7 +702,7 @@ new Ext.Application({
 	dockedItems: [{
 		dock: 'top',
 		xtype: 'toolbar',
-		title: 'Survey v.13',
+		title: 'Survey v.14',
 		items: [backButton,
 		        {xtype: 'spacer'},
 		        {text: '', id: 'surveyCount'}]
