@@ -33,28 +33,6 @@ function downloadinNewVersion(){
 }
 webappCache.addEventListener("progress", downloadinNewVersion, false);
 
-var testSurvey = {
-    id: "100",
-    name: "Survey",
-    questions: [{
-	id: "q0",
-	text: "What is 6 times 7?",
-	answers: ['12', '44', '42', '48']
-    },{
-	id: "q1",
-	text: "What is 4 + 4?",
-	answers: ['4', '8', '12', '6']
-    },{
-	id: "q2",
-	text: "Who designed the <b>Eiffel</b> tower?",
-	answers: ['Koechlin', 'Nouguier', 'Sauvestre', 'Eiffel']
-    },{
-	id: "q3",
-	text: "What did you think about this survey?"
-    }]
-}
-
-
 function getStochasticChoice(probabilities){
 	var r = Math.random();
 	var i = 0;
@@ -142,7 +120,12 @@ q =  {
 	   };
 
 
-
+/**
+ * Given a question t with t.switches == true return a [SEQUENTIAL ...] which expands it into a series of questions
+ * which result in the user rank-ordering the choices in t.answers.
+ * @param t a question from the template
+ * @return [SEQUENTIAL ...] expansion
+ */
 function expandQuestion(t){
 	var choices = [];
 	var switches = [];
@@ -233,9 +216,9 @@ Object.prototype.clone = function() {
 }
 
 /**
- * Expand the surveyTemplate and get all the questionIDs
+ * Expand the surveyTemplate and get all the questionIDs and set the .forms[id] to point to each form.
  */
-surveyTemplate.questions = expandAllQuestions(surveyTemplate.questions);
+surveyTemplate.questions = expandAllQuestions(surveyTemplate.questions); //expand switches=true questions
 surveyTemplate.keys = {}
 surveyTemplate.forms = {}
 surveyTemplate.questionIds = getAllQuestionIds(surveyTemplate.questions.clone());
@@ -297,27 +280,15 @@ var currentSurvey = null;
 var startTime = null;
 var endTime = null;
 
-/** array of all the answers we have gotten. Also */
-function setKey(key, val) { 
 /** We need this function because otherwise we get 'quota exceeded error' on ipad: http://stackoverflow.com/questions/2603682 */
+function setKey(key, val) { 
   localStorage.removeItem(key);
   localStorage.setItem(key, val); 
 };
 
+/** array of all the answers we have gotten. */
 if (!localStorage.getItem('answers')) {
     setKey('answers',JSON.stringify([]));}
-
- 
-/**
-question = 
-{
- id: "0",
- "text" : "What is 6 times 7?",
- "answers": [
-    "12", "45", "22", "42"]
-}
-
-*/
 
 /**
  * My own load mask which is just a gray screen. Part of an ugly hack to get the whole selection to 
@@ -338,13 +309,13 @@ myLoadMask = Ext.extend(Ext.LoadMask, {
  */
 function makeHandleChoiceCheck(switches){
 	return function(){
-		console.log(switches);
+//		console.log(switches);
 		var card;
 		for (var i=0; i < switches.show.length;i++){
-			console.log(switches.show[i]);
+//			console.log(switches.show[i]);
 //			card = Ext.getCmp(switches.show[i]);
 			card = surveyTemplate.forms[switches.show[i]];
-			console.log(card);
+//			console.log(card);
 			delete card.removed;
 			var question = surveyTemplate.keys[card.id];
 			if (question.insertafter){
@@ -360,7 +331,7 @@ function makeHandleChoiceCheck(switches){
 			}
 		}
 		for (var i=0; i < switches.hide.length;i++){
-			console.log('removing ' + switches.hide[i]);
+//			console.log('removing ' + switches.hide[i]);
 			card = car.getComponent(switches.hide[i]);
 //			card = Ext.getCmp(switches.hide[i]);
 //			card = surveyTemplate.forms[switches.hide[i]];
@@ -510,7 +481,7 @@ function updateAnswerCount(){
 var car; //the carousel
 new Ext.Application({
 	launch: function() {
-	car = makeSurveyCarousel(testSurvey); //global for debugging
+	car = makeSurveyCarousel(); //global for debugging
 
 	var nextButton = new Ext.Button({
 		text: 'Next',
@@ -561,7 +532,7 @@ new Ext.Application({
 	items: [{
 		xtype: 'button', //start survey Button
 		margin: 10,
-		text: 'Start ' + testSurvey.name,
+		text: 'Start Survey',
 		handler: function() {
 			currentSurvey = getNewSurvey();
 			car.removeAll(false);
@@ -700,7 +671,7 @@ new Ext.Application({
 	dockedItems: [{
 		dock: 'top',
 		xtype: 'toolbar',
-		title: 'Survey v.15',
+		title: 'Survey v.16',
 		items: [backButton,
 		        {xtype: 'spacer'},
 		        {text: '', id: 'surveyCount'}]

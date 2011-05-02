@@ -202,13 +202,11 @@ var healthTopicCancer = [
       cancerHumanSuffering,
       cancerSymbolic],
       {
-    	id: "mostimapactCancer1", 
-    	text: "7. Which of the three cancer images had the most impact?",  
-    	answers: ["gruesome img", "human suffering image", "symbolic image"]
-      },{
-    	id: "mostimapactCancer2", 
-    	text: "7. Which of the three cancer images had the second-most impact?",  
-    	answers: ["gruesome img", "human suffering image", "symbolic image"]}       
+    	id: "mostimapactCancer", 
+    	text: "7. Which of these cancer images had the most impact?",  
+    	answers: ["gruesome img", "human suffering image", "symbolic image"],
+    	switches: true
+      }
 ]
 
 var healthTopicCVD = [
@@ -218,13 +216,11 @@ var healthTopicCVD = [
       CVDHumanSuffering,
       CVDSymbolic], 
       {
-    	id: "mostimapactCVD1", 
-    	text: "7. Which of the three CVD images had the most impact?",  
-    	answers: ["gruesome img", "human suffering image", "symbolic image"]
-      },{
-    	id: "mostimapactCVD2", 
-    	text: "7. Which of the three CVD images had the second-most impact?",  
-    	answers: ["gruesome img", "human suffering image", "symbolic image"]} 
+    	id: "mostimapactCVD", 
+    	text: "7. Which of these three CVD images had the most impact?",  
+    	answers: ["gruesome img", "human suffering image", "symbolic image"],
+    	switches: true
+      }
 ]
 
 var healthTopicSHS = [
@@ -234,13 +230,11 @@ var healthTopicSHS = [
       SHSHumanSuffering,
       SHSSymbolic],
       {
-    	id: "mostimapactSHS1", 
-    	text: "7. Which of the three SHS images had the most impact?",  
-    	answers: ["gruesome img", "human suffering image", "symbolic image"]
-      },{
-    	id: "mostimapactSHS2", 
-    	text: "7. Which of the three SHS images had the second-most impact?",  
-    	answers: ["gruesome img", "human suffering image", "symbolic image"]} 
+    	id: "mostimapactSHS", 
+    	text: "Which of these SHS images had the most impact?",  
+    	answers: ["gruesome img", "human suffering image", "symbolic image"],
+    	switches: true
+      }
 ]
 
 var experimentalGroupTemplate = [
@@ -259,11 +253,6 @@ var surveyTemplate = {
 		text: "How old are you?",
 		answers: ["<25", "26 to 40", "41 to 60", "61 or over"]
 	   },{
-		id: "ordering",
-		text: "Of these, which one is your favorite?",
-		answers: ["Kirby", "Mario", "Luigi", "Bowser"],
-		switches: true
-	   }, {
 		id: "sliderq",
 		text: "Test slider question. How much do you like the slider?<br/>0=Not at all, 10=Excellent!",
 		value: 5,
