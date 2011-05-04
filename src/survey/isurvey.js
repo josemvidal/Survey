@@ -10,11 +10,10 @@ Status 3 (DOWNLOADING) is retuned means changes have been found and they are bei
 Status 4 (UPDATEREADY) is retuned means your new cache is ready to be updated and override your current cache
 Status 5 (OBSOLETE) is returned means your cache is no longer valid meaning it has been removed
 
-TODO: generate forms on load, store in surveyTemplate.forms
+TODO: save state in localStorage so current survey can be re-loaded if user hits home button 
 
-can be done with car.insert(1,Ext.getCmp('qid')) and car.remove
+
 */
-
 
 
 var webappCache = window.applicationCache;

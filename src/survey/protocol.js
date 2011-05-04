@@ -273,7 +273,6 @@ var surveyTemplate = {
 			id: "chose-red",
 			text: "Which one of these is your most favorite?",
 			answers: ["blue", "green"],
-			insertafter: "sliderq",
 			starthidden: true
 		},{
 			id: "chose-blue",
