@@ -369,7 +369,7 @@ function makeQuestion(q){
 					name: "answer", labelWidth: '70%', label: q.answers[i], value: String(i)});
 			}
 		};
-		answerItems.push({name: "answer", labelWidth: '70%', label: "No Answer", value: String(i)});
+		answerItems.push({name: "answer", labelWidth: '70%', componentCls: "noanswer", label: "No Answer", value: String(i)});
 	}
 	else if (q.value){
 		answerItems = [ new Ext.form.Slider({
@@ -410,7 +410,7 @@ function makeQuestion(q){
 			uncheck: function() {this.setLoading(false)},},
 		items: [{
 			xtype: 'fieldset',
-			defaults: {margin: 10, xtype: 'radiofield', bubbleEvents: ['check']},
+			defaults: {margin: 20, xtype: 'radiofield', bubbleEvents: ['check']},
 			title: q["text"],
 			items: answerItems
 	}]};

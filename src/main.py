@@ -3,6 +3,10 @@ Created on Apr 23, 2011
 
 @author: jmvidal@gmail.com
 http://jmvidal.cse.sc.edu
+
+TODO: Test sequential questions.
+
+TODO: 3D graphics research.
 '''
 import cgi
 import os

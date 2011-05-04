@@ -157,9 +157,15 @@ var SHSGruesome = [
     SEQUENTIAL,
     [ONE_OF,
      [1/3, 1/3, 1/3],     
-     {id: "SHSGruesomeImage1", text: "SHS Gruesome Image 1",  answers: ["alpha", "beta", "gamma", "delta"]}, 
-     {id: "SHSGruesomeImage2", text: "SHS Gruesome Image 2",  answers: ["alpha", "beta", "gamma", "delta"]}, 
-     {id: "SHSGruesomeImage3", text: "SHS Gruesome Image 3",  answers: ["alpha", "beta", "gamma", "delta"]}
+     [SEQUENTIAL, 
+      {id: "SHSGruesomeImage1", text: "SHS Gruesome Image 1",   value: 5, minValue: 1, maxValue: 10},
+      {id: "second", text: "this is the acceptance"}], 
+    [SEQUENTIAL, 
+      {id: "SHSGruesomeImage1", text: "SHS Gruesome Image 1",   value: 5, minValue: 1, maxValue: 10},
+      {id: "second", text: "this is the acceptance"}],       
+    [SEQUENTIAL, 
+      {id: "SHSGruesomeImage1", text: "SHS Gruesome Image 1",   value: 5, minValue: 1, maxValue: 10},
+      {id: "second", text: "this is the acceptance"}],             
      ], {
 	id: "SHSGrueAccep",
     text: "SHS Gruesome acceptance question",
@@ -171,7 +177,7 @@ var SHSHumanSuffering = [
     SEQUENTIAL,
     [ONE_OF,
      [1/3, 1/3, 1/3],     
-     {id: "SHSHumanSuffering1", text: "SHS Human Suffering Image 1",  answers: ["alpha", "beta", "gamma", "delta"]}, 
+     {id: "SHSHumanSuffering1", text: "SHS Human Suffering Image 1",   value: 5, minValue: 1, maxValue: 10}, 
      {id: "SHSHumanSuffering2", text: "SHS Human Suffering Image 2",  answers: ["alpha", "beta", "gamma", "delta"]}, 
      {id: "SHSHumanSuffering3", text: "SHS Human Suffering Image 3",  answers: ["alpha", "beta", "gamma", "delta"]}
      ], {
@@ -185,7 +191,7 @@ var SHSSymbolic = [
     SEQUENTIAL,
     [ONE_OF,
      [1/3, 1/3, 1/3],     
-     {id: "SHSSymbolic1", text: "SHS Symbolic Image 1",  answers: ["alpha", "beta", "gamma", "delta"]}, 
+     {id: "SHSSymbolic1", text: "SHS Symbolic Image 1",  value: 5, minValue: 1, maxValue: 10}, 
      {id: "SHSSymbolic2", text: "SHS Symbolic Image 2",  answers: ["alpha", "beta", "gamma", "delta"]}, 
      {id: "SHSSymbolic3", text: "SHS Symbolic Image 3",  answers: ["alpha", "beta", "gamma", "delta"]}
      ], {
@@ -253,12 +259,6 @@ var surveyTemplate = {
 		text: "How old are you?",
 		answers: ["<25", "26 to 40", "41 to 60", "61 or over"]
 	   },{
-		id: "sliderq",
-		text: "Test slider question. How much do you like the slider?<br/>0=Not at all, 10=Excellent!",
-		value: 5,
-		minValue: 0,
-		maxValue: 10
-	   },{
 		   id: "switch-cond",
 		   text: "Which one of these is your most favorite?",
 		   answers: ["red", "blue", "green"],
@@ -293,8 +293,13 @@ var surveyTemplate = {
 		  [0.2, 0.8],
 		  controlGroupTemplate,
 		  experimentalGroupTemplate
-		],
-		{
+		],{
+		id: "sliderq",
+		text: "Test slider question. How much do you like the slider?<br/>0=Not at all, 10=Excellent!",
+		value: 5,
+		minValue: 0,
+		maxValue: 10
+	   },{
 		   id: "finalq1",
 		   text: "Final common question 1"
 		},
