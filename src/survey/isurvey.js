@@ -467,9 +467,9 @@ function getAnswers(){
 
 function resetAnswers(){
     for (var i =0; i < currentSurvey.questions.length; i++){
-	var id = currentSurvey.questions[i].id;
-	var comp = Ext.getCmp(id);
-	if (comp) {	Ext.getCmp(id).reset(); };
+    	var id = currentSurvey.questions[i].id;
+    	var comp = Ext.getCmp(id);
+    	if (comp) {	Ext.getCmp(id).reset(); };
     }
 }
 
@@ -506,14 +506,15 @@ new Ext.Application({
 				setKey('answers', JSON.stringify(pastAnswers));
 				console.log('saved it');
 				var content = Ext.getCmp('content');
-				content.remove(car,false);
+//				content.remove(car,false);
+				car.removeAll(false);
 				car.hide();
-				content.add(buttons);
+//				content.add(buttons);
 				buttons.show();
 				Ext.getCmp('backButton').hide();
 				nextButton.hide();
 				Ext.getCmp('doneButton').hide();
-				content.doLayout();
+//				content.doLayout();
 				currentSurvey = null;
 				updateAnswerCount();
 			}
@@ -534,22 +535,22 @@ new Ext.Application({
 		text: 'Start Survey',
 		handler: function() {
 			currentSurvey = getNewSurvey();
-			car.removeAll(false);
-			currentSurvey['questions'].filter(function(q){return ! q.starthidden}).map(getQuestionForm).map(function(q){car.add(q);});
+			currentSurvey['questions'].filter(function(q){return ! q.starthidden}).map(getQuestionForm).map(function(q){car.add(q); console.log('adding:' + q.id)});
 			var content = Ext.getCmp('content');
-			content.remove(buttons,false);
+//			content.remove(buttons,false);
 			//mainPanel.setActiveItem('survey');
 			buttons.hide();
-			content.add(car);
-			content.doLayout();
 			car.show();
+			car.doLayout();
+//			content.add(car);
+//			content.doLayout();
+//			content.doLayout();
+			
 			Ext.getCmp('backButton').show();
-			resetAnswers();
+//			resetAnswers();
 			nextButton.show();
 			doneButton.show();
 			startTime = new Date();
-			car.update();
-			car.setActiveItem(0);
 		}
 	}, 
 	//{
@@ -627,10 +628,11 @@ new Ext.Application({
 					function(response){
 				if (response == "yes"){
 					var content = Ext.getCmp('content');
-					content.removeAll(false);
+//					content.removeAll(false);
+					car.removeAll(false);
 					car.hide();
 					if (Ext.getCmp('jsonanswers')) { Ext.getCmp('jsonanswers').hide();}
-					content.add(buttons);
+//					content.add(buttons);
 					buttons.show();
 					Ext.getCmp('backButton').hide();
 					Ext.getCmp('doneButton').hide();
@@ -642,10 +644,10 @@ new Ext.Application({
 		}
 		else { //we are not doing a survey, so just go back to buttons
 			var content = Ext.getCmp('content');
-			content.removeAll(false);
+	//		content.removeAll(false);
 			car.hide();
 			if (Ext.getCmp('jsonanswers')) { Ext.getCmp('jsonanswers').hide();}
-			content.add(buttons);
+//			content.add(buttons);
 			buttons.show();
 			Ext.getCmp('backButton').hide();
 			nextButton.hide();
@@ -669,7 +671,7 @@ new Ext.Application({
 	dockedItems: [{
 		dock: 'top',
 		xtype: 'toolbar',
-		title: 'Survey v.17',
+		title: 'Survey v.18',
 		items: [backButton,
 		        {xtype: 'spacer'},
 		        {text: '', id: 'surveyCount'}]

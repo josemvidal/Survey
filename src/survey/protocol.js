@@ -115,9 +115,9 @@ var CVDGruesome = [
     SEQUENTIAL,
     [ONE_OF,
      [1/3, 1/3, 1/3],     
-     {id: "CVDGruesomeImage1", text: "CVD Gruesome Image 1",  answers: ["alpha", "beta", "gamma", "delta"]}, 
-     {id: "CVDGruesomeImage2", text: "CVD Gruesome Image 2",  answers: ["alpha", "beta", "gamma", "delta"]}, 
-     {id: "CVDGruesomeImage3", text: "CVD Gruesome Image 3",  answers: ["alpha", "beta", "gamma", "delta"]}
+     {id: "CVDGruesomeImage11", text: "CVD Gruesome Image 1",  answers: ["alpha", "beta", "gamma", "delta"]}, 
+     {id: "CVDGruesomeImage12", text: "CVD Gruesome Image 2",  answers: ["alpha", "beta", "gamma", "delta"]}, 
+     {id: "CVDGruesomeImage13", text: "CVD Gruesome Image 3",  answers: ["alpha", "beta", "gamma", "delta"]}
      ], {
 	id: "CVDGrueAccep",
     text: "CVD Gruesome acceptance question",
@@ -158,14 +158,14 @@ var SHSGruesome = [
     [ONE_OF,
      [1/3, 1/3, 1/3],     
      [SEQUENTIAL, 
-      {id: "SHSGruesomeImage1", text: "SHS Gruesome Image 1",   value: 5, minValue: 1, maxValue: 10},
-      {id: "second", text: "this is the acceptance"}], 
+      {id: "SHSGruesomeImage11", text: "SHS Gruesome Image 1",   value: 5, minValue: 1, maxValue: 10},
+      {id: "second1", text: "this is the acceptance"}], 
     [SEQUENTIAL, 
-      {id: "SHSGruesomeImage1", text: "SHS Gruesome Image 1",   value: 5, minValue: 1, maxValue: 10},
-      {id: "second", text: "this is the acceptance"}],       
+      {id: "SHSGruesomeImage12", text: "SHS Gruesome Image 1",   value: 5, minValue: 1, maxValue: 10},
+      {id: "second2", text: "this is the acceptance"}],       
     [SEQUENTIAL, 
-      {id: "SHSGruesomeImage1", text: "SHS Gruesome Image 1",   value: 5, minValue: 1, maxValue: 10},
-      {id: "second", text: "this is the acceptance"}],             
+      {id: "SHSGruesomeImage13", text: "SHS Gruesome Image 1",   value: 5, minValue: 1, maxValue: 10},
+      {id: "second3", text: "this is the acceptance"}],             
      ], {
 	id: "SHSGrueAccep",
     text: "SHS Gruesome acceptance question",
