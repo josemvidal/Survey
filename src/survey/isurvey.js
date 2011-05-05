@@ -567,19 +567,7 @@ new Ext.Application({
 //	Ext.getCmp('backButton').show();
 //	}
 //	},
-	{
-		xtype: 'button', //delete surveys button
-		margin: 10,
-		text: 'Delete Answers',
-		handler: function() {
-		Ext.Msg.confirm("Erase all Data?", "Are you sure you want to erase all the survey answers?", function(response){
-			if (response == "yes"){
-				setKey('answers',JSON.stringify([]));
-				updateAnswerCount();
-			};
-		});}
-	},{
-		xtype: 'button',
+	{	xtype: 'button',
 		margin: 10,
 		text: 'Upload Answers',
 		handler: function(){
@@ -609,8 +597,19 @@ new Ext.Application({
 					}
 				});
 			};
-		});
-	}
+		});}
+	},
+	{
+		xtype: 'button', //delete surveys button
+		margin: 50,
+		text: 'Delete Answers',
+		handler: function() {
+		Ext.Msg.confirm("Erase all Data?", "Are you sure you want to erase all the survey answers?", function(response){
+			if (response == "yes"){
+				setKey('answers',JSON.stringify([]));
+				updateAnswerCount();
+			};
+		});}
 	}
 	]
 	});
@@ -670,7 +669,7 @@ new Ext.Application({
 	dockedItems: [{
 		dock: 'top',
 		xtype: 'toolbar',
-		title: 'Survey v.16',
+		title: 'Survey v.17',
 		items: [backButton,
 		        {xtype: 'spacer'},
 		        {text: '', id: 'surveyCount'}]
