@@ -11,7 +11,7 @@ Status 4 (UPDATEREADY) is retuned means your new cache is ready to be updated an
 Status 5 (OBSOLETE) is returned means your cache is no longer valid meaning it has been removed
 
 TODO: save state in localStorage so current survey can be re-loaded if user hits home button 
-
+TODO: bug: if you hit back or save in the first question, then start survey again, it won't work.
 
 */
 
@@ -419,22 +419,17 @@ function makeQuestion(q){
 function makeSurveyCarousel(){
     return new Ext.Carousel({
 	id: 'survey',
-	name: 'none yet',
 	indicator: false,
 	listeners: {
     	cardswitch: function(){
 		if (this.getActiveIndex() + 1 == this.items.items.length) { //at the last one
-//			console.log("last one");
 			Ext.getCmp('nextButton').hide();
-//			Ext.getCmp('doneButton').show();
 		}
 		else {
-//			console.log(this.getActiveIndex());
 			Ext.getCmp('nextButton').show();
-//			Ext.getCmp('doneButton').hide();
 		}
-    }
-	}});
+    }}
+	});
 }
 /**
 function resetQuestions(carous){
@@ -506,15 +501,13 @@ new Ext.Application({
 				setKey('answers', JSON.stringify(pastAnswers));
 				console.log('saved it');
 				var content = Ext.getCmp('content');
-//				content.remove(car,false);
+				if (car.getActiveIndex() == 0) {car.setActiveItem(1);} //ugly hack to get around sencha bug.
 				car.removeAll(false);
 				car.hide();
-//				content.add(buttons);
 				buttons.show();
 				Ext.getCmp('backButton').hide();
 				nextButton.hide();
 				Ext.getCmp('doneButton').hide();
-//				content.doLayout();
 				currentSurvey = null;
 				updateAnswerCount();
 			}
@@ -535,19 +528,12 @@ new Ext.Application({
 		text: 'Start Survey',
 		handler: function() {
 			currentSurvey = getNewSurvey();
-			currentSurvey['questions'].filter(function(q){return ! q.starthidden}).map(getQuestionForm).map(function(q){car.add(q); console.log('adding:' + q.id)});
+			currentSurvey['questions'].filter(function(q){return ! q.starthidden}).map(getQuestionForm).map(function(q){car.add(q);});
 			var content = Ext.getCmp('content');
-//			content.remove(buttons,false);
-			//mainPanel.setActiveItem('survey');
 			buttons.hide();
 			car.show();
 			car.doLayout();
-//			content.add(car);
-//			content.doLayout();
-//			content.doLayout();
-			
 			Ext.getCmp('backButton').show();
-//			resetAnswers();
 			nextButton.show();
 			doneButton.show();
 			startTime = new Date();
@@ -628,26 +614,23 @@ new Ext.Application({
 					function(response){
 				if (response == "yes"){
 					var content = Ext.getCmp('content');
-//					content.removeAll(false);
+					if (car.getActiveIndex() == 0) {car.setActiveItem(1);} //ugly hack to get around sencha bug.
 					car.removeAll(false);
 					car.hide();
 					if (Ext.getCmp('jsonanswers')) { Ext.getCmp('jsonanswers').hide();}
-//					content.add(buttons);
 					buttons.show();
 					Ext.getCmp('backButton').hide();
 					Ext.getCmp('doneButton').hide();
 					nextButton.hide();
-					content.doLayout();
 					currentSurvey = null;
 				};
 			});
 		}
 		else { //we are not doing a survey, so just go back to buttons
 			var content = Ext.getCmp('content');
-	//		content.removeAll(false);
+			content.removeAll(false);
 			car.hide();
 			if (Ext.getCmp('jsonanswers')) { Ext.getCmp('jsonanswers').hide();}
-//			content.add(buttons);
 			buttons.show();
 			Ext.getCmp('backButton').hide();
 			nextButton.hide();
@@ -671,7 +654,7 @@ new Ext.Application({
 	dockedItems: [{
 		dock: 'top',
 		xtype: 'toolbar',
-		title: 'Survey v.18',
+		title: 'Survey v.20',
 		items: [backButton,
 		        {xtype: 'spacer'},
 		        {text: '', id: 'surveyCount'}]
