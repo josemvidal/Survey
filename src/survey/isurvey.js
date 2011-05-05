@@ -11,7 +11,6 @@ Status 4 (UPDATEREADY) is retuned means your new cache is ready to be updated an
 Status 5 (OBSOLETE) is returned means your cache is no longer valid meaning it has been removed
 
 TODO: save state in localStorage so current survey can be re-loaded if user hits home button 
-TODO: bug: if you hit back or save in the first question, then start survey again, it won't work.
 
 */
 
