@@ -6,8 +6,8 @@ webappCache.status =
 Status 0 (UNCACHED) is returned which means that there is no cache available
 Status 1 (IDLE) is returned means the cache you have is currently the most up-to-date
 Status 2 (CHECKING) is returned means there is a change in your manifest file and it is checking it for changes
-Status 3 (DOWNLOADING) is retuned means changes have been found and they are being added to your cache
-Status 4 (UPDATEREADY) is retuned means your new cache is ready to be updated and override your current cache
+Status 3 (DOWNLOADING) is returned means changes have been found and they are being added to your cache
+Status 4 (UPDATEREADY) is returned means your new cache is ready to be updated and override your current cache
 Status 5 (OBSOLETE) is returned means your cache is no longer valid meaning it has been removed
 
 TODO: save state in localStorage so current survey can be re-loaded if user hits home button 
@@ -459,6 +459,8 @@ function getAnswers(){
     };
 }
 
+/** No longer used, but might come in handy later.
+ * 
 function resetAnswers(){
     for (var i =0; i < currentSurvey.questions.length; i++){
     	var id = currentSurvey.questions[i].id;
@@ -466,6 +468,7 @@ function resetAnswers(){
     	if (comp) {	Ext.getCmp(id).reset(); };
     }
 }
+*/
 
 function updateAnswerCount(){
     Ext.getCmp('surveyCount').setText('' + JSON.parse(localStorage.getItem('answers')).length);
@@ -491,7 +494,6 @@ new Ext.Application({
 		hidden: true,
 		id: 'doneButton',
 		handler: function(){
-		//TODO: add an overlay Y/Cancel "Are you sure you want to quit and save?"
 		Ext.Msg.confirm("Save Answers?", "Are you sure you want to finish and save this survey?", function(response){
 			if (response == "yes"){
 				endTime = new Date();
