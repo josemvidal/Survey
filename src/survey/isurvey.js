@@ -393,6 +393,7 @@ function makeQuestion(q){
 		})];
 	return {
 		xtype: 'form',
+		scroll: 'vertical',
 		id: q["id"],
 		listeners: {
 			check: function(e,t) {
