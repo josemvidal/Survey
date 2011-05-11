@@ -158,18 +158,23 @@ var SHSGruesome = [
     [ONE_OF,
      [1/3, 1/3, 1/3],     
      [SEQUENTIAL, 
-      {id: "SHSGruesomeImage1", text: "SHS Gruesome Image 1", value: 5, minValue: 1, maxValue: 10},
-      {id: "second", text: "this is the acceptance"}], 
+      {id: "SHSGruesomeImageA", text: "SHS Gruesome Image A", value: 5, minValue: 1, maxValue: 10},
+      {id: "secondA", text: "this is the acceptance"}], 
     [SEQUENTIAL, 
-      {id: "SHSGruesomeImage1", text: "SHS Gruesome Image 1", value: 5, minValue: 1, maxValue: 10},
-      {id: "second", text: "this is the acceptance"}],       
+      {id: "SHSGruesomeImageB", text: "SHS Gruesome Image B", value: 5, minValue: 1, maxValue: 10},
+      {id: "secondB", text: "this is the acceptance"}],       
     [SEQUENTIAL, 
-      {id: "SHSGruesomeImage1", text: "SHS Gruesome Image 1", value: 5, minValue: 1, maxValue: 10},
-      {id: "second", text: "this is the acceptance"}]
+      {id: "SHSGruesomeImageC", text: "SHS Gruesome Image C", value: 5, minValue: 1, maxValue: 10},
+      {id: "secondV", text: "this is the acceptance"}]
      ],{
-     id: "SHSGrueAccep",
-        text: "SHS Gruesome acceptance question",
-        answers: ["alpha", "beta", "gamma", "delta"]
+     id: "SHSGrueAccep-grab",
+        text: "Did that message grab your attention?", value: 5, minValue: 1, maxValue: 10 
+    },{
+    	id: "SHSGrueAccep-believable",
+        text: "Was that message believable?", value: 5, minValue: 1, maxValue: 10 
+    },{
+    	id: "SHSGrueAccep-relevant",
+        text: "Was that message relevant?", value: 5, minValue: 1, maxValue: 10 
     }
 ];
 
