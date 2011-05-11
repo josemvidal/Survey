@@ -275,8 +275,8 @@ function getQuestionIndex(theID){
 /** Points to the survey we are currently administering. */
 /** var currentSurvey = null; */
 /** Start time of currentSurvey */
-var startTime = null;
-var endTime = null; 
+/** var startTime = null;
+var endTime = null; */ 
 
 /** We need this function because otherwise we get 'quota exceeded error' on ipad: http://stackoverflow.com/questions/2603682 */
 function setKey(key, val) { 
@@ -300,6 +300,18 @@ function resetCurrentSurvey(){
 
 function setCurrentSurvey(newSurvey){
 	setKey('currentSurvey',JSON.stringify(newSurvey));
+}
+
+function setStartTime(){
+	var cs = currentSurvey();
+	cs.startTime = new Date();
+	setCurrentSurvey(cs);
+}
+
+function setEndTime(){
+	var cs = currentSurvey();
+	cs.endTime = new Date();
+	setCurrentSurvey(cs);
 }
 
 /**
@@ -469,8 +481,8 @@ function getAnswers(){
     return {
     	surveyId: csurvey.id,
     	surveyName: csurvey.name,
-    	start: startTime,
-    	end: endTime,
+    	start: csurvey.startTime,
+    	end: csurvey.endTime,
     	answers: result
     };
 }
@@ -515,7 +527,7 @@ new Ext.Application({
 		Ext.getCmp('backButton').show();
 		nextButton.show();
 		doneButton.show();
-		startTime = new Date();
+		setStartTime();
 	};
 
 	var doneButton = new Ext.Button({
@@ -526,7 +538,7 @@ new Ext.Application({
 		handler: function(){
 		Ext.Msg.confirm("Save Answers?", "Are you sure you want to finish and save this survey?", function(response){
 			if (response == "yes"){
-				endTime = new Date();
+				setEndTime();
 				var pastAnswers = JSON.parse(localStorage.getItem('answers'));
 				pastAnswers.push(getAnswers());
 				setKey('answers', JSON.stringify(pastAnswers));
