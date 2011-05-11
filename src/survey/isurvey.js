@@ -273,10 +273,10 @@ function getQuestionIndex(theID){
 }
 
 /** Points to the survey we are currently administering. */
-var currentSurvey = null;
+/** var currentSurvey = null; */
 /** Start time of currentSurvey */
 var startTime = null;
-var endTime = null;
+var endTime = null; 
 
 /** We need this function because otherwise we get 'quota exceeded error' on ipad: http://stackoverflow.com/questions/2603682 */
 function setKey(key, val) { 
@@ -287,6 +287,20 @@ function setKey(key, val) {
 /** array of all the answers we have gotten. */
 if (!localStorage.getItem('answers')) {
     setKey('answers',JSON.stringify([]));}
+
+if (!localStorage.getItem('currentSurvey')) {
+    setKey('currentSurvey',JSON.stringify(null)); }
+
+function currentSurvey(){
+	return JSON.parse(localStorage.getItem('currentSurvey'));
+}
+
+function resetCurrentSurvey(){
+	setKey('currentSurvey',JSON.stringify(null)); }
+
+function setCurrentSurvey(newSurvey){
+	setKey('currentSurvey',JSON.stringify(newSurvey));
+}
 
 /**
  * My own load mask which is just a gray screen. Part of an ugly hack to get the whole selection to 
@@ -441,8 +455,9 @@ function resetQuestions(carous){
 */
 function getAnswers(){
     var result = {};
-    for (var i =0; i < currentSurvey.questions.length; i++){
-    	var id = currentSurvey.questions[i].id;
+    var csurvey = currentSurvey();
+    for (var i =0; i < csurvey.questions.length; i++){
+    	var id = csurvey.questions[i].id;
     	var comp = Ext.getCmp(id);
     	var ans;
     	if (comp) {
@@ -452,8 +467,8 @@ function getAnswers(){
     	result[id] = ans instanceof Array ? null : ans;
     };
     return {
-    	surveyId: currentSurvey.id,
-    	surveyName: currentSurvey.name,
+    	surveyId: csurvey.id,
+    	surveyName: csurvey.name,
     	start: startTime,
     	end: endTime,
     	answers: result
@@ -486,8 +501,22 @@ new Ext.Application({
 		hidden: true,
 		id: 'nextButton',
 		handler: function(){ car.next();},
-	}
-	);
+	});
+	
+	var createOrLoadSurvey = function() {
+		var news = currentSurvey();
+		if (news == null) { news = getNewSurvey(); }
+		setCurrentSurvey(news);
+		news['questions'].filter(function(q){return ! q.starthidden}).map(getQuestionForm).map(function(q){car.add(q);});
+		var content = Ext.getCmp('content');
+		buttons.hide();
+		car.show();
+		car.doLayout();
+		Ext.getCmp('backButton').show();
+		nextButton.show();
+		doneButton.show();
+		startTime = new Date();
+	};
 
 	var doneButton = new Ext.Button({
 		text: 'Done',
@@ -510,7 +539,7 @@ new Ext.Application({
 				Ext.getCmp('backButton').hide();
 				nextButton.hide();
 				Ext.getCmp('doneButton').hide();
-				currentSurvey = null;
+				resetCurrentSurvey;
 				updateAnswerCount();
 			}
 		});
@@ -528,19 +557,8 @@ new Ext.Application({
 		xtype: 'button', //start survey Button
 		margin: 10,
 		text: 'Start Survey',
-		handler: function() {
-			currentSurvey = getNewSurvey();
-			currentSurvey['questions'].filter(function(q){return ! q.starthidden}).map(getQuestionForm).map(function(q){car.add(q);});
-			var content = Ext.getCmp('content');
-			buttons.hide();
-			car.show();
-			car.doLayout();
-			Ext.getCmp('backButton').show();
-			nextButton.show();
-			doneButton.show();
-			startTime = new Date();
-		}
-	}, 
+		handler: createOrLoadSurvey
+	},
 	//{
 //	xtype: 'button', //view Answers button
 //	margin: 10,
@@ -610,7 +628,7 @@ new Ext.Application({
 			xtype: 'button',
 			hidden: true,
 			handler: function() {
-		if (currentSurvey) {
+		if (currentSurvey()) {
 			Ext.Msg.confirm("Discard Survey?", 
 					"All the answers you have entered will be lost if you quit now.",
 					function(response){
@@ -624,7 +642,7 @@ new Ext.Application({
 					Ext.getCmp('backButton').hide();
 					Ext.getCmp('doneButton').hide();
 					nextButton.hide();
-					currentSurvey = null;
+					resetCurrentSurvey;
 				};
 			});
 		}
@@ -667,6 +685,7 @@ new Ext.Application({
 	]
 
 	});
+	createOrLoadSurvey(); //if there is one in localStorage, load it.
 	updateAnswerCount();
 	}	
 });

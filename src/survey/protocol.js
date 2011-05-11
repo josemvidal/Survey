@@ -134,7 +134,7 @@ var cancerHumanSuffering = [
 
      ],{
 
-     id: "CancerHSAccep-grab", text: "On a scale of 1 to 10, where 1 is 'not at all' and 10 is 'extemely', please tell me whether this warning message... grabs your attention", value: 5, minValue: 1, maxValue: 10 
+     id: "CancerHSAccep-grab0", text: "On a scale of 1 to 10, where 1 is 'not at all' and 10 is 'extemely', please tell me whether this warning message... grabs your attention", value: 5, minValue: 1, maxValue: 10 
 
     },{
 
@@ -334,7 +334,7 @@ var CVDHumanSuffering = [
 
 	     ],{
 
-	     id: "CVDHSAccep-grab", text: "On a scale of 1 to 10, where 1 is 'not at all' and 10 is 'extemely', please tell me whether this warning message... grabs your attention", value: 5, minValue: 1, maxValue: 10 
+	     id: "CVDSAccep-grab", text: "On a scale of 1 to 10, where 1 is 'not at all' and 10 is 'extemely', please tell me whether this warning message... grabs your attention", value: 5, minValue: 1, maxValue: 10 
 
 	    },{
 
@@ -446,7 +446,7 @@ var SHSHumanSuffering = [
 
     },{
 
-     id: "CVDHSAccep-alarm", text: "... is alarming", value: 5, minValue: 1, maxValue: 10
+     id: "SHSHSAccep-alarm", text: "... is alarming", value: 5, minValue: 1, maxValue: 10
 
 	},{
 
@@ -484,7 +484,7 @@ var SHSHumanSuffering = [
 
 	     ],{
 
-	     id: "SHSHSAccep-grab", text: "On a scale of 1 to 10, where 1 is 'not at all' and 10 is 'extemely', please tell me whether this warning message... grabs your attention", value: 5, minValue: 1, maxValue: 10 
+	     id: "SHSSSAccep-grab", text: "On a scale of 1 to 10, where 1 is 'not at all' and 10 is 'extemely', please tell me whether this warning message... grabs your attention", value: 5, minValue: 1, maxValue: 10 
 
 	    },{
 
