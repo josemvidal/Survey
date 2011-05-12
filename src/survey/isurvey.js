@@ -520,7 +520,7 @@ function getAnswers(){
     	result[id] = ans instanceof Array ? null : ans;
     };
     return {
-    	surveyId: csurvey.id,
+    	protocolId: csurvey.id,
     	surveyName: csurvey.name,
     	start: csurvey.startTime,
     	end: csurvey.endTime,
@@ -598,7 +598,7 @@ new Ext.Application({
 				Ext.getCmp('backButton').hide();
 				nextButton.hide();
 				Ext.getCmp('doneButton').hide();
-				resetCurrentSurvey;
+				resetCurrentSurvey();
 				updateAnswerCount();
 			}
 		});
@@ -733,7 +733,7 @@ new Ext.Application({
 	dockedItems: [{
 		dock: 'top',
 		xtype: 'toolbar',
-		title: 'Survey v.22',
+		title: 'Survey v.23',
 		items: [backButton,
 		        {xtype: 'spacer'},
 		        {text: '', id: 'surveyCount'}]
