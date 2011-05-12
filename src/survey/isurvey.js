@@ -194,6 +194,9 @@ function getAllQuestionIds(t){
 		if (surveyTemplate.keys[t.id]){
 			console.log("ERROR: surveyTemplate has repeated question id=" + t.id);
 		}
+		if (t.id == 'answers' || t.id == 'currentSurvey' || t.id == 'length' || t.id == 'activeIndex') {
+			console.log('ERROR: surveyTemplate has illegal id name = ' + t.id);
+		}
 		surveyTemplate.keys[t.id] = t;
 		surveyTemplate.forms[t.id] = makeQuestion(t);
 		return t.id;
@@ -296,7 +299,13 @@ function currentSurvey(){
 }
 
 function resetCurrentSurvey(){
-	setKey('currentSurvey',JSON.stringify(null)); }
+	var questions = currentSurvey().questions;
+	for (var i=0; i < questions.length; i++){
+		localStorage.removeItem(questions[i].id); 
+	}
+	localStorage.removeItem('activeIndex'); 
+	setKey('currentSurvey',JSON.stringify(null)); 
+}
 
 function setCurrentSurvey(newSurvey){
 	setKey('currentSurvey',JSON.stringify(newSurvey));
@@ -377,6 +386,25 @@ function getQuestionForm(q){
 	return surveyTemplate.forms[q.id];
 }
 
+function saveCurrentQuestionState(){
+	var item = car.getActiveItem();
+	var values = item.getValues();
+	setKey(item.id, JSON.stringify(values));
+}
+
+function restoreAllQuestionStates(){
+	var questions = currentSurvey().questions;
+	var values;
+	for (var i=0; i < questions.length; i++){
+		values = localStorage.getItem(questions[i].id); 
+		if (values) {
+			Ext.getCmp(questions[i].id).setValues(JSON.parse(values));
+		}
+	}
+	car.setActiveItem(Number(localStorage.getItem('activeIndex')));
+}
+
+
 var o;
 function makeQuestion(q){
 	var answerItems = [];
@@ -396,16 +424,20 @@ function makeQuestion(q){
 		};
 		answerItems.push({name: "answer", labelWidth: '70%', componentCls: "noanswer", label: "No Answer", value: String(i)});
 	}
-	else if (q.value){
+	else if (q.value){ //its a slider
+		var startValue = q.value;
+		//need to do this cse of sencha bug: slider know is not set on setValues().
+		if (localStorage.getItem(q["id"])) { startValue = localStorage.getItem(q["id"]);};  
 		answerItems = [ new Ext.form.Slider({
 			name: "answer",
 			labelWidth: '20%',			
-			label: q.value,
-			value: q.value,
+			label: startValue,
+			value: startValue,
 			minValue: q.minValue,
 			maxValue: q.maxValue,
 			listeners: {
 			change: function(slider, thum, newValue, oldValue){
+				saveCurrentQuestionState();
 		    	this.labelEl.update('<b>' + newValue + '</b>');},
 		    drag: function(slider, thum, newValue, oldValue){
 			    this.labelEl.update('<b>' + newValue + '</b>');
@@ -416,14 +448,21 @@ function makeQuestion(q){
 	else // its a text question
 		answerItems = [ new Ext.form.TextArea({
 			name: 'answer',
-		})];
+			listeners: {blur: function(e,t){
+				saveCurrentQuestionState();
+			}}})];
 	return {
 		xtype: 'form',
 		scroll: 'vertical',
 		id: q["id"],
-		listeners: {
+		listeners: {			
 			check: function(e,t) {
-				var children = this.items.items[0].items.items
+				console.log('check event');
+				console.log(e);
+				console.log(t);
+		    	saveCurrentQuestionState();
+		    	//now color the background of the selection, ugly hack.
+				var children = this.items.items[0].items.items 
 				o = e;
 				for (var i=0;i<children.length;i++){
 					// children[i].setLoading(false);
@@ -448,6 +487,7 @@ function makeSurveyCarousel(){
 	indicator: false,
 	listeners: {
     	cardswitch: function(){
+    	setKey('activeIndex', this.getActiveIndex());
 		if (this.getActiveIndex() + 1 == this.items.items.length) { //at the last one
 			Ext.getCmp('nextButton').hide();
 		}
@@ -515,9 +555,7 @@ new Ext.Application({
 		handler: function(){ car.next();},
 	});
 	
-	var createOrLoadSurvey = function() {
-		var news = currentSurvey();
-		if (news == null) { news = getNewSurvey(); }
+    var loadSurvey = function(news) { 		
 		setCurrentSurvey(news);
 		news['questions'].filter(function(q){return ! q.starthidden}).map(getQuestionForm).map(function(q){car.add(q);});
 		var content = Ext.getCmp('content');
@@ -529,7 +567,13 @@ new Ext.Application({
 		doneButton.show();
 		setStartTime();
 	};
-
+	
+	var createSurvey = function() {
+		news = getNewSurvey();
+		loadSurvey(news);
+		localStorage.setItem('activeIndex',0);
+	}
+	
 	var doneButton = new Ext.Button({
 		text: 'Done',
 		ui: 'confirm',
@@ -569,7 +613,7 @@ new Ext.Application({
 		xtype: 'button', //start survey Button
 		margin: 10,
 		text: 'Start Survey',
-		handler: createOrLoadSurvey
+		handler: createSurvey
 	},
 	//{
 //	xtype: 'button', //view Answers button
@@ -654,7 +698,7 @@ new Ext.Application({
 					Ext.getCmp('backButton').hide();
 					Ext.getCmp('doneButton').hide();
 					nextButton.hide();
-					resetCurrentSurvey;
+					resetCurrentSurvey();
 				};
 			});
 		}
@@ -697,7 +741,11 @@ new Ext.Application({
 	]
 
 	});
-	createOrLoadSurvey(); //if there is one in localStorage, load it.
+	var currents = currentSurvey();
+	if (currents){ //if there is one in localStorage, load it.
+	  loadSurvey(currents);
+	  restoreAllQuestionStates();
+	  } 
 	updateAnswerCount();
 	}	
 });
