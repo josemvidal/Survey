@@ -383,12 +383,16 @@ function makeHandleChoiceCheck(switches){
  * @return
  */
 function getQuestionForm(q){
+	var comp = Ext.getCmp(q.id);
+	if (comp) {
+		comp.reset();};
 	return surveyTemplate.forms[q.id];
 }
 
 function saveCurrentQuestionState(){
 	var item = car.getActiveItem();
 	var values = item.getValues();
+//	console.log('saving ' + item.id + " = " + JSON.stringify(values));
 	setKey(item.id, JSON.stringify(values));
 }
 
@@ -437,7 +441,7 @@ function makeQuestion(q){
 			maxValue: q.maxValue,
 			listeners: {
 			change: function(slider, thum, newValue, oldValue){
-				saveCurrentQuestionState();
+				if (! (creatingSurvey)) {saveCurrentQuestionState();};
 		    	this.labelEl.update('<b>' + newValue + '</b>');},
 		    drag: function(slider, thum, newValue, oldValue){
 			    this.labelEl.update('<b>' + newValue + '</b>');
@@ -449,7 +453,7 @@ function makeQuestion(q){
 		answerItems = [ new Ext.form.TextArea({
 			name: 'answer',
 			listeners: {blur: function(e,t){
-				saveCurrentQuestionState();
+				if (!( creatingSurvey)) {saveCurrentQuestionState();};
 			}}})];
 	return {
 		xtype: 'form',
@@ -457,10 +461,7 @@ function makeQuestion(q){
 		id: q["id"],
 		listeners: {			
 			check: function(e,t) {
-				console.log('check event');
-				console.log(e);
-				console.log(t);
-		    	saveCurrentQuestionState();
+		    	if (!(creatingSurvey)) {saveCurrentQuestionState();};
 		    	//now color the background of the selection, ugly hack.
 				var children = this.items.items[0].items.items 
 				o = e;
@@ -541,7 +542,7 @@ function resetAnswers(){
 function updateAnswerCount(){
     Ext.getCmp('surveyCount').setText('' + JSON.parse(localStorage.getItem('answers')).length);
 }
-
+var creatingSurvey = false; //used to ignore all the events that fire while creating a survey.
 var car; //the carousel
 new Ext.Application({
 	launch: function() {
@@ -569,9 +570,11 @@ new Ext.Application({
 	};
 	
 	var createSurvey = function() {
+		creatingSurvey = true; //global variable
 		news = getNewSurvey();
 		loadSurvey(news);
 		localStorage.setItem('activeIndex',0);
+		creatingSurvey = false;
 	}
 	
 	var doneButton = new Ext.Button({
@@ -730,7 +733,7 @@ new Ext.Application({
 	dockedItems: [{
 		dock: 'top',
 		xtype: 'toolbar',
-		title: 'Survey v.21',
+		title: 'Survey v.22',
 		items: [backButton,
 		        {xtype: 'spacer'},
 		        {text: '', id: 'surveyCount'}]
@@ -743,7 +746,9 @@ new Ext.Application({
 	});
 	var currents = currentSurvey();
 	if (currents){ //if there is one in localStorage, load it.
+	  creatingSurvey = true;
 	  loadSurvey(currents);
+	  creatingSurvey = false;
 	  restoreAllQuestionStates();
 	  } 
 	updateAnswerCount();
