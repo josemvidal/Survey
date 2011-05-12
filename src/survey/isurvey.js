@@ -426,7 +426,7 @@ function makeQuestion(q){
 					name: "answer", labelWidth: '70%', label: q.answers[i], value: String(i)});
 			}
 		};
-		answerItems.push({name: "answer", labelWidth: '70%', componentCls: "noanswer", label: "No Answer", value: String(i)});
+//		answerItems.push({name: "answer", labelWidth: '70%', componentCls: "noanswer", label: "No Answer", value: String(i)});
 	}
 	else if (q.value){ //its a slider
 		var startValue = q.value;

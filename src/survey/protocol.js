@@ -53,7 +53,7 @@ var SEQUENTIAL = 0;  //constants
 var ONE_OF = 1;
 var RANDOM_ORDER = 2;
 
-var controlGroupTemplate = [
+var controlGroupTemplateold = [
     SEQUENTIAL, {
      id: "control0", type: "mc",
     text: "Control question 1",
@@ -67,6 +67,43 @@ var controlGroupTemplate = [
     text: "Control question 3",
     answers: ["alpha", "beta", "gamma", "delta"]}
 ];
+
+
+var controlGroupTemplate = [
+    SEQUENTIAL, 
+	[ONE_OF,
+     [1/4, 1/4, 1/4, 1/4],
+     {
+    id: "control0", type: "mc",
+    text: "Control question 1"
+    },{
+     id: "control1", type: "mc",
+    text: "Control question 2",
+    },{
+     id: "control2", type: "mc",
+	 text: "Control question 3",
+	 },{
+     id: "control3", type: "mc",
+    text: "Control question 4",
+	 },],
+     {
+     id: "Controlaccept-grab", text:"On a scale of 1 to 10, where 1 is 'not at all' and 10 is 'extremely', please tell me whether this warning message... grabs your attention", value: 5, minValue: 1, maxValue: 10 
+    },{
+	id: "Controlaccept-believable", text: "... is believable", value: 5, minValue: 1, maxValue: 10 
+    },{
+     id: "Controlaccept-relevant", text: "... is relevant to you", value: 5, minValue: 1, maxValue: 10 
+    },{
+     id: "Controlaccept-alarm", text: "... is alarming", value: 5, minValue: 1, maxValue: 10
+	},{
+     id: "Controlaccept-concern", text: "... makes people more concerned about the health risks of smoking", value: 5, minValue: 1, maxValue: 10
+	},{
+     id: "Controlaccept-young", text: "... would help prevent young people from starting to smoke ", value: 5, minValue: 1, maxValue: 10
+	},{
+     id: "Controlaccept-quit", text: "... would make smokers want to quit", value: 5, minValue: 1, maxValue: 10
+	},{
+     id: "Controlaccept-overall", text: "Overall, on a scale of 1 to 10, how effective is this health warning?", value: 5, minValue: 1, maxValue: 10
+}];
+
 
 var cancerGruesome = [
 
