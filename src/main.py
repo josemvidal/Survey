@@ -100,12 +100,12 @@ class DataHandler(webapp.RequestHandler): #/data/*
             if self.request.get('fmt') == 'csv':
                 self.response.headers['Content-Type'] = 'application/octet-stream'
                 self.response.headers['Content-Disposition'] = 'attachment;filename="%s.csv"' % theFile.fileName
-                self.response.out.write('"surveyId","surveyName","start time","end time"')
+                self.response.out.write('"protocolId","surveyName","start time","end time"')
                 for k in questionKeys:
                     self.response.out.write(',"%s"' % k)
                 self.response.out.write('\n')                    
                 for survey in contents:                
-                    self.response.out.write('%s,"%s","%s","%s"' % (survey['surveyId'], survey['surveyName'],
+                    self.response.out.write('%s,"%s","%s","%s"' % (survey['protocolId'], survey['surveyName'],
                                                                    survey['start'], survey['end']))
                     for k in questionKeys:
                         if survey['answers'].has_key(k):                        
@@ -119,12 +119,12 @@ class DataHandler(webapp.RequestHandler): #/data/*
                     self.response.out.write('\n')
             else: #html
                 templateValues['fileName'] = theFile.fileName
-                table = '<table><thead><tr><th>surveyId</th><th>surveyName</th><th>start time</th><th>end time</th>'
+                table = '<table><thead><tr><th>protocolId</th><th>surveyName</th><th>start time</th><th>end time</th>'
                 for k in questionKeys:
                     table += '<th>%s</th>' % k
                 table += '</tr></thead><tbody>'
                 for survey in contents:                
-                    table += '<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td>' % (survey['surveyId'], survey['surveyName'],
+                    table += '<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td>' % (survey['protocolId'], survey['surveyName'],
                                                                    survey['start'], survey['end'])
                     for k in questionKeys:
                         if survey['answers'].has_key(k):

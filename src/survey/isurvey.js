@@ -194,6 +194,9 @@ function getAllQuestionIds(t){
 		if (surveyTemplate.keys[t.id]){
 			console.log("ERROR: surveyTemplate has repeated question id=" + t.id);
 		}
+		if (t.id == 'answers' || t.id == 'currentSurvey' || t.id == 'length' || t.id == 'activeIndex') {
+			console.log('ERROR: surveyTemplate has illegal id name = ' + t.id);
+		}
 		surveyTemplate.keys[t.id] = t;
 		surveyTemplate.forms[t.id] = makeQuestion(t);
 		return t.id;
@@ -273,10 +276,10 @@ function getQuestionIndex(theID){
 }
 
 /** Points to the survey we are currently administering. */
-var currentSurvey = null;
+/** var currentSurvey = null; */
 /** Start time of currentSurvey */
-var startTime = null;
-var endTime = null;
+/** var startTime = null;
+var endTime = null; */ 
 
 /** We need this function because otherwise we get 'quota exceeded error' on ipad: http://stackoverflow.com/questions/2603682 */
 function setKey(key, val) { 
@@ -287,6 +290,38 @@ function setKey(key, val) {
 /** array of all the answers we have gotten. */
 if (!localStorage.getItem('answers')) {
     setKey('answers',JSON.stringify([]));}
+
+if (!localStorage.getItem('currentSurvey')) {
+    setKey('currentSurvey',JSON.stringify(null)); }
+
+function currentSurvey(){
+	return JSON.parse(localStorage.getItem('currentSurvey'));
+}
+
+function resetCurrentSurvey(){
+	var questions = currentSurvey().questions;
+	for (var i=0; i < questions.length; i++){
+		localStorage.removeItem(questions[i].id); 
+	}
+	localStorage.removeItem('activeIndex'); 
+	setKey('currentSurvey',JSON.stringify(null)); 
+}
+
+function setCurrentSurvey(newSurvey){
+	setKey('currentSurvey',JSON.stringify(newSurvey));
+}
+
+function setStartTime(){
+	var cs = currentSurvey();
+	cs.startTime = new Date();
+	setCurrentSurvey(cs);
+}
+
+function setEndTime(){
+	var cs = currentSurvey();
+	cs.endTime = new Date();
+	setCurrentSurvey(cs);
+}
 
 /**
  * My own load mask which is just a gray screen. Part of an ugly hack to get the whole selection to 
@@ -354,6 +389,26 @@ function getQuestionForm(q){
 	return surveyTemplate.forms[q.id];
 }
 
+function saveCurrentQuestionState(){
+	var item = car.getActiveItem();
+	var values = item.getValues();
+//	console.log('saving ' + item.id + " = " + JSON.stringify(values));
+	setKey(item.id, JSON.stringify(values));
+}
+
+function restoreAllQuestionStates(){
+	var questions = currentSurvey().questions;
+	var values;
+	for (var i=0; i < questions.length; i++){
+		values = localStorage.getItem(questions[i].id); 
+		if (values) {
+			Ext.getCmp(questions[i].id).setValues(JSON.parse(values));
+		}
+	}
+	car.setActiveItem(Number(localStorage.getItem('activeIndex')));
+}
+
+
 var o;
 function makeQuestion(q){
 	var answerItems = [];
@@ -373,16 +428,20 @@ function makeQuestion(q){
 		};
 		answerItems.push({name: "answer", labelWidth: '70%', componentCls: "noanswer", label: "No Answer", value: String(i)});
 	}
-	else if (q.value){
+	else if (q.value){ //its a slider
+		var startValue = q.value;
+		//need to do this cse of sencha bug: slider know is not set on setValues().
+		if (localStorage.getItem(q["id"])) { startValue = localStorage.getItem(q["id"]);};  
 		answerItems = [ new Ext.form.Slider({
 			name: "answer",
 			labelWidth: '20%',			
-			label: q.value,
-			value: q.value,
+			label: startValue,
+			value: startValue,
 			minValue: q.minValue,
 			maxValue: q.maxValue,
 			listeners: {
 			change: function(slider, thum, newValue, oldValue){
+				if (! (creatingSurvey)) {saveCurrentQuestionState();};
 		    	this.labelEl.update('<b>' + newValue + '</b>');},
 		    drag: function(slider, thum, newValue, oldValue){
 			    this.labelEl.update('<b>' + newValue + '</b>');
@@ -393,14 +452,18 @@ function makeQuestion(q){
 	else // its a text question
 		answerItems = [ new Ext.form.TextArea({
 			name: 'answer',
-		})];
+			listeners: {blur: function(e,t){
+				if (!( creatingSurvey)) {saveCurrentQuestionState();};
+			}}})];
 	return {
 		xtype: 'form',
 		scroll: 'vertical',
 		id: q["id"],
-		listeners: {
+		listeners: {			
 			check: function(e,t) {
-				var children = this.items.items[0].items.items
+		    	if (!(creatingSurvey)) {saveCurrentQuestionState();};
+		    	//now color the background of the selection, ugly hack.
+				var children = this.items.items[0].items.items 
 				o = e;
 				for (var i=0;i<children.length;i++){
 					// children[i].setLoading(false);
@@ -425,6 +488,7 @@ function makeSurveyCarousel(){
 	indicator: false,
 	listeners: {
     	cardswitch: function(){
+    	setKey('activeIndex', this.getActiveIndex());
 		if (this.getActiveIndex() + 1 == this.items.items.length) { //at the last one
 			Ext.getCmp('nextButton').hide();
 		}
@@ -444,8 +508,9 @@ function resetQuestions(carous){
 */
 function getAnswers(){
     var result = {};
-    for (var i =0; i < currentSurvey.questions.length; i++){
-    	var id = currentSurvey.questions[i].id;
+    var csurvey = currentSurvey();
+    for (var i =0; i < csurvey.questions.length; i++){
+    	var id = csurvey.questions[i].id;
     	var comp = Ext.getCmp(id);
     	var ans;
     	if (comp) {
@@ -455,10 +520,10 @@ function getAnswers(){
     	result[id] = ans instanceof Array ? null : ans;
     };
     return {
-    	surveyId: currentSurvey.id,
-    	surveyName: currentSurvey.name,
-    	start: startTime,
-    	end: endTime,
+    	protocolId: csurvey.id,
+    	surveyName: csurvey.name,
+    	start: csurvey.startTime,
+    	end: csurvey.endTime,
     	answers: result
     };
 }
@@ -477,7 +542,7 @@ function resetAnswers(){
 function updateAnswerCount(){
     Ext.getCmp('surveyCount').setText('' + JSON.parse(localStorage.getItem('answers')).length);
 }
-
+var creatingSurvey = false; //used to ignore all the events that fire while creating a survey.
 var car; //the carousel
 new Ext.Application({
 	launch: function() {
@@ -489,9 +554,29 @@ new Ext.Application({
 		hidden: true,
 		id: 'nextButton',
 		handler: function(){ car.next();},
+	});
+	
+    var loadSurvey = function(news) { 		
+		setCurrentSurvey(news);
+		news['questions'].filter(function(q){return ! q.starthidden}).map(getQuestionForm).map(function(q){car.add(q);});
+		var content = Ext.getCmp('content');
+		buttons.hide();
+		car.show();
+		car.doLayout();
+		Ext.getCmp('backButton').show();
+		nextButton.show();
+		doneButton.show();
+		setStartTime();
+	};
+	
+	var createSurvey = function() {
+		creatingSurvey = true; //global variable
+		news = getNewSurvey();
+		loadSurvey(news);
+		localStorage.setItem('activeIndex',0);
+		creatingSurvey = false;
 	}
-	);
-
+	
 	var doneButton = new Ext.Button({
 		text: 'Done',
 		ui: 'confirm',
@@ -500,7 +585,7 @@ new Ext.Application({
 		handler: function(){
 		Ext.Msg.confirm("Save Answers?", "Are you sure you want to finish and save this survey?", function(response){
 			if (response == "yes"){
-				endTime = new Date();
+				setEndTime();
 				var pastAnswers = JSON.parse(localStorage.getItem('answers'));
 				pastAnswers.push(getAnswers());
 				setKey('answers', JSON.stringify(pastAnswers));
@@ -513,7 +598,7 @@ new Ext.Application({
 				Ext.getCmp('backButton').hide();
 				nextButton.hide();
 				Ext.getCmp('doneButton').hide();
-				currentSurvey = null;
+				resetCurrentSurvey();
 				updateAnswerCount();
 			}
 		});
@@ -531,19 +616,8 @@ new Ext.Application({
 		xtype: 'button', //start survey Button
 		margin: 10,
 		text: 'Start Survey',
-		handler: function() {
-			currentSurvey = getNewSurvey();
-			currentSurvey['questions'].filter(function(q){return ! q.starthidden}).map(getQuestionForm).map(function(q){car.add(q);});
-			var content = Ext.getCmp('content');
-			buttons.hide();
-			car.show();
-			car.doLayout();
-			Ext.getCmp('backButton').show();
-			nextButton.show();
-			doneButton.show();
-			startTime = new Date();
-		}
-	}, 
+		handler: createSurvey
+	},
 	//{
 //	xtype: 'button', //view Answers button
 //	margin: 10,
@@ -613,7 +687,7 @@ new Ext.Application({
 			xtype: 'button',
 			hidden: true,
 			handler: function() {
-		if (currentSurvey) {
+		if (currentSurvey()) {
 			Ext.Msg.confirm("Discard Survey?", 
 					"All the answers you have entered will be lost if you quit now.",
 					function(response){
@@ -627,7 +701,7 @@ new Ext.Application({
 					Ext.getCmp('backButton').hide();
 					Ext.getCmp('doneButton').hide();
 					nextButton.hide();
-					currentSurvey = null;
+					resetCurrentSurvey();
 				};
 			});
 		}
@@ -659,7 +733,7 @@ new Ext.Application({
 	dockedItems: [{
 		dock: 'top',
 		xtype: 'toolbar',
-		title: 'Survey v.21',
+		title: 'Survey v.25',
 		items: [backButton,
 		        {xtype: 'spacer'},
 		        {text: '', id: 'surveyCount'}]
@@ -670,6 +744,13 @@ new Ext.Application({
 	]
 
 	});
+	var currents = currentSurvey();
+	if (currents){ //if there is one in localStorage, load it.
+	  creatingSurvey = true;
+	  loadSurvey(currents);
+	  creatingSurvey = false;
+	  restoreAllQuestionStates();
+	  } 
 	updateAnswerCount();
 	}	
 });
