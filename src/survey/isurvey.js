@@ -348,6 +348,9 @@ function makeHandleChoiceCheck(switches){
  * @return
  */
 function getQuestionForm(q){
+	var comp = Ext.getCmp(q.id);
+	if (comp) {
+		comp.reset();};
 	return surveyTemplate.forms[q.id];
 }
 
