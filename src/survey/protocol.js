@@ -663,5 +663,10 @@ var surveyTemplate = {
               id: "think",
               text: "To what extent, if at all, do the warning labels make you think about the health risks of smoking?",
               answers: ["Not at all","A little","Somewhat","A lot"]
-          }, experimentalGroupTemplate
+          },[
+              ONE_OF,
+              [.8, .2],
+              experimentalGroupTemplate,
+              controlGroupTemplate
+             ]
      ]};
