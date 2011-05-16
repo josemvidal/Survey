@@ -65,7 +65,11 @@ var controlGroupTemplateold = [
     },{
      id: "control2", type: "mc",
     text: "Control question 3",
-    answers: ["alpha", "beta", "gamma", "delta"]}
+    answers: ["alpha", "beta", "gamma", "delta"]
+ 	},{
+	id: "control3", type: "mc",
+	text: "Control question 4",
+	answers: ["alpha", "beta", "gamma", "delta"]}
 ];
 
 var controlGroupTemplate = [
@@ -73,57 +77,57 @@ var controlGroupTemplate = [
   [SEQUENTIAL, {
     id: "control0", type: "mc",
     text: "Control question 1"},{
-     id: "Controlaccept0-grab", text:"On a scale of 1 to 10, where 1 is 'not at all' and 10 is 'extremely', please tell me whether this warning message... grabs your attention", value: 5, minValue: 1, maxValue: 10 
+     id: "Controlaccept0-grab", text:"On a scale of 1 to 10, where 1 is 'not at all' and 10 is 'extremely', please tell me whether this warning message <br/><br/>... grabs your attention", value: 5, minValue: 1, maxValue: 10 
     },{
-	id: "Controlaccept0-believable", text: "... is believable", value: 5, minValue: 1, maxValue: 10 
+	id: "Controlaccept0-believable", text: "(INTERVIEWER NOTE: ONLY REPEAT PREAMBLE IF NECESSARY. On a scale of 1 to 10, where 1 is 'not at all' and 10 is 'extremely', please tell me whether this warning message) <br/><br/> ...is believable", value: 5, minValue: 1, maxValue: 10 
     },{
-     id: "Controlaccept0-relevant", text: "... is relevant to you", value: 5, minValue: 1, maxValue: 10 
+     id: "Controlaccept0-relevant", text: "(ON A SCALE OF 1 TO 10, WHERE 1 IS 'NOT AT ALL' AND 10 IS 'EXTREMELY', PLEASE TELL ME WHETHER THIS WARNING MESSAGE) <br/><br/> ...is relevant to you", value: 5, minValue: 1, maxValue: 10 
     },{
-     id: "Controlaccept0-alarm", text: "... is alarming", value: 5, minValue: 1, maxValue: 10
+     id: "Controlaccept0-alarm", text: "(ON A SCALE OF 1 TO 10, WHERE 1 IS 'NOT AT ALL' AND 10 IS 'EXTREMELY', PLEASE TELL ME WHETHER THIS WARNING MESSAGE) <br/><br/> ...is alarming", value: 5, minValue: 1, maxValue: 10
 	},{
-     id: "Controlaccept0-concern", text: "... makes people more concerned about the health risks of smoking", value: 5, minValue: 1, maxValue: 10
+     id: "Controlaccept0-concern", text: "(ON A SCALE OF 1 TO 10, WHERE 1 IS 'NOT AT ALL' AND 10 IS 'EXTREMELY', PLEASE TELL ME WHETHER THIS WARNING MESSAGE) <br/><br/> ...makes people more concerned about the health risks of smoking", value: 5, minValue: 1, maxValue: 10
 	},{
-     id: "Controlaccept0-young", text: "... would help prevent young people from starting to smoke ", value: 5, minValue: 1, maxValue: 10
+     id: "Controlaccept0-young", text: "(ON A SCALE OF 1 TO 10, WHERE 1 IS 'NOT AT ALL' AND 10 IS 'EXTREMELY', PLEASE TELL ME WHETHER THIS WARNING MESSAGE) <br/><br/> ...would help prevent young people from starting to smoke ", value: 5, minValue: 1, maxValue: 10
 	},{
-     id: "Controlaccept0-quit", text: "... would make smokers want to quit", value: 5, minValue: 1, maxValue: 10
+     id: "Controlaccept0-quit", text: "(ON A SCALE OF 1 TO 10, WHERE 1 IS 'NOT AT ALL' AND 10 IS 'EXTREMELY', PLEASE TELL ME WHETHER THIS WARNING MESSAGE) <br/><br/> ...would make smokers want to quit", value: 5, minValue: 1, maxValue: 10
 	},{
      id: "Controlaccept0-overall", text: "Overall, on a scale of 1 to 10, how effective is this health warning?", value: 5, minValue: 1, maxValue: 10
 	}],
    [SEQUENTIAL, {
     id: "control1", type: "mc",
     text: "Control question 2"},{
-     id: "Controlaccept1-grab", text:"On a scale of 1 to 10, where 1 is 'not at all' and 10 is 'extremely', please tell me whether this warning message... grabs your attention", value: 5, minValue: 1, maxValue: 10 
+     id: "Controlaccept1-grab", text:"On a scale of 1 to 10, where 1 is 'not at all' and 10 is 'extremely', please tell me whether this warning message<br/><br/> ...grabs your attention", value: 5, minValue: 1, maxValue: 10 
     },{
-	id: "Controlaccept1-believable", text: "... is believable", value: 5, minValue: 1, maxValue: 10 
+	id: "Controlaccept1-believable", text: "(INTERVIEWER NOTE: ONLY REPEAT PREAMBLE IF NECESSARY. On a scale of 1 to 10, where 1 is 'not at all' and 10 is 'extremely', please tell me whether this warning message) <br/><br/> ...is believable", value: 5, minValue: 1, maxValue: 10 
     },{
-     id: "Controlaccept1-relevant", text: "... is relevant to you", value: 5, minValue: 1, maxValue: 10 
+     id: "Controlaccept1-relevant", text: "(ON A SCALE OF 1 TO 10, WHERE 1 IS 'NOT AT ALL' AND 10 IS 'EXTREMELY', PLEASE TELL ME WHETHER THIS WARNING MESSAGE) <br/><br/> ...is relevant to you", value: 5, minValue: 1, maxValue: 10 
     },{
-     id: "Controlaccept1-alarm", text: "... is alarming", value: 5, minValue: 1, maxValue: 10
+     id: "Controlaccept1-alarm", text: "(ON A SCALE OF 1 TO 10, WHERE 1 IS 'NOT AT ALL' AND 10 IS 'EXTREMELY', PLEASE TELL ME WHETHER THIS WARNING MESSAGE) <br/><br/> ...is alarming", value: 5, minValue: 1, maxValue: 10
 	},{
-     id: "Controlaccept1-concern", text: "... makes people more concerned about the health risks of smoking", value: 5, minValue: 1, maxValue: 10
+     id: "Controlaccept1-concern", text: "(ON A SCALE OF 1 TO 10, WHERE 1 IS 'NOT AT ALL' AND 10 IS 'EXTREMELY', PLEASE TELL ME WHETHER THIS WARNING MESSAGE) <br/><br/> ...makes people more concerned about the health risks of smoking", value: 5, minValue: 1, maxValue: 10
 	},{
-     id: "Controlaccept1-young", text: "... would help prevent young people from starting to smoke ", value: 5, minValue: 1, maxValue: 10
+     id: "Controlaccept1-young", text: "(ON A SCALE OF 1 TO 10, WHERE 1 IS 'NOT AT ALL' AND 10 IS 'EXTREMELY', PLEASE TELL ME WHETHER THIS WARNING MESSAGE) <br/><br/> ...would help prevent young people from starting to smoke ", value: 5, minValue: 1, maxValue: 10
 	},{
-     id: "Controlaccept1-quit", text: "... would make smokers want to quit", value: 5, minValue: 1, maxValue: 10
+     id: "Controlaccept1-quit", text: "(ON A SCALE OF 1 TO 10, WHERE 1 IS 'NOT AT ALL' AND 10 IS 'EXTREMELY', PLEASE TELL ME WHETHER THIS WARNING MESSAGE) <br/><br/> ...would make smokers want to quit", value: 5, minValue: 1, maxValue: 10
 	},{
      id: "Controlaccept1-overall", text: "Overall, on a scale of 1 to 10, how effective is this health warning?", value: 5, minValue: 1, maxValue: 10
 	}],
    [SEQUENTIAL,{
     id: "control2", type: "mc",
     text: "Control question 3"},{
-     id: "Controlaccept2-grab", text:"On a scale of 1 to 10, where 1 is 'not at all' and 10 is 'extremely', please tell me whether this warning message... grabs your attention", value: 5, minValue: 1, maxValue: 10 
+     id: "Controlaccept2-grab", text:"On a scale of 1 to 10, where 1 is 'not at all' and 10 is 'extremely', please tell me whether this warning message <br/><br/> ...grabs your attention", value: 5, minValue: 1, maxValue: 10 
     },{
-	id: "Controlaccept2-believable", text: "... is believable", value: 5, minValue: 1, maxValue: 10 
+	id: "Controlaccept2-believable", text: "(INTERVIEWER NOTE: ONLY REPEAT PREAMBLE IF NECESSARY. On a scale of 1 to 10, where 1 is 'not at all' and 10 is 'extremely', please tell me whether this warning message) <br/><br/> ...is believable", value: 5, minValue: 1, maxValue: 10 
     },{
-     id: "Controlaccept2-relevant", text: "... is relevant to you", value: 5, minValue: 1, maxValue: 10 
+     id: "Controlaccept2-relevant", text: "(ON A SCALE OF 1 TO 10, WHERE 1 IS 'NOT AT ALL' AND 10 IS 'EXTREMELY', PLEASE TELL ME WHETHER THIS WARNING MESSAGE) <br/><br/> ...is relevant to you", value: 5, minValue: 1, maxValue: 10 
     },{
-     id: "Controlaccept2-alarm", text: "... is alarming", value: 5, minValue: 1, maxValue: 10
+     id: "Controlaccept2-alarm", text: "(ON A SCALE OF 1 TO 10, WHERE 1 IS 'NOT AT ALL' AND 10 IS 'EXTREMELY', PLEASE TELL ME WHETHER THIS WARNING MESSAGE) <br/><br/> ...is alarming", value: 5, minValue: 1, maxValue: 10
 	},{
-     id: "Controlaccept2-concern", text: "... makes people more concerned about the health risks of smoking", value: 5, minValue: 1, maxValue: 10
+     id: "Controlaccept2-concern", text: "(ON A SCALE OF 1 TO 10, WHERE 1 IS 'NOT AT ALL' AND 10 IS 'EXTREMELY', PLEASE TELL ME WHETHER THIS WARNING MESSAGE) <br/><br/> ...makes people more concerned about the health risks of smoking", value: 5, minValue: 1, maxValue: 10
 	},{
-     id: "Controlaccept2-young", text: "... would help prevent young people from starting to smoke ", value: 5, minValue: 1, maxValue: 10
+     id: "Controlaccept2-young", text: "(ON A SCALE OF 1 TO 10, WHERE 1 IS 'NOT AT ALL' AND 10 IS 'EXTREMELY', PLEASE TELL ME WHETHER THIS WARNING MESSAGE) <br/><br/> ...would help prevent young people from starting to smoke ", value: 5, minValue: 1, maxValue: 10
 	},{
-     id: "Controlaccept2-quit", text: "... would make smokers want to quit", value: 5, minValue: 1, maxValue: 10
+     id: "Controlaccept2-quit", text: "(ON A SCALE OF 1 TO 10, WHERE 1 IS 'NOT AT ALL' AND 10 IS 'EXTREMELY', PLEASE TELL ME WHETHER THIS WARNING MESSAGE) <br/><br/> ...would make smokers want to quit", value: 5, minValue: 1, maxValue: 10
 	},{
      id: "Controlaccept2-overall", text: "Overall, on a scale of 1 to 10, how effective is this health warning?", value: 5, minValue: 1, maxValue: 10
 	}],
@@ -132,20 +136,40 @@ var controlGroupTemplate = [
     text: "Control question 4"},{
      id: "Controlaccept3-grab", text:"On a scale of 1 to 10, where 1 is 'not at all' and 10 is 'extremely', please tell me whether this warning message... grabs your attention", value: 5, minValue: 1, maxValue: 10 
     },{
-	id: "Controlaccept3-believable", text: "... is believable", value: 5, minValue: 1, maxValue: 10 
+	id: "Controlaccept3-believable", text: "(INTERVIEWER NOTE: ONLY REPEAT PREAMBLE IF NECESSARY. On a scale of 1 to 10, where 1 is 'not at all' and 10 is 'extremely', please tell me whether this warning message) <br/><br/> ...is believable", value: 5, minValue: 1, maxValue: 10 
     },{
-     id: "Controlaccept3-relevant", text: "... is relevant to you", value: 5, minValue: 1, maxValue: 10 
+     id: "Controlaccept3-relevant", text: "(ON A SCALE OF 1 TO 10, WHERE 1 IS 'NOT AT ALL' AND 10 IS 'EXTREMELY', PLEASE TELL ME WHETHER THIS WARNING MESSAGE) <br/><br/> ...is relevant to you", value: 5, minValue: 1, maxValue: 10 
     },{
-     id: "Controlaccept3-alarm", text: "... is alarming", value: 5, minValue: 1, maxValue: 10
+     id: "Controlaccept3-alarm", text: "(ON A SCALE OF 1 TO 10, WHERE 1 IS 'NOT AT ALL' AND 10 IS 'EXTREMELY', PLEASE TELL ME WHETHER THIS WARNING MESSAGE) <br/><br/> ...is alarming", value: 5, minValue: 1, maxValue: 10
 	},{
-     id: "Controlaccept3-concern", text: "... makes people more concerned about the health risks of smoking", value: 5, minValue: 1, maxValue: 10
+     id: "Controlaccept3-concern", text: "(ON A SCALE OF 1 TO 10, WHERE 1 IS 'NOT AT ALL' AND 10 IS 'EXTREMELY', PLEASE TELL ME WHETHER THIS WARNING MESSAGE) <br/><br/> ...makes people more concerned about the health risks of smoking", value: 5, minValue: 1, maxValue: 10
 	},{
-     id: "Controlaccept3-young", text: "... would help prevent young people from starting to smoke ", value: 5, minValue: 1, maxValue: 10
+     id: "Controlaccept3-young", text: "(ON A SCALE OF 1 TO 10, WHERE 1 IS 'NOT AT ALL' AND 10 IS 'EXTREMELY', PLEASE TELL ME WHETHER THIS WARNING MESSAGE) <br/><br/> ...would help prevent young people from starting to smoke ", value: 5, minValue: 1, maxValue: 10
 	},{
-     id: "Controlaccept3-quit", text: "... would make smokers want to quit", value: 5, minValue: 1, maxValue: 10
+     id: "Controlaccept3-quit", text: "(ON A SCALE OF 1 TO 10, WHERE 1 IS 'NOT AT ALL' AND 10 IS 'EXTREMELY', PLEASE TELL ME WHETHER THIS WARNING MESSAGE) <br/><br/> ...would make smokers want to quit", value: 5, minValue: 1, maxValue: 10
 	},{
      id: "Controlaccept3-overall", text: "Overall, on a scale of 1 to 10, how effective is this health warning?", value: 5, minValue: 1, maxValue: 10
-	}]
+	}],
+	[SEQUENTIAL, {
+	    id: "control3", type: "mc",
+	    text: "Control question 4"},{
+	     id: "Controlaccept4-grab", text:"On a scale of 1 to 10, where 1 is 'not at all' and 10 is 'extremely', please tell me whether this warning message <br/><br/> ...grabs your attention", value: 5, minValue: 1, maxValue: 10 
+	    },{
+		id: "Controlaccept4-believable", text: "(INTERVIEWER NOTE: ONLY REPEAT PREAMBLE IF NECESSARY. On a scale of 1 to 10, where 1 is 'not at all' and 10 is 'extremely', please tell me whether this warning message) <br/><br/> ...is believable", value: 5, minValue: 1, maxValue: 10 
+	    },{
+	     id: "Controlaccept4-relevant", text: "(ON A SCALE OF 1 TO 10, WHERE 1 IS 'NOT AT ALL' AND 10 IS 'EXTREMELY', PLEASE TELL ME WHETHER THIS WARNING MESSAGE) <br/><br/> ...is relevant to you", value: 5, minValue: 1, maxValue: 10 
+	    },{
+	     id: "Controlaccept4-alarm", text: "(ON A SCALE OF 1 TO 10, WHERE 1 IS 'NOT AT ALL' AND 10 IS 'EXTREMELY', PLEASE TELL ME WHETHER THIS WARNING MESSAGE) <br/><br/> ...is alarming", value: 5, minValue: 1, maxValue: 10
+		},{
+	     id: "Controlaccept4-concern", text: "(ON A SCALE OF 1 TO 10, WHERE 1 IS 'NOT AT ALL' AND 10 IS 'EXTREMELY', PLEASE TELL ME WHETHER THIS WARNING MESSAGE) <br/><br/> ...makes people more concerned about the health risks of smoking", value: 5, minValue: 1, maxValue: 10
+		},{
+	     id: "Controlaccept4-young", text: "(ON A SCALE OF 1 TO 10, WHERE 1 IS 'NOT AT ALL' AND 10 IS 'EXTREMELY', PLEASE TELL ME WHETHER THIS WARNING MESSAGE) <br/><br/> ...would help prevent young people from starting to smoke ", value: 5, minValue: 1, maxValue: 10
+		},{
+	     id: "Controlaccept4-quit", text: "(ON A SCALE OF 1 TO 10, WHERE 1 IS 'NOT AT ALL' AND 10 IS 'EXTREMELY', PLEASE TELL ME WHETHER THIS WARNING MESSAGE) <br/><br/> ...would make smokers want to quit", value: 5, minValue: 1, maxValue: 10
+		},{
+	     id: "Controlaccept4-overall", text: "Overall, on a scale of 1 to 10, how effective is this health warning?", value: 5, minValue: 1, maxValue: 10
+		}]
+
 ];
 
 var cancerGruesome = [
@@ -156,39 +180,39 @@ var cancerGruesome = [
 
      [1/3, 1/3, 1/3],     
 
-      {id: "cancerGruesomeImageA", text: "Cancer Gruesome Image A"},
+      {id: "cancerGruesomeImageA", text: "Cancer Gruesome A"},
 
-      {id: "cancerGruesomeImageB", text: "Cancer Gruesome Image B"},
+      {id: "cancerGruesomeImageB", text: "Cancer Gruesome B"},
 
-      {id: "cancerGruesomeImageC", text: "Cancer Gruesome Image C"}
+      {id: "cancerGruesomeImageC", text: "Cancer Gruesome C"}
 
      ],{
 
-     id: "CancerGrueAccep-grab", text: "On a scale of 1 to 10, where 1 is 'not at all' and 10 is 'extemely', please tell me whether this warning message... grabs your attention", value: 5, minValue: 1, maxValue: 10 
+     id: "CancerGrueAccep-grab", text: "On a scale of 1 to 10, where 1 is 'not at all' and 10 is 'extemely', please tell me whether this warning message <br/><br/> ...grabs your attention", value: 5, minValue: 1, maxValue: 10 
 
     },{
 
-     id: "CancerGrueAccep-believable", text: "... is believable", value: 5, minValue: 1, maxValue: 10 
+     id: "CancerGrueAccep-believable", text: "(INTERVIEWER NOTE: ONLY REPEAT PREAMBLE IF NECESSARY. On a scale of 1 to 10, where 1 is 'not at all' and 10 is 'extremely', please tell me whether this warning message) <br/><br/> ... is believable", value: 5, minValue: 1, maxValue: 10 
 
     },{
 
-     id: "CancerGrueAccep-relevant", text: "... is relevant to you", value: 5, minValue: 1, maxValue: 10 
+     id: "CancerGrueAccep-relevant", text: "(ON A SCALE OF 1 TO 10, WHERE 1 IS 'NOT AT ALL' AND 10 IS 'EXTREMELY', PLEASE TELL ME WHETHER THIS WARNING MESSAGE) <br/><br/> ...is relevant to you", value: 5, minValue: 1, maxValue: 10 
 
     },{
 
-     id: "CancerGrueAccep-alarm", text: "... is alarming", value: 5, minValue: 1, maxValue: 10
+     id: "CancerGrueAccep-alarm", text: "(ON A SCALE OF 1 TO 10, WHERE 1 IS 'NOT AT ALL' AND 10 IS 'EXTREMELY', PLEASE TELL ME WHETHER THIS WARNING MESSAGE) <br/><br/> ...is alarming", value: 5, minValue: 1, maxValue: 10
 
 	},{
 
-     id: "CancerGrueAccep-concern", text: "... makes people more concerned about the health risks of smoking", value: 5, minValue: 1, maxValue: 10
+     id: "CancerGrueAccep-concern", text: "(ON A SCALE OF 1 TO 10, WHERE 1 IS 'NOT AT ALL' AND 10 IS 'EXTREMELY', PLEASE TELL ME WHETHER THIS WARNING MESSAGE) <br/><br/> ...makes people more concerned about the health risks of smoking", value: 5, minValue: 1, maxValue: 10
 
 	},{
 
-     id: "CancerGrueAccep-young", text: "... would help prevent young people from starting to smoke ", value: 5, minValue: 1, maxValue: 10
+     id: "CancerGrueAccep-young", text: "(ON A SCALE OF 1 TO 10, WHERE 1 IS 'NOT AT ALL' AND 10 IS 'EXTREMELY', PLEASE TELL ME WHETHER THIS WARNING MESSAGE) <br/><br/> ...would help prevent young people from starting to smoke ", value: 5, minValue: 1, maxValue: 10
 
 	},{
 
-     id: "CancerGrueAccep-quit", text: "... would make smokers want to quit", value: 5, minValue: 1, maxValue: 10
+     id: "CancerGrueAccep-quit", text: "(ON A SCALE OF 1 TO 10, WHERE 1 IS 'NOT AT ALL' AND 10 IS 'EXTREMELY', PLEASE TELL ME WHETHER THIS WARNING MESSAGE) <br/><br/> ...would make smokers want to quit", value: 5, minValue: 1, maxValue: 10
 
 	},{
 
@@ -206,11 +230,11 @@ var cancerHumanSuffering = [
 
      [1/3, 1/3, 1/3],     
 
-      {id: "cancerHumanSufferingImageA", text: "Cancer Human Suffering Image A"},
+      {id: "cancerHumanSufferingImageA", text: "Cancer Human A"},
 
-      {id: "cancerHumanSufferingImageB", text: "Cancer Human Suffering Image B"},
+      {id: "cancerHumanSufferingImageB", text: "Cancer Human B"},
 
-      {id: "cancerHumanSufferingImageC", text: "Cancer Human Suffering Image C"}
+      {id: "cancerHumanSufferingImageC", text: "Cancer Human C"}
 
      ],{
 
@@ -218,27 +242,27 @@ var cancerHumanSuffering = [
 
     },{
 
-     id: "CancerHSAccep-believable", text: "... is believable", value: 5, minValue: 1, maxValue: 10 
+     id: "CancerHSAccep-believable", text: "(INTERVIEWER NOTE: ONLY REPEAT PREAMBLE IF NECESSARY. On a scale of 1 to 10, where 1 is 'not at all' and 10 is 'extremely', please tell me whether this warning message) <br/><br/> ...is believable", value: 5, minValue: 1, maxValue: 10 
 
     },{
 
-     id: "CancerHSAccep-relevant", text: "... is relevant to you", value: 5, minValue: 1, maxValue: 10 
+     id: "CancerHSAccep-relevant", text: "(ON A SCALE OF 1 TO 10, WHERE 1 IS 'NOT AT ALL' AND 10 IS 'EXTREMELY', PLEASE TELL ME WHETHER THIS WARNING MESSAGE) <br/><br/> ...is relevant to you", value: 5, minValue: 1, maxValue: 10 
 
     },{
 
-     id: "CancerHSAccep-alarm", text: "... is alarming", value: 5, minValue: 1, maxValue: 10
+     id: "CancerHSAccep-alarm", text: "(ON A SCALE OF 1 TO 10, WHERE 1 IS 'NOT AT ALL' AND 10 IS 'EXTREMELY', PLEASE TELL ME WHETHER THIS WARNING MESSAGE) <br/><br/> ...is alarming", value: 5, minValue: 1, maxValue: 10
 
 	},{
 
-     id: "CancerHSAccep-concern", text: "... makes people more concerned about the health risks of smoking", value: 5, minValue: 1, maxValue: 10
+     id: "CancerHSAccep-concern", text: "(ON A SCALE OF 1 TO 10, WHERE 1 IS 'NOT AT ALL' AND 10 IS 'EXTREMELY', PLEASE TELL ME WHETHER THIS WARNING MESSAGE) <br/><br/> ...makes people more concerned about the health risks of smoking", value: 5, minValue: 1, maxValue: 10
 
 	},{
 
-     id: "CancerHSAccep-young", text: "... would help prevent young people from starting to smoke ", value: 5, minValue: 1, maxValue: 10
+     id: "CancerHSAccep-young", text: "(ON A SCALE OF 1 TO 10, WHERE 1 IS 'NOT AT ALL' AND 10 IS 'EXTREMELY', PLEASE TELL ME WHETHER THIS WARNING MESSAGE) <br/><br/> ...would help prevent young people from starting to smoke ", value: 5, minValue: 1, maxValue: 10
 
 	},{
 
-     id: "CancerHSAccep-quit", text: "... would make smokers want to quit", value: 5, minValue: 1, maxValue: 10
+     id: "CancerHSAccep-quit", text: "(ON A SCALE OF 1 TO 10, WHERE 1 IS 'NOT AT ALL' AND 10 IS 'EXTREMELY', PLEASE TELL ME WHETHER THIS WARNING MESSAGE) <br/><br/> ...would make smokers want to quit", value: 5, minValue: 1, maxValue: 10
 
 	},{
 
@@ -256,39 +280,39 @@ var cancerHumanSuffering = [
 
 	     [1/3, 1/3, 1/3],     
 
-	      {id: "cancerSymbolicImageA", text: "Cancer Symbolic Image A"},
+	      {id: "cancerSymbolicImageA", text: "Cancer Symbolic A"},
 
-	      {id: "cancerSymbolicImageB", text: "Cancer Symbolic Image B"},
+	      {id: "cancerSymbolicImageB", text: "Cancer Symbolic B"},
 
-	      {id: "cancerSymbolicImageC", text: "Cancer Symbolic Image C"}
+	      {id: "cancerSymbolicImageC", text: "Cancer Symbolic C"}
 
 	     ],{
 
-	     id: "CancerHSAccep-grab", text: "On a scale of 1 to 10, where 1 is 'not at all' and 10 is 'extemely', please tell me whether this warning message... grabs your attention", value: 5, minValue: 1, maxValue: 10 
+	     id: "CancerHSAccep-grab", text: "On a scale of 1 to 10, where 1 is 'not at all' and 10 is 'extemely', please tell me whether this warning message <br/><br/> ...grabs your attention", value: 5, minValue: 1, maxValue: 10 
 
 	    },{
 
-	     id: "CancerSymbolicAccep-believable", text: "... is believable", value: 5, minValue: 1, maxValue: 10 
+	     id: "CancerSymbolicAccep-believable", text: "(INTERVIEWER NOTE: ONLY REPEAT PREAMBLE IF NECESSARY. On a scale of 1 to 10, where 1 is 'not at all' and 10 is 'extremely', please tell me whether this warning message) <br/><br/> ...is believable", value: 5, minValue: 1, maxValue: 10 
 
 	    },{
 
-	     id: "CancerSymbolicAccep-relevant", text: "... is relevant to you", value: 5, minValue: 1, maxValue: 10 
+	     id: "CancerSymbolicAccep-relevant", text: "(ON A SCALE OF 1 TO 10, WHERE 1 IS 'NOT AT ALL' AND 10 IS 'EXTREMELY', PLEASE TELL ME WHETHER THIS WARNING MESSAGE) <br/><br/> ...is relevant to you", value: 5, minValue: 1, maxValue: 10 
 
 	    },{
 
-	     id: "CancerSymbolicAccep-alarm", text: "... is alarming", value: 5, minValue: 1, maxValue: 10
+	     id: "CancerSymbolicAccep-alarm", text: "(ON A SCALE OF 1 TO 10, WHERE 1 IS 'NOT AT ALL' AND 10 IS 'EXTREMELY', PLEASE TELL ME WHETHER THIS WARNING MESSAGE) <br/><br/> ...is alarming", value: 5, minValue: 1, maxValue: 10
 
 		},{
 
-	     id: "CancerSymbolicAccep-concern", text: "... makes people more concerned about the health risks of smoking", value: 5, minValue: 1, maxValue: 10
+	     id: "CancerSymbolicAccep-concern", text: "(ON A SCALE OF 1 TO 10, WHERE 1 IS 'NOT AT ALL' AND 10 IS 'EXTREMELY', PLEASE TELL ME WHETHER THIS WARNING MESSAGE) <br/><br/> ...makes people more concerned about the health risks of smoking", value: 5, minValue: 1, maxValue: 10
 
 		},{
 
-	     id: "CancerSymbolicAccep-young", text: "... would help prevent young people from starting to smoke ", value: 5, minValue: 1, maxValue: 10
+	     id: "CancerSymbolicAccep-young", text: "(ON A SCALE OF 1 TO 10, WHERE 1 IS 'NOT AT ALL' AND 10 IS 'EXTREMELY', PLEASE TELL ME WHETHER THIS WARNING MESSAGE) <br/><br/> ...would help prevent young people from starting to smoke ", value: 5, minValue: 1, maxValue: 10
 
 		},{
 
-	     id: "CancerSymbolicAccep-quit", text: "... would make smokers want to quit", value: 5, minValue: 1, maxValue: 10
+	     id: "CancerSymbolicAccep-quit", text: "(ON A SCALE OF 1 TO 10, WHERE 1 IS 'NOT AT ALL' AND 10 IS 'EXTREMELY', PLEASE TELL ME WHETHER THIS WARNING MESSAGE) <br/><br/> ...would make smokers want to quit", value: 5, minValue: 1, maxValue: 10
 
 		},{
 
@@ -306,39 +330,39 @@ var CVDGruesome = [
 
      [1/3, 1/3, 1/3],     
 
-      {id: "CVDGruesomeImageA", text: "CVD Gruesome Image A"},
+      {id: "CVDGruesomeImageA", text: "CVD Gruesome A"},
 
-      {id: "CVDGruesomeImageB", text: "CVD Gruesome Image B"},
+      {id: "CVDGruesomeImageB", text: "CVD Gruesome B"},
 
-      {id: "CVDGruesomeImageC", text: "CVD Gruesome Image C"}
+      {id: "CVDGruesomeImageC", text: "CVD Gruesome C"}
 
      ],{
 
-     id: "CVDGrueAccep-grab", text: "On a scale of 1 to 10, where 1 is 'not at all' and 10 is 'extemely', please tell me whether this warning message... grabs your attention", value: 5, minValue: 1, maxValue: 10 
+     id: "CVDGrueAccep-grab", text: "On a scale of 1 to 10, where 1 is 'not at all' and 10 is 'extemely', please tell me whether this warning message <br/> <br/> ...grabs your attention", value: 5, minValue: 1, maxValue: 10 
 
     },{
 
-     id: "CVDGrueAccep-believable", text: "... is believable", value: 5, minValue: 1, maxValue: 10 
+     id: "CVDGrueAccep-believable", text: "(INTERVIEWER NOTE: ONLY REPEAT PREAMBLE IF NECESSARY. On a scale of 1 to 10, where 1 is 'not at all' and 10 is 'extremely', please tell me whether this warning message) <br/><br/> ...is believable", value: 5, minValue: 1, maxValue: 10 
 
     },{
 
-     id: "CVDGrueAccep-relevant", text: "... is relevant to you", value: 5, minValue: 1, maxValue: 10 
+     id: "CVDGrueAccep-relevant", text: "(ON A SCALE OF 1 TO 10, WHERE 1 IS 'NOT AT ALL' AND 10 IS 'EXTREMELY', PLEASE TELL ME WHETHER THIS WARNING MESSAGE) <br/><br/> ...is relevant to you", value: 5, minValue: 1, maxValue: 10 
 
     },{
 
-     id: "CVDGrueAccep-alarm", text: "... is alarming", value: 5, minValue: 1, maxValue: 10
+     id: "CVDGrueAccep-alarm", text: "(ON A SCALE OF 1 TO 10, WHERE 1 IS 'NOT AT ALL' AND 10 IS 'EXTREMELY', PLEASE TELL ME WHETHER THIS WARNING MESSAGE) <br/><br/> ...is alarming", value: 5, minValue: 1, maxValue: 10
 
 	},{
 
-     id: "CVDGrueAccep-concern", text: "... makes people more concerned about the health risks of smoking", value: 5, minValue: 1, maxValue: 10
+     id: "CVDGrueAccep-concern", text: "(ON A SCALE OF 1 TO 10, WHERE 1 IS 'NOT AT ALL' AND 10 IS 'EXTREMELY', PLEASE TELL ME WHETHER THIS WARNING MESSAGE) <br/><br/> ...makes people more concerned about the health risks of smoking", value: 5, minValue: 1, maxValue: 10
 
 	},{
 
-     id: "CVDGrueAccep-young", text: "... would help prevent young people from starting to smoke ", value: 5, minValue: 1, maxValue: 10
+     id: "CVDGrueAccep-young", text: "(ON A SCALE OF 1 TO 10, WHERE 1 IS 'NOT AT ALL' AND 10 IS 'EXTREMELY', PLEASE TELL ME WHETHER THIS WARNING MESSAGE) <br/><br/> ...would help prevent young people from starting to smoke ", value: 5, minValue: 1, maxValue: 10
 
 	},{
 
-     id: "CVDGrueAccep-quit", text: "... would make smokers want to quit", value: 5, minValue: 1, maxValue: 10
+     id: "CVDGrueAccep-quit", text: "(ON A SCALE OF 1 TO 10, WHERE 1 IS 'NOT AT ALL' AND 10 IS 'EXTREMELY', PLEASE TELL ME WHETHER THIS WARNING MESSAGE) <br/><br/> ...would make smokers want to quit", value: 5, minValue: 1, maxValue: 10
 
 	},{
 
@@ -356,39 +380,39 @@ var CVDHumanSuffering = [
 
      [1/3, 1/3, 1/3],     
 
-      {id: "CVDHumanSufferingImageA", text: "CVD Human Suffering Image A"},
+      {id: "CVDHumanSufferingImageA", text: "CVD Human A"},
 
-      {id: "CVDHumanSufferingImageB", text: "CVD Human Suffering Image B"},
+      {id: "CVDHumanSufferingImageB", text: "CVD Human B"},
 
-      {id: "CVDHumanSufferingImageC", text: "CVD Human Suffering Image C"}
+      {id: "CVDHumanSufferingImageC", text: "CVD Human C"}
 
      ],{
 
-     id: "CVDHSAccep-grab", text: "On a scale of 1 to 10, where 1 is 'not at all' and 10 is 'extemely', please tell me whether this warning message... grabs your attention", value: 5, minValue: 1, maxValue: 10 
+     id: "CVDHSAccep-grab", text: "On a scale of 1 to 10, where 1 is 'not at all' and 10 is 'extemely', please tell me whether this warning message <br/><br/> ...grabs your attention", value: 5, minValue: 1, maxValue: 10 
 
     },{
 
-     id: "CVDHSAccep-believable", text: "... is believable", value: 5, minValue: 1, maxValue: 10 
+     id: "CVDHSAccep-believable", text: "(INTERVIEWER NOTE: ONLY REPEAT PREAMBLE IF NECESSARY. On a scale of 1 to 10, where 1 is 'not at all' and 10 is 'extremely', please tell me whether this warning message) <br/><br/> ...is believable", value: 5, minValue: 1, maxValue: 10 
 
     },{
 
-     id: "CVDHSAccep-relevant", text: "... is relevant to you", value: 5, minValue: 1, maxValue: 10 
+     id: "CVDHSAccep-relevant", text: "(ON A SCALE OF 1 TO 10, WHERE 1 IS 'NOT AT ALL' AND 10 IS 'EXTREMELY', PLEASE TELL ME WHETHER THIS WARNING MESSAGE) <br/><br/> ...is relevant to you", value: 5, minValue: 1, maxValue: 10 
 
     },{
 
-     id: "CVDHSAccep-alarm", text: "... is alarming", value: 5, minValue: 1, maxValue: 10
+     id: "CVDHSAccep-alarm", text: "(ON A SCALE OF 1 TO 10, WHERE 1 IS 'NOT AT ALL' AND 10 IS 'EXTREMELY', PLEASE TELL ME WHETHER THIS WARNING MESSAGE) <br/><br/> ...is alarming", value: 5, minValue: 1, maxValue: 10
 
 	},{
 
-     id: "CVDHSAccep-concern", text: "... makes people more concerned about the health risks of smoking", value: 5, minValue: 1, maxValue: 10
+     id: "CVDHSAccep-concern", text: "(ON A SCALE OF 1 TO 10, WHERE 1 IS 'NOT AT ALL' AND 10 IS 'EXTREMELY', PLEASE TELL ME WHETHER THIS WARNING MESSAGE) <br/><br/> ...makes people more concerned about the health risks of smoking", value: 5, minValue: 1, maxValue: 10
 
 	},{
 
-     id: "CVDHSAccep-young", text: "... would help prevent young people from starting to smoke ", value: 5, minValue: 1, maxValue: 10
+     id: "CVDHSAccep-young", text: "(ON A SCALE OF 1 TO 10, WHERE 1 IS 'NOT AT ALL' AND 10 IS 'EXTREMELY', PLEASE TELL ME WHETHER THIS WARNING MESSAGE) <br/><br/> ...would help prevent young people from starting to smoke ", value: 5, minValue: 1, maxValue: 10
 
 	},{
 
-     id: "CVDHSAccep-quit", text: "... would make smokers want to quit", value: 5, minValue: 1, maxValue: 10
+     id: "CVDHSAccep-quit", text: "(ON A SCALE OF 1 TO 10, WHERE 1 IS 'NOT AT ALL' AND 10 IS 'EXTREMELY', PLEASE TELL ME WHETHER THIS WARNING MESSAGE) <br/><br/> ...would make smokers want to quit", value: 5, minValue: 1, maxValue: 10
 
 	},{
 
@@ -406,39 +430,39 @@ var CVDHumanSuffering = [
 
 	     [1/3, 1/3, 1/3],     
 
-	      {id: "CVDSymbolicImageA", text: "CVD Symbolic Image A"},
+	      {id: "CVDSymbolicImageA", text: "CVD Symbolic A"},
 
-	      {id: "CVDSymbolicImageB", text: "CVD Symbolic Image B"},
+	      {id: "CVDSymbolicImageB", text: "CVD Symbolic B"},
 
-	      {id: "CVDSymbolicImageC", text: "CVD Symbolic Image C"}
+	      {id: "CVDSymbolicImageC", text: "CVD Symbolic C"}
 
 	     ],{
 
-	     id: "CVDSAccep-grab", text: "On a scale of 1 to 10, where 1 is 'not at all' and 10 is 'extemely', please tell me whether this warning message... grabs your attention", value: 5, minValue: 1, maxValue: 10 
+	     id: "CVDSAccep-grab", text: "On a scale of 1 to 10, where 1 is 'not at all' and 10 is 'extemely', please tell me whether this warning message<br/><br/> ...grabs your attention", value: 5, minValue: 1, maxValue: 10 
 
 	    },{
 
-	     id: "CVDSymbolicAccep-believable", text: "... is believable", value: 5, minValue: 1, maxValue: 10 
+	     id: "CVDSymbolicAccep-believable", text: "(INTERVIEWER NOTE: ONLY REPEAT PREAMBLE IF NECESSARY. On a scale of 1 to 10, where 1 is 'not at all' and 10 is 'extremely', please tell me whether this warning message) <br/><br/> ... is believable", value: 5, minValue: 1, maxValue: 10 
 
 	    },{
 
-	     id: "CVDSymbolicAccep-relevant", text: "... is relevant to you", value: 5, minValue: 1, maxValue: 10 
+	     id: "CVDSymbolicAccep-relevant", text: "(ON A SCALE OF 1 TO 10, WHERE 1 IS 'NOT AT ALL' AND 10 IS 'EXTREMELY', PLEASE TELL ME WHETHER THIS WARNING MESSAGE) <br/><br/> ...is relevant to you", value: 5, minValue: 1, maxValue: 10 
 
 	    },{
 
-	     id: "CVDSymbolicAccep-alarm", text: "... is alarming", value: 5, minValue: 1, maxValue: 10
+	     id: "CVDSymbolicAccep-alarm", text: "(ON A SCALE OF 1 TO 10, WHERE 1 IS 'NOT AT ALL' AND 10 IS 'EXTREMELY', PLEASE TELL ME WHETHER THIS WARNING MESSAGE) <br/><br/> ...is alarming", value: 5, minValue: 1, maxValue: 10
 
 		},{
 
-	     id: "CVDSymbolicAccep-concern", text: "... makes people more concerned about the health risks of smoking", value: 5, minValue: 1, maxValue: 10
+	     id: "CVDSymbolicAccep-concern", text: "(ON A SCALE OF 1 TO 10, WHERE 1 IS 'NOT AT ALL' AND 10 IS 'EXTREMELY', PLEASE TELL ME WHETHER THIS WARNING MESSAGE) <br/><br/> ...makes people more concerned about the health risks of smoking", value: 5, minValue: 1, maxValue: 10
 
 		},{
 
-	     id: "CVDSymbolicAccep-young", text: "... would help prevent young people from starting to smoke ", value: 5, minValue: 1, maxValue: 10
+	     id: "CVDSymbolicAccep-young", text: "(ON A SCALE OF 1 TO 10, WHERE 1 IS 'NOT AT ALL' AND 10 IS 'EXTREMELY', PLEASE TELL ME WHETHER THIS WARNING MESSAGE) <br/><br/> ...would help prevent young people from starting to smoke ", value: 5, minValue: 1, maxValue: 10
 
 		},{
 
-	     id: "CVDSymbolicAccep-quit", text: "... would make smokers want to quit", value: 5, minValue: 1, maxValue: 10
+	     id: "CVDSymbolicAccep-quit", text: "(ON A SCALE OF 1 TO 10, WHERE 1 IS 'NOT AT ALL' AND 10 IS 'EXTREMELY', PLEASE TELL ME WHETHER THIS WARNING MESSAGE) <br/><br/> ...would make smokers want to quit", value: 5, minValue: 1, maxValue: 10
 
 		},{
 
@@ -456,39 +480,39 @@ var SHSGruesome = [
 
      [1/3, 1/3, 1/3],     
 
-      {id: "SHSGruesomeImageA", text: "SHS Gruesome Image A"},
+      {id: "SHSGruesomeImageA", text: "SHS Gruesome A"},
 
-      {id: "SHSGruesomeImageB", text: "SHS Gruesome Image B"},
+      {id: "SHSGruesomeImageB", text: "SHS Gruesome B"},
 
-      {id: "SHSGruesomeImageC", text: "SHS Gruesome Image C"}
+      {id: "SHSGruesomeImageC", text: "SHS Gruesome C"}
 
      ],{
 
-     id: "SHSGrueAccep-grab", text: "On a scale of 1 to 10, where 1 is 'not at all' and 10 is 'extemely', please tell me whether this warning message... grabs your attention", value: 5, minValue: 1, maxValue: 10 
+     id: "SHSGrueAccep-grab", text: "On a scale of 1 to 10, where 1 is 'not at all' and 10 is 'extemely', please tell me whether this warning message <br/><br/> ...grabs your attention", value: 5, minValue: 1, maxValue: 10 
 
     },{
 
-     id: "SHSGrueAccep-believable", text: "... is believable", value: 5, minValue: 1, maxValue: 10 
+     id: "SHSGrueAccep-believable", text: "(INTERVIEWER NOTE: ONLY REPEAT PREAMBLE IF NECESSARY. On a scale of 1 to 10, where 1 is 'not at all' and 10 is 'extremely', please tell me whether this warning message) <br/><br/> ...is believable", value: 5, minValue: 1, maxValue: 10 
 
     },{
 
-     id: "SHSGrueAccep-relevant", text: "... is relevant to you", value: 5, minValue: 1, maxValue: 10 
+     id: "SHSGrueAccep-relevant", text: "(ON A SCALE OF 1 TO 10, WHERE 1 IS 'NOT AT ALL' AND 10 IS 'EXTREMELY', PLEASE TELL ME WHETHER THIS WARNING MESSAGE) <br/><br/> ...is relevant to you", value: 5, minValue: 1, maxValue: 10 
 
     },{
 
-     id: "SHSGrueAccep-alarm", text: "... is alarming", value: 5, minValue: 1, maxValue: 10
+     id: "SHSGrueAccep-alarm", text: "(ON A SCALE OF 1 TO 10, WHERE 1 IS 'NOT AT ALL' AND 10 IS 'EXTREMELY', PLEASE TELL ME WHETHER THIS WARNING MESSAGE) <br/><br/> ...is alarming", value: 5, minValue: 1, maxValue: 10
 
 	},{
 
-     id: "SHSGrueAccep-concern", text: "... makes people more concerned about the health risks of smoking", value: 5, minValue: 1, maxValue: 10
+     id: "SHSGrueAccep-concern", text: "(ON A SCALE OF 1 TO 10, WHERE 1 IS 'NOT AT ALL' AND 10 IS 'EXTREMELY', PLEASE TELL ME WHETHER THIS WARNING MESSAGE) <br/><br/> ...makes people more concerned about the health risks of smoking", value: 5, minValue: 1, maxValue: 10
 
 	},{
 
-     id: "SHSGrueAccep-young", text: "... would help prevent young people from starting to smoke ", value: 5, minValue: 1, maxValue: 10
+     id: "SHSGrueAccep-young", text: "(ON A SCALE OF 1 TO 10, WHERE 1 IS 'NOT AT ALL' AND 10 IS 'EXTREMELY', PLEASE TELL ME WHETHER THIS WARNING MESSAGE) <br/><br/> ...would help prevent young people from starting to smoke ", value: 5, minValue: 1, maxValue: 10
 
 	},{
 
-     id: "SHSGrueAccep-quit", text: "... would make smokers want to quit", value: 5, minValue: 1, maxValue: 10
+     id: "SHSGrueAccep-quit", text: "(ON A SCALE OF 1 TO 10, WHERE 1 IS 'NOT AT ALL' AND 10 IS 'EXTREMELY', PLEASE TELL ME WHETHER THIS WARNING MESSAGE) <br/><br/> ...would make smokers want to quit", value: 5, minValue: 1, maxValue: 10
 
 	},{
 
@@ -506,27 +530,27 @@ var SHSHumanSuffering = [
 
      [1/3, 1/3, 1/3],     
 
-      {id: "SHSHumanSufferingImageA", text: "SHS Human Suffering Image A"},
+      {id: "SHSHumanSufferingImageA", text: "SHS Human A"},
 
-      {id: "SHSHumanSufferingImageB", text: "SHS Human Suffering Image B"},
+      {id: "SHSHumanSufferingImageB", text: "SHS Human B"},
 
-      {id: "SHSHumanSufferingImageC", text: "SHS Human Suffering Image C"}
+      {id: "SHSHumanSufferingImageC", text: "SHS Human C"}
 
      ],{
 
-     id: "SHSHSAccep-grab", text: "On a scale of 1 to 10, where 1 is 'not at all' and 10 is 'extemely', please tell me whether this warning message... grabs your attention", value: 5, minValue: 1, maxValue: 10 
+     id: "SHSHSAccep-grab", text: "On a scale of 1 to 10, where 1 is 'not at all' and 10 is 'extemely', please tell me whether this warning message <br/><br/> ...grabs your attention", value: 5, minValue: 1, maxValue: 10 
 
     },{
 
-     id: "SHSHSAccep-believable", text: "... is believable", value: 5, minValue: 1, maxValue: 10 
+     id: "SHSHSAccep-believable", text: "(INTERVIEWER NOTE: ONLY REPEAT PREAMBLE IF NECESSARY. On a scale of 1 to 10, where 1 is 'not at all' and 10 is 'extremely', please tell me whether this warning message) <br/><br/> ...is believable", value: 5, minValue: 1, maxValue: 10 
 
     },{
 
-     id: "SHSHSAccep-relevant", text: "... is relevant to you", value: 5, minValue: 1, maxValue: 10 
+     id: "SHSHSAccep-relevant", text: "(ON A SCALE OF 1 TO 10, WHERE 1 IS 'NOT AT ALL' AND 10 IS 'EXTREMELY', PLEASE TELL ME WHETHER THIS WARNING MESSAGE) <br/><br/> ...is relevant to you", value: 5, minValue: 1, maxValue: 10 
 
     },{
 
-     id: "SHSHSAccep-alarm", text: "... is alarming", value: 5, minValue: 1, maxValue: 10
+     id: "SHSHSAccep-alarm", text: "(ON A SCALE OF 1 TO 10, WHERE 1 IS 'NOT AT ALL' AND 10 IS 'EXTREMELY', PLEASE TELL ME WHETHER THIS WARNING MESSAGE) <br/><br/> ...is alarming", value: 5, minValue: 1, maxValue: 10
 
 	},{
 
@@ -534,11 +558,11 @@ var SHSHumanSuffering = [
 
 	},{
 
-     id: "SHSHSAccep-young", text: "... would help prevent young people from starting to smoke ", value: 5, minValue: 1, maxValue: 10
+     id: "SHSHSAccep-young", text: "(ON A SCALE OF 1 TO 10, WHERE 1 IS 'NOT AT ALL' AND 10 IS 'EXTREMELY', PLEASE TELL ME WHETHER THIS WARNING MESSAGE) <br/><br/> ...would help prevent young people from starting to smoke ", value: 5, minValue: 1, maxValue: 10
 
 	},{
 
-     id: "SHSHSAccep-quit", text: "... would make smokers want to quit", value: 5, minValue: 1, maxValue: 10
+     id: "SHSHSAccep-quit", text: "(ON A SCALE OF 1 TO 10, WHERE 1 IS 'NOT AT ALL' AND 10 IS 'EXTREMELY', PLEASE TELL ME WHETHER THIS WARNING MESSAGE) <br/><br/> ...would make smokers want to quit", value: 5, minValue: 1, maxValue: 10
 
 	},{
 
@@ -556,39 +580,39 @@ var SHSHumanSuffering = [
 
 	     [1/3, 1/3, 1/3],     
 
-	      {id: "SHSSymbolicImageA", text: "SHS Symbolic Image A"},
+	      {id: "SHSSymbolicImageA", text: "SHS Symbolic A"},
 
-	      {id: "SHSSymbolicImageB", text: "SHS Symbolic Image B"},
+	      {id: "SHSSymbolicImageB", text: "SHS Symbolic B"},
 
-	      {id: "SHSSymbolicImageC", text: "SHS Symbolic Image C"}
+	      {id: "SHSSymbolicImageC", text: "SHS Symbolic C"}
 
 	     ],{
 
-	     id: "SHSSSAccep-grab", text: "On a scale of 1 to 10, where 1 is 'not at all' and 10 is 'extemely', please tell me whether this warning message... grabs your attention", value: 5, minValue: 1, maxValue: 10 
+	     id: "SHSSSAccep-grab", text: "On a scale of 1 to 10, where 1 is 'not at all' and 10 is 'extemely', please tell me whether this warning message <br/><br/> ...grabs your attention", value: 5, minValue: 1, maxValue: 10 
 
 	    },{
 
-	     id: "SHSSymbolicAccep-believable", text: "... is believable", value: 5, minValue: 1, maxValue: 10 
+	     id: "SHSSymbolicAccep-believable", text: "(INTERVIEWER NOTE: ONLY REPEAT PREAMBLE IF NECESSARY. On a scale of 1 to 10, where 1 is 'not at all' and 10 is 'extremely', please tell me whether this warning message) <br/><br/> ...is believable", value: 5, minValue: 1, maxValue: 10 
 
 	    },{
 
-	     id: "SHSSymbolicAccep-relevant", text: "... is relevant to you", value: 5, minValue: 1, maxValue: 10 
+	     id: "SHSSymbolicAccep-relevant", text: "(ON A SCALE OF 1 TO 10, WHERE 1 IS 'NOT AT ALL' AND 10 IS 'EXTREMELY', PLEASE TELL ME WHETHER THIS WARNING MESSAGE) <br/><br/> ...is relevant to you", value: 5, minValue: 1, maxValue: 10 
 
 	    },{
 
-	     id: "SHSSymbolicAccep-alarm", text: "... is alarming", value: 5, minValue: 1, maxValue: 10
+	     id: "SHSSymbolicAccep-alarm", text: "(ON A SCALE OF 1 TO 10, WHERE 1 IS 'NOT AT ALL' AND 10 IS 'EXTREMELY', PLEASE TELL ME WHETHER THIS WARNING MESSAGE) <br/><br/> ...is alarming", value: 5, minValue: 1, maxValue: 10
 
 		},{
 
-	     id: "SHSSymbolicAccep-concern", text: "... makes people more concerned about the health risks of smoking", value: 5, minValue: 1, maxValue: 10
+	     id: "SHSSymbolicAccep-concern", text: "(ON A SCALE OF 1 TO 10, WHERE 1 IS 'NOT AT ALL' AND 10 IS 'EXTREMELY', PLEASE TELL ME WHETHER THIS WARNING MESSAGE) <br/><br/> ...makes people more concerned about the health risks of smoking", value: 5, minValue: 1, maxValue: 10
 
 		},{
 
-	     id: "SHSSymbolicAccep-young", text: "... would help prevent young people from starting to smoke ", value: 5, minValue: 1, maxValue: 10
+	     id: "SHSSymbolicAccep-young", text: "(ON A SCALE OF 1 TO 10, WHERE 1 IS 'NOT AT ALL' AND 10 IS 'EXTREMELY', PLEASE TELL ME WHETHER THIS WARNING MESSAGE) <br/><br/> ...would help prevent young people from starting to smoke ", value: 5, minValue: 1, maxValue: 10
 
 		},{
 
-	     id: "SHSSymbolicAccep-quit", text: "... would make smokers want to quit", value: 5, minValue: 1, maxValue: 10
+	     id: "SHSSymbolicAccep-quit", text: "(ON A SCALE OF 1 TO 10, WHERE 1 IS 'NOT AT ALL' AND 10 IS 'EXTREMELY', PLEASE TELL ME WHETHER THIS WARNING MESSAGE) <br/><br/> ...would make smokers want to quit", value: 5, minValue: 1, maxValue: 10
 
 		},{
 
@@ -620,7 +644,7 @@ var healthTopicCVD = [
       {
         id: "mostimapactCVD", 
          text: "7. Overall, which warning do you think is the most effective for motivating you to quit?",  
-         answers: ["gruesome img", "human suffering image", "symbolic image"],
+         answers: ["gruesome image", "human suffering image", "symbolic image"],
          switches: true
       }
 ];
@@ -634,7 +658,7 @@ var healthTopicSHS = [
       {
          id: "mostimapactSHS", 
          text: "Overall, which warning do you think is the most effective for motivating you to quit?",  
-         answers: ["gruesome img", "human suffering image", "symbolic image"],
+         answers: ["gruesome image", "human suffering image", "symbolic image"],
          switches: true
       }
 ];
@@ -690,7 +714,7 @@ var surveyTemplate = {
                
                id: "quitplan",
                text: "Are you planning to quit smoking cigarettes...(READ OUT LOUD)",
-               answers: ["Within the next month?", "Within the nest 6 months","Sometime in the future, beyond 6 months?", "No, I am not planning to quit"]
+               answers: ["Within the next month?", "Within the next 6 months","Sometime in the future, beyond 6 months?", "No, I am not planning to quit"]
           },{
           
                id: "future",
@@ -699,7 +723,7 @@ var surveyTemplate = {
           },{
           
               id: "society",
-              text: "Please tell me whether you agree, neither agree nor disagree, or disagree with each of the following: Society approves of smoking.",
+              text: "Please tell me whether you agree, neither agree nor disagree, or disagree with each of the following: <br/><br/> Society approves of smoking.",
                answers: ["Agree", "Neither agree not disagree","Disagree"]
           },{
 
