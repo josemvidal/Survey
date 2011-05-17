@@ -386,6 +386,9 @@ function getQuestionForm(q){
 	var comp = Ext.getCmp(q.id);
 	if (comp) {
 		comp.reset();};
+    if (!(surveyTemplate.forms[q.id])) {
+    	console.log("ERROR: -" + q.id + "- is undefined question id");
+    };
 	return surveyTemplate.forms[q.id];
 }
 
