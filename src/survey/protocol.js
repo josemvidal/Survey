@@ -76,7 +76,9 @@ var controlGroupTemplate = [
     RANDOM_ORDER,
     [SEQUENTIAL, {
 	id: "control0", type: "mc",
-	text: "Control question 1"},{
+	text: "Control question 1. <br/><br> (NOTE: Give the participant the cigarette package and make sure that they take the time to view BOTH sides of the pack. Some packs have different images on both sides, whereas others do not)"},
+	
+	{
 	    id: "Controlaccept0-grab", text:"CA1:  On a scale of 1 to 10, where 1 is 'not at all' and 10 is 'extremely', please tell me whether this warning message <br/><br/>... grabs your attention", value: 5, minValue: 1, maxValue: 10 
 	},{
 	    id: "Controlaccept0-alarm", text: "CA2:  (NOTE: ONLY REPEAT PREAMBLE IF NECESSARY: On a scale of 1 to 10, where 1 is 'not at all' and 10 is 'extremely', please tell whether this warning message) <br/><br/> ...is alarming", value: 5, minValue: 1, maxValue: 10
@@ -99,7 +101,7 @@ var controlGroupTemplate = [
 	}],
     [SEQUENTIAL, {
 	id: "control1", type: "mc",
-	text: "Control question 2"},{
+	text: "Control question 2. <br/><br> (NOTE: Give the participant the cigarette package and make sure that they take the time to view BOTH sides of the pack. Some packs have different images on both sides, whereas others do not)"},{
 	    id: "Controlaccept1-grab", text:"CB1:  On a scale of 1 to 10, where 1 is 'not at all' and 10 is 'extremely', please tell me whether this warning message<br/><br/> ...grabs your attention", value: 5, minValue: 1, maxValue: 10 
 	},{
 	    id: "Controlaccept1-alarm", text: "CB2:  (NOTE: ONLY REPEAT PREAMBLE IF NECESSARY: On a scale of 1 to 10, where 1 is 'not at all' and 10 is 'extremely', please tell whether this warning message) <br/><br/> ...is alarming", value: 5, minValue: 1, maxValue: 10
@@ -122,7 +124,7 @@ var controlGroupTemplate = [
 	}],
     [SEQUENTIAL,{
 	id: "control2", type: "mc",
-	text: "Control question 3"},{
+	text: "Control question 3. <br/><br> (NOTE: Give the participant the cigarette package and make sure that they take the time to view BOTH sides of the pack. Some packs have different images on both sides, whereas others do not)"},{
 	    id: "Controlaccept2-grab", text:"CC1:  On a scale of 1 to 10, where 1 is 'not at all' and 10 is 'extremely', please tell me whether this warning message <br/><br/> ...grabs your attention", value: 5, minValue: 1, maxValue: 10 
 	},{
 	    id: "Controlaccept2-alarm", text: "CC2:  (NOTE: ONLY REPEAT PREAMBLE IF NECESSARY: On a scale of 1 to 10, where 1 is 'not at all' and 10 is 'extremely', please tell whether this warning message) <br/><br/> ...is alarming", value: 5, minValue: 1, maxValue: 10
@@ -144,7 +146,7 @@ var controlGroupTemplate = [
 	}],
     [SEQUENTIAL,{
 	id: "control3", type: "mc",
-	text: "Control question 4"},{
+	text: "Control question 4. <br/><br> (NOTE: Give the participant the cigarette package and make sure that they take the time to view BOTH sides of the pack. Some packs have different images on both sides, whereas others do not)"},{
 	    id: "Controlaccept3-grab", text:"CD1:  On a scale of 1 to 10, where 1 is 'not at all' and 10 is 'extremely', please tell me whether this warning message... grabs your attention", value: 5, minValue: 1, maxValue: 10 
 	},{
 	    id: "Controlaccept3-alarm", text: "CD2:  (NOTE: ONLY REPEAT PREAMBLE IF NECESSARY: On a scale of 1 to 10, where 1 is 'not at all' and 10 is 'extremely', please tell whether this warning message) <br/><br/> ...is alarming", value: 5, minValue: 1, maxValue: 10
@@ -168,9 +170,9 @@ var cancerGruesome = [
     SEQUENTIAL,
     [ONE_OF,
      [1/3, 1/3, 1/3],     
-     {id: "cancerGruesomeImageA", text: "Cancer Gruesome A"},
-     {id: "cancerGruesomeImageB", text: "Cancer Gruesome B"},
-     {id: "cancerGruesomeImageC", text: "Cancer Gruesome C"}
+     {id: "cancerGruesomeImageA", text: "Cancer Gruesome A. <br/><br> (NOTE: Give the participant the cigarette package and make sure that they take the time to view BOTH sides of the pack. Some packs have different images on both sides, whereas others do not)"},
+     {id: "cancerGruesomeImageB", text: "Cancer Gruesome B. <br/><br> (NOTE: Give the participant the cigarette package and make sure that they take the time to view BOTH sides of the pack. Some packs have different images on both sides, whereas others do not)"},
+     {id: "cancerGruesomeImageC", text: "Cancer Gruesome C. <br/><br> (NOTE: Give the participant the cigarette package and make sure that they take the time to view BOTH sides of the pack. Some packs have different images on both sides, whereas others do not)"}
     ],{
 	id: "CancerGrueAccep-grab", text: "CANG1:  On a scale of 1 to 10, where 1 is 'not at all' and 10 is 'extemely', please tell me whether this warning message <br/><br/> ...grabs your attention", value: 5, minValue: 1, maxValue: 10 
     },{
@@ -194,9 +196,9 @@ var cancerHumanSuffering = [
     SEQUENTIAL,
     [ONE_OF,
      [1/3, 1/3, 1/3],     
-     {id: "cancerHumanSufferingImageA", text: "Cancer Human A"},
-     {id: "cancerHumanSufferingImageB", text: "Cancer Human B"},
-     {id: "cancerHumanSufferingImageC", text: "Cancer Human C"}
+     {id: "cancerHumanSufferingImageA", text: "Cancer Human A. <br/><br> (NOTE: Give the participant the cigarette package and make sure that they take the time to view BOTH sides of the pack. Some packs have different images on both sides, whereas others do not)"},
+     {id: "cancerHumanSufferingImageB", text: "Cancer Human B. <br/><br> (NOTE: Give the participant the cigarette package and make sure that they take the time to view BOTH sides of the pack. Some packs have different images on both sides, whereas others do not)"},
+     {id: "cancerHumanSufferingImageC", text: "Cancer Human C. <br/><br> (NOTE: Give the participant the cigarette package and make sure that they take the time to view BOTH sides of the pack. Some packs have different images on both sides, whereas others do not)"}
     ],{
  	id: "CancerHSAccep-grab", text: "CANHS1:  On a scale of 1 to 10, where 1 is 'not at all' and 10 is 'extemely', please tell me whether this warning message <br/><br/> ...grabs your attention", value: 5, minValue: 1, maxValue: 10 
     },{
@@ -220,9 +222,9 @@ var cancerSymbolic = [
     SEQUENTIAL,
     [ONE_OF,
      [1/3, 1/3, 1/3],     
-     {id: "cancerSymbolicImageA", text: "Cancer Symbolic A"},
-     {id: "cancerSymbolicImageB", text: "Cancer Symbolic B"},
-     {id: "cancerSymbolicImageC", text: "Cancer Symbolic C"}
+     {id: "cancerSymbolicImageA", text: "Cancer Symbolic A. <br/><br> (NOTE: Give the participant the cigarette package and make sure that they take the time to view BOTH sides of the pack. Some packs have different images on both sides, whereas others do not)"},
+     {id: "cancerSymbolicImageB", text: "Cancer Symbolic B. <br/><br> (NOTE: Give the participant the cigarette package and make sure that they take the time to view BOTH sides of the pack. Some packs have different images on both sides, whereas others do not)"},
+     {id: "cancerSymbolicImageC", text: "Cancer Symbolic C. <br/><br> (NOTE: Give the participant the cigarette package and make sure that they take the time to view BOTH sides of the pack. Some packs have different images on both sides, whereas others do not)"}
     ],{
 	id: "CancerSymAccep-grab", text: "CANSY1:  On a scale of 1 to 10, where 1 is 'not at all' and 10 is 'extemely', please tell me whether this warning message <br/><br/> ...grabs your attention", value: 5, minValue: 1, maxValue: 10 
     },{
@@ -245,9 +247,9 @@ var CVDGruesome = [
     SEQUENTIAL,
     [ONE_OF,
      [1/3, 1/3, 1/3],     
-     {id: "CVDGruesomeImageA", text: "CVD Gruesome A"},
-     {id: "CVDGruesomeImageB", text: "CVD Gruesome B"},
-     {id: "CVDGruesomeImageC", text: "CVD Gruesome C"}
+     {id: "CVDGruesomeImageA", text: "CVD Gruesome A. <br/><br> (NOTE: Give the participant the cigarette package and make sure that they take the time to view BOTH sides of the pack. Some packs have different images on both sides, whereas others do not)"},
+     {id: "CVDGruesomeImageB", text: "CVD Gruesome B. <br/><br> (NOTE: Give the participant the cigarette package and make sure that they take the time to view BOTH sides of the pack. Some packs have different images on both sides, whereas others do not)"},
+     {id: "CVDGruesomeImageC", text: "CVD Gruesome C. <br/><br> (NOTE: Give the participant the cigarette package and make sure that they take the time to view BOTH sides of the pack. Some packs have different images on both sides, whereas others do not)"}
     ],{
 	id: "CVDGrueAccep-grab", text: "CVDG1:  On a scale of 1 to 10, where 1 is 'not at all' and 10 is 'extemely', please tell me whether this warning message <br/> <br/> ...grabs your attention", value: 5, minValue: 1, maxValue: 10 
     },{
@@ -272,9 +274,9 @@ var CVDHumanSuffering = [
     SEQUENTIAL,
     [ONE_OF,
      [1/3, 1/3, 1/3],     
-     {id: "CVDHumanSufferingImageA", text: "CVD Human A"},
-     {id: "CVDHumanSufferingImageB", text: "CVD Human B"},
-     {id: "CVDHumanSufferingImageC", text: "CVD Human C"}
+     {id: "CVDHumanSufferingImageA", text: "CVD Human A. <br/><br> (NOTE: Give the participant the cigarette package and make sure that they take the time to view BOTH sides of the pack. Some packs have different images on both sides, whereas others do not)"},
+     {id: "CVDHumanSufferingImageB", text: "CVD Human B. <br/><br> (NOTE: Give the participant the cigarette package and make sure that they take the time to view BOTH sides of the pack. Some packs have different images on both sides, whereas others do not)"},
+     {id: "CVDHumanSufferingImageC", text: "CVD Human C. <br/><br> (NOTE: Give the participant the cigarette package and make sure that they take the time to view BOTH sides of the pack. Some packs have different images on both sides, whereas others do not)"}
     ],{
 	id: "CVDHSAccep-grab", text: "CVDHS1:  On a scale of 1 to 10, where 1 is 'not at all' and 10 is 'extemely', please tell me whether this warning message <br/> <br/> ...grabs your attention", value: 5, minValue: 1, maxValue: 10 
     },{
@@ -300,9 +302,9 @@ var CVDSymbolic = [
     SEQUENTIAL,
     [ONE_OF,
      [1/3, 1/3, 1/3],     
-     {id: "CVDSymbolicImageA", text: "CVD Symbolic A"},
-     {id: "CVDSymbolicImageB", text: "CVD Symbolic B"},
-     {id: "CVDSymbolicImageC", text: "CVD Symbolic C"}
+     {id: "CVDSymbolicImageA", text: "CVD Symbolic A. <br/><br> (NOTE: Give the participant the cigarette package and make sure that they take the time to view BOTH sides of the pack. Some packs have different images on both sides, whereas others do not)"},
+     {id: "CVDSymbolicImageB", text: "CVD Symbolic B. <br/><br> (NOTE: Give the participant the cigarette package and make sure that they take the time to view BOTH sides of the pack. Some packs have different images on both sides, whereas others do not)"},
+     {id: "CVDSymbolicImageC", text: "CVD Symbolic C. <br/><br> (NOTE: Give the participant the cigarette package and make sure that they take the time to view BOTH sides of the pack. Some packs have different images on both sides, whereas others do not)"}
     ],{
 	id: "CVDSYAccep-grab", text: "CVDSY1:  On a scale of 1 to 10, where 1 is 'not at all' and 10 is 'extemely', please tell me whether this warning message <br/> <br/> ...grabs your attention", value: 5, minValue: 1, maxValue: 10 
     },{
@@ -328,9 +330,9 @@ var SHSGruesome = [
     SEQUENTIAL,
     [ONE_OF,
      [1/3, 1/3, 1/3],     
-     {id: "SHSGruesomeImageA", text: "SHS Gruesome A"},
-     {id: "SHSGruesomeImageB", text: "SHS Gruesome B"},
-     {id: "SHSGruesomeImageC", text: "SHS Gruesome C"}
+     {id: "SHSGruesomeImageA", text: "SHS Gruesome A. <br/><br> (NOTE: Give the participant the cigarette package and make sure that they take the time to view BOTH sides of the pack. Some packs have different images on both sides, whereas others do not)"},
+     {id: "SHSGruesomeImageB", text: "SHS Gruesome B. <br/><br> (NOTE: Give the participant the cigarette package and make sure that they take the time to view BOTH sides of the pack. Some packs have different images on both sides, whereas others do not)"},
+     {id: "SHSGruesomeImageC", text: "SHS Gruesome C. <br/><br> (NOTE: Give the participant the cigarette package and make sure that they take the time to view BOTH sides of the pack. Some packs have different images on both sides, whereas others do not)"}
     ],{
 	id: "SHSGrueAccep-grab", text: "SHSG1:  On a scale of 1 to 10, where 1 is 'not at all' and 10 is 'extemely', please tell me whether this warning message <br/><br/> ...grabs your attention", value: 5, minValue: 1, maxValue: 10 
     },{
@@ -355,9 +357,9 @@ var SHSHumanSuffering = [
     SEQUENTIAL,
     [ONE_OF,
      [1/3, 1/3, 1/3],     
-     {id: "SHSHumanSufferingImageA", text: "SHS Human A"},
-     {id: "SHSHumanSufferingImageB", text: "SHS Human B"},
-     {id: "SHSHumanSufferingImageC", text: "SHS Human C"}
+     {id: "SHSHumanSufferingImageA", text: "SHS Human A. <br/><br> (NOTE: Give the participant the cigarette package and make sure that they take the time to view BOTH sides of the pack. Some packs have different images on both sides, whereas others do not)"},
+     {id: "SHSHumanSufferingImageB", text: "SHS Human B. <br/><br> (NOTE: Give the participant the cigarette package and make sure that they take the time to view BOTH sides of the pack. Some packs have different images on both sides, whereas others do not)"},
+     {id: "SHSHumanSufferingImageC", text: "SHS Human C. <br/><br> (NOTE: Give the participant the cigarette package and make sure that they take the time to view BOTH sides of the pack. Some packs have different images on both sides, whereas others do not)"}
     ],{
 	id: "SHSHSAccep-grab", text: "SHSHS1: On a scale of 1 to 10, where 1 is 'not at all' and 10 is 'extemely', please tell me whether this warning message <br/><br/> ...grabs your attention", value: 5, minValue: 1, maxValue: 10 
     },{
@@ -383,9 +385,9 @@ var SHSSymbolic = [
     SEQUENTIAL,
     [ONE_OF,
      [1/3, 1/3, 1/3],     
-     {id: "SHSSymbolicImageA", text: "SHS Symbolic A"},
-     {id: "SHSSymbolicImageB", text: "SHS Symbolic B"},
-     {id: "SHSSymbolicImageC", text: "SHS Symbolic C"}
+     {id: "SHSSymbolicImageA", text: "SHS Symbolic A. <br/><br> (NOTE: Give the participant the cigarette package and make sure that they take the time to view BOTH sides of the pack. Some packs have different images on both sides, whereas others do not)"},
+     {id: "SHSSymbolicImageB", text: "SHS Symbolic B. <br/><br> (NOTE: Give the participant the cigarette package and make sure that they take the time to view BOTH sides of the pack. Some packs have different images on both sides, whereas others do not)"},
+     {id: "SHSSymbolicImageC", text: "SHS Symbolic C. <br/><br> (NOTE: Give the participant the cigarette package and make sure that they take the time to view BOTH sides of the pack. Some packs have different images on both sides, whereas others do not)"}
     ],{
 	id: "SHSSSAccep-grab", text: "SHSSY1:  On a scale of 1 to 10, where 1 is 'not at all' and 10 is 'extemely', please tell me whether this warning message <br/><br/> ...grabs your attention", value: 5, minValue: 1, maxValue: 10 
     },{
@@ -414,7 +416,7 @@ var healthTopicCancer  = [
 	cancerHumanSuffering,
 	cancerSymbolic],{
 	    id: "mostimapactCancer", 
-	    text: "7. MI1:  Overall, which warning do you think is the most effective for motivating you to quit?",  
+	    text: "7. MI1: MI2:  (NOTE: Show the participant all three packs that they just evaluated) <br/><br/>  Overall, which warning do you think is the <u>most effective</u> for motivating you to quit?",  
 	    answers: ["gruesome img", "human suffering image", "symbolic image"],
 	    switches: true}
 ];
@@ -427,7 +429,7 @@ var healthTopicCVD = [
 	CVDSymbolic], 
     {
         id: "mostimapactCVD", 
-        text: "7. MI2:  Overall, which warning do you think is the most effective for motivating you to quit?",  
+        text: "7. MI2:  (NOTE: Remove the pack that they selected previously and ask the participant to examine the two that remain) <br/><br/>  Of the two remaining warnings, which do you think is the <u>next most effective</u> in motivating you to quit?",  
         answers: ["Gruesome image", "Human suffering image", "Symbolic image"],
         switches: true
     }
@@ -441,7 +443,7 @@ var healthTopicSHS = [
 	SHSSymbolic],
     {
         id: "mostimapactSHS", 
-        text: "MI3:  Overall, which warning do you think is the most effective for motivating you to quit?",  
+        text: "MI3:  (NOTE: Remove the pack that they selected previously and ask the participant to examine the two that remain) <br/><br/> Of the two remaining warnings, which do you think is the <u>next most effective</u> in motivating you to quit?",  
         answers: ["Gruesome image", "Human suffering image", "Symbolic image"],
         switches: true
     }
@@ -463,91 +465,89 @@ var surveyTemplate = {
 	    text: "D1:  Select gender of respondent (NOTE: Do not read)",
 	    answers: ["MALE", "FEMALE"]
         },{
-	    
 	    id: "age",
-	    text: "D2:  To begin, may I ask your age? (NOTE: IF age<18 - Unfortunately, we can only include people age 18 and older in this study. Sorry, you are not eligible to participate, but thank you for your time. TERMINATE)"
+	    text: "D2:  To begin, may I ask your age? (NOTE: If younger that 18, say, 'Unfortunately, we can only include people age 18 and older in this study. Sorry, you are not eligible to participate, but thank you for your time' and Terminate.)"
         },{
 	    id: "education",
 	    text: "D3:  What is the highest level of education that you have completed?",
 	    answers: ["Less than high school", "High school or GED completed", "Technical or vocational school completed", "University (incomplete)", "University (complete)", "Post graduate"]
         },{
-	    
 	    id: "race",
 	    multiplechoice: true,
-	    text: "D4:  Which racial or ethnic group BEST describes you? (NOTE: Read responses, Check more than one)",
+	    text: "D4:  Which racial or ethnic group <u>best</u> describes you? (NOTE: Read responses. Respondent can check more than one, if they want, but should be encouraged to select the 'Best' one for them)",
 	    answers: ["White", "Black or African American", "Hispanic or Latino", "American Indian", "Other"]
         },{
 	    
 	    id: "consume1",
-	    text: "D5:  In the past 30 days, on how many days did you smoke? (ENTER NUMBER)"
+	    text: "D5:  In the past 30 days, on how many days did you smoke? <br/><br/> (ENTER NUMBER)"
         },{
 	    
 	    id: "consume2",
-	    text: "D6:  On the days that you smoke, how many cigarettes do you smoke on average? (ENTER NUMBER)"
+	    text: "D6:  On the days that you smoke, how many cigarettes do you smoke on average? <br/><br/> (ENTER NUMBER)"
         },{
 
 	    id: "waking",
-	    text: "D7:  How soon after waking do you usually have your first cigarette?",
+	    text: "D7:  How soon after waking do you usually have your first cigarette? <br/><br/> (NOTE: Read responses)",
 	    answers: ["Within the first 5 minutes", "6-30 minutes", "31-60 minutes", "More than 60 minutes"]
 	    
         },{
 	    id: "brand0",
 	    text: "D8:  Do you have a brand of cigarettes that you usually smoke?",
-	    answers: ["Yes","No"]
+	    answers: ["Yes","No (Skip to D10)"]
         },{
 
 	    id: "brand1",
-	    text: "D9:  What is the full name of your usual cigarette brand? (NOTE: Prompt for brand name, strength (i.e., lights or regular), and flavour of usual brand (menthol or regular). ENTER TEXT)"
+	    text: "D9:  What is the full name of your usual cigarette brand? <br/><br/> (NOTE: Enter response, prompting for brand name, strength (i.e., lights or regular), and flavour of usual brand (menthol or regular))"
         },{
 	    id: "quit",
-	    text: "D10.  During the past 12 months, have you stopped smoking for more than one day because you were trying to quit smoking?",
-	    answers: ["Yes", "No (Skip to D12)"]
+	    text: "D10.  During the <u>PAST 12 MONTHS</u>, have you stopped smoking for more than one day <u>BECAUSE YOU WERE TRYING TO QUIT SMOKING</u>",
+	    answers: ["Yes", "No"]
         },{
 	    id: "quitattempt",
-	    text: "D11.  On your most recent attempt to quit smoking, did you get any help, like counselling or using stop-smoking medicines?",
-	    answers: ["Yes", "No (Skip to D12)", "Has never attempted to quit (Skip to D12)"]
+	    text: "D11.  On your <u>most recent attempt</u> to quit smoking, did you get any help, like counselling or using stop-smoking medicines?",
+	    answers: ["Yes", "No (Skip to D13)", "Has never attempted to quit (Skip to D13)"]
         },{
 	    id: "quithelp",
-	    text: "D12.  What kind of help did you get? (NOTE: Chech all the respones that the respondent mentions)",
+	    text: "D12.  What kind of help did you get? (NOTE: Check <u>all</u> the responses that the respondent mentions)",
 	    multiplechoice: true,
 	    answers: ["Nicotine replacement (gum, patch, or lozenge)", "Other medications (Bupropion, Zyban, Wellbutrin, Verenicline, Champix)", "Individual or group support sessions", "Telephone quitline or help line", "advice from a doctor or other health professional", "Other"]
         },{
 	    
 	    id: "confidence",
-	    text: "D13. For the next few questions we are going to use a scale that goes from 1 to 10, where 1 means 'not at all' and 10 means 'extremely'. <br/><br/>  Using the scale, how confident are you that you could sucessfully quit smoking right now?", value: 5, minValue: 1, maxValue: 10 
+	    text: "D13. (NOTE: Show participant 1 to 10 scale on the back of the information sheet) For the next few questions we are going to use a scale that goes from 1 to 10, where 1 means 'not at all' and 10 means 'extremely'. <br/><br/>  Using the scale, how confident are you that you could sucessfully quit smoking <u>right now</u>?", value: 5, minValue: 1, maxValue: 10 
 
         },{
 	    id: "intendmo",
-	    text: "D14.  Using the same scale, where 1 is 'not at all' and 10 is 'extremely', how much would you say that you intend to quit in the next month?", value: 5, minValue: 1, maxValue: 10 
+	    text: "D14.  (NOTE:  If participant does not use 1 to 10 response format, read the following statement: 'For this question, you should use a number from one to 10, where 1 means 'not at all' and 10 means 'extremely'.') <br/><br/> Using the same scale, where 1 is 'not at all' and 10 is 'extremely', how much would you say that you intend to quit <u>in the next month</u>?", value: 5, minValue: 1, maxValue: 10 
         },{
 
 	    id: "intendsix",
-	    text: "D15.  Using the same scale, where 1 is 'not at all' and 10 is 'extremely', how much would you say that you intend to quit in the next 6 months? ", value: 5, minValue: 1, maxValue: 10 
+	    text: "D15.  (NOTE:  If participant does not use 1 to 10 response format, read the following statement: 'For this question, you should use a number from one to 10, where 1 means 'not at all' and 10 means 'extremely'.') <br/><br/> Using the same scale, where 1 is 'not at all' and 10 is 'extremely', how much would you say that you intend to quit <u>in the next 6 months</u>? ", value: 5, minValue: 1, maxValue: 10 
         },{
 
 	    id: "quitassist",
-	    text: "D16.  Using the same scale, where 1 is 'not at all' and 10 is 'extremely', how likely are you to get help, like medications or counselling, the next time you try to quit? ", value: 5, minValue: 1, maxValue: 10 
+	    text: "D16.  (NOTE:  If participant does not use 1 to 10 response format, read the following statement: 'For this question, you should use a number from one to 10, where 1 means 'not at all' and 10 means 'extremely'.') <br/><br/> Using the same scale, where 1 is 'not at all' and 10 is 'extremely', how likely are you to get help, like medications or counselling, the <u>next time</u> you try to quit? ", value: 5, minValue: 1, maxValue: 10 
         },{
 
 	    id: "quitimprove",
-	    text: "D17.  Using the same scale, where 1 is 'not at all' and 10 is 'extremely', how much would quitting smoking improve your health", value: 5, minValue: 1, maxValue: 10 
+	    text: "D17. (NOTE:  If participant does not use 1 to 10 response format, read the following statement: 'For this question, you should use a number from one to 10, where 1 means 'not at all' and 10 means 'extremely'.') <br/><br/> Using the same scale, where 1 is 'not at all' and 10 is 'extremely', how much would quitting smoking improve your health?", value: 5, minValue: 1, maxValue: 10 
         },{
 
 	    id: "quitns",
-	    text: "D18.  Using the same scale, where 1 is 'not at all' and 10 is 'extremely', how dangerous is it for non-smokers to breathe cigarette smoke?", value: 5, minValue: 1, maxValue: 10 
+	    text: "D18. (NOTE:  If participant does not use 1 to 10 response format, read the following statement: 'For this question, you should use a number from one to 10, where 1 means 'not at all' and 10 means 'extremely'.') <br/><br/> Using the same scale, where 1 is 'not at all' and 10 is 'extremely', how dangerous is it for non-smokers to breathe cigarette smoke?", value: 5, minValue: 1, maxValue: 10 
         },{
 
 	    id: "society",
-	    text: "D19.  Using the same scale, where 1 is 'not at all' and 10 is 'extremely', how much does society disapprove of smoking?", value: 5, minValue: 1, maxValue: 10 
+	    text: "D19. (NOTE:  If participant does not use 1 to 10 response format, read the following statement: 'For this question, you should use a number from one to 10, where 1 means 'not at all' and 10 means 'extremely'.') <br/><br/> Using the same scale, where 1 is 'not at all' and 10 is 'extremely', how much does society <u>disapprove</u> of smoking?", value: 5, minValue: 1, maxValue: 10 
         },{
 	    
 	    id: "notice",
-	    text: "D20.  The next set of questions asks about the health warning labels on cigarette packages, which contain information about the health risks of smoking. <br/><br/> In the last month, how often, if at all, have you noticed health warnings on cigarette packages? (NOTE: Read responses)",
+	    text: "D20.  The next set of questions asks about the health warning labels on cigarette packages, which contain information about the health risks of smoking. <br/><br/> In the last month, how often, if at all, have you noticed health warnings on cigarette packages? <br/><br/> (NOTE: Read responses)",
 	    answers: ["Never","Rarely","Sometimes","Often","Very often"]
 
         },{
 	    id: "think",
-	    text: "D21.  To what extent, if at all, do the warning labels make you think about the health risks of smoking? (NOTE: Read responses)",
+	    text: "D21.  To what extent, if at all, do the warning labels make you think about the health risks of smoking? <br/><br/> (NOTE: Read responses)",
 	    answers: ["Not at all","A little","Somewhat","A lot"]
         },{
 	    
@@ -562,26 +562,26 @@ var surveyTemplate = {
 	    controlGroupTemplate
         ],{
     	id: "comminfo",
-    	text:"PE1.  Thinking about ALL of the warning labels that you have viewed in this study, would you say that these warning labels go too far, are just about right, or that they should do more to communicate information about smoking.  Do they:  (NOTE: Read responses)",
+    	text:"PE1.  Thinking about <u>ALL</u> of the warning labels that you have viewed in this study, would you say that these warning labels go too far, are just about right, or that they should do more to communicate information about smoking.  Do they:  (NOTE: Read responses)",
     	answers: ["They go too far", "They are just right", "They should do more"]
     },{
     	id: "conquit",
-    	text: "PE2.  (NOTE:  Show participant 1 to 10 scale on the back of the information sheet) <br/><br/>  For the next few questions we will again use the scale that goes from 1 to 10, where 1 means 'not at all' and 10 means 'extremely'. <br/><br/> Using this scale, how confident are you that you could successfully quit smoking right now?",value: 5, minValue: 1, maxValue: 10 
+    	text: "PE2.  (NOTE:  Show participant 1 to 10 scale on the back of the information sheet) <br/><br/>  For the next few questions we will again use the scale that goes from 1 to 10, where 1 means 'not at all' and 10 means 'extremely'. <br/><br/> Using this scale, how <u>confident</u> are you that you could successfully quit smoking <u>right now</u>?",value: 5, minValue: 1, maxValue: 10 
     },{
     	id: "intendmo2",
-    	text: "PE3.  (NOTE:  If participant does not use 1 to 10 response format, read the following statement:  ÒFor this question, you should use a number from one to 10, where 1 means 'not at all' and 10 means 'extremely'), <br/><br/> Using that same scale, where 1 is 'not at all' and 10 is 'extremely', how much would you say that you intend to quit in the next month?", value: 5, minValue: 1, maxValue: 10 
+    	text: "PE3.  (NOTE:  If participant does not use 1 to 10 response format, read the following statement: For this question, you should use a number from one to 10, where 1 means 'not at all' and 10 means 'extremely'.), <br/><br/> Using that same scale, where 1 is 'not at all' and 10 is 'extremely', how much would you say that you intend to quit <u>in the next month</u>?", value: 5, minValue: 1, maxValue: 10 
     },{
     	id:"intendsix2",
-    	text: "PE4.  (NOTE:  If participant does not use 1 to 10 response format, read the following statement:  ÒFor this question, you should use a number from one to 10, where 1 means 'not at all' and 10 means 'extremely'), <br/><br/> How much would you say that you intend to quit in the next six months?", value: 5, minValue: 1, maxValue: 10
+    	text: "PE4.  (NOTE:  If participant does not use 1 to 10 response format, read the following statement: For this question, you should use a number from one to 10, where 1 means 'not at all' and 10 means 'extremely'.), <br/><br/> How much would you say that you intend to quit <u>in the next six months</u>?", value: 5, minValue: 1, maxValue: 10
     },{
     	id:"quitassist2",
-    	text: "PE5.  (NOTE:  If participant does not use 1 to 10 response format, read the following statement:  ÒFor this question, you should use a number from one to 10, where 1 means 'not at all' and 10 means 'extremely'), <br/><br/> Using the same scale, How likely are you to get help, like medications or counselling, the next time you try to quit? ", value: 5, minValue: 1, maxValue: 10
+    	text: "PE5.  (NOTE:  If participant does not use 1 to 10 response format, read the following statement: For this question, you should use a number from one to 10, where 1 means 'not at all' and 10 means 'extremely'.), <br/><br/> Using the same scale, How likely are you to get help, like medications or counselling, the <u>next time</u> you try to quit? ", value: 5, minValue: 1, maxValue: 10
     },{
     	id: "damage",
-    	text: "PE6.  (NOTE:  If participant does not use 1 to 10 response format, read the following statement:  ÒFor this question, you should use a number from one to 10, where 1 means 'not at all' and 10 means 'extremely'), <br/><br/> How worried are you, if at all, that smoking will damage your health in the future?", value: 5, minValue: 1, maxValue: 10
+    	text: "PE6.  (NOTE:  If participant does not use 1 to 10 response format, read the following statement: For this question, you should use a number from one to 10, where 1 means 'not at all' and 10 means 'extremely'.), <br/><br/> How worried are you, if at all, that smoking will damage your health in the future?", value: 5, minValue: 1, maxValue: 10
     },{
     	id: "quitimprove2",
-    	text:"PE7. (NOTE:  If participant does not use 1 to 10 response format, read the following statement:  ÒFor this question, you should use a number from one to 10, where 1 means 'not at all' and 10 means 'extremely'), <br/><br/> Using the same scale, How much would quitting smoking improve your health?",value: 5, minValue: 1, maxValue: 10
+    	text:"PE7. (NOTE:  If participant does not use 1 to 10 response format, read the following statement: For this question, you should use a number from one to 10, where 1 means 'not at all' and 10 means 'extremely'.), <br/><br/> Using the same scale, How much would quitting smoking improve your health?",value: 5, minValue: 1, maxValue: 10
     },{
     id: "icecream",
     text: "HL1.  Just one more set of questions, and we will be done. Please take a look at this information, which is found on the back of a container of a pint of ice cream. <br/><br/> (NOTE:Do not let participants see response options)<br/><br/> If you eat all of the ice cream in the container, how many calories will you eat?",
@@ -613,7 +613,7 @@ var surveyTemplate = {
     },{
     id: "income",
     text: "HL8. (NOTE: Show respondent the options on the screen)<br/><br/> What was your annual household income from all sources during 2010? ",
-    answers: ["Less than $10,000","$10,000- $15,000", "$15,000Ð$25,000", "$25,000Ð$35,000", "$35,000Ð$45,000", "$45,000Ð$55,000", "$55,000Ð$75,000", "$75,000Ð$95,000","More than $95,000"]
+    answers: ["Less than $10,000","$10,000- $15,000", "$15,000-$25,000", "$25,000-$35,000", "$35,000-$45,000", "$45,000-$55,000", "$55,000-$75,000", "$75,000-$95,000","More than $95,000"]
     },{
     	id: "zipcode",
     	text: "HL9. Finally, can you tell me the zip code for the place where you live most of the time?"
