@@ -79,21 +79,21 @@ var controlGroupTemplate = [
 	text: "Control question 1"},{
 	    id: "Controlaccept0-grab", text:"CA1:  On a scale of 1 to 10, where 1 is 'not at all' and 10 is 'extremely', please tell me whether this warning message <br/><br/>... grabs your attention", value: 5, minValue: 1, maxValue: 10 
 	},{
-	    id: "Controlaccept0-alarm", text: "CA2:  (NOTE: ONLY REPEAT PREAMBLE IF NECESSARY: On a scale of 1 to 10, where 1 is ‘not at all’ and 10 is ‘extremely’, please tell whether this warning message) <br/><br/> ...is alarming", value: 5, minValue: 1, maxValue: 10
+	    id: "Controlaccept0-alarm", text: "CA2:  (NOTE: ONLY REPEAT PREAMBLE IF NECESSARY: On a scale of 1 to 10, where 1 is 'not at all' and 10 is 'extremely', please tell whether this warning message) <br/><br/> ...is alarming", value: 5, minValue: 1, maxValue: 10
 	},{
-	    id: "Controlaccept0-fright", text: "CA3:  (NOTE: On a scale of 1 to 10, where 1 is ‘not at all’ and 10 is ‘extremely’, please tell whether this warning message) <br/><br/> ...is frightening", value: 5, minValue: 1, maxValue: 10
+	    id: "Controlaccept0-fright", text: "CA3:  (NOTE: On a scale of 1 to 10, where 1 is 'not at all' and 10 is 'extremely', please tell whether this warning message) <br/><br/> ...is frightening", value: 5, minValue: 1, maxValue: 10
 	},{
-	    id: "Controlaccept0-unpleas", text: "CA4:  (NOTE: On a scale of 1 to 10, where 1 is ‘not at all’ and 10 is ‘extremely’, please tell whether this warning message) <br/><br/> ...is unpleasant", value: 5, minValue: 1, maxValue: 10
+	    id: "Controlaccept0-unpleas", text: "CA4:  (NOTE: On a scale of 1 to 10, where 1 is 'not at all' and 10 is 'extremely', please tell whether this warning message) <br/><br/> ...is unpleasant", value: 5, minValue: 1, maxValue: 10
 	},{
 	    
 	    id: "Controlaccept0-believable", text: "CA5:  (NOTE: ONLY REPEAT PREAMBLE IF NECESSARY. On a scale of 1 to 10, where 1 is 'not at all' and 10 is 'extremely', please tell me whether this warning message) <br/><br/> ...is believable", value: 5, minValue: 1, maxValue: 10 
 	},{
-	    id: "Controlaccept0-relevant", text: "CA6:  (NOTE: On a scale of 1 to 10, where 1 is ‘not at all’ and 10 is ‘extremely’, please tell whether this warning message) <br/><br/> ...speaks to people like you", value: 5, minValue: 1, maxValue: 10 
+	    id: "Controlaccept0-relevant", text: "CA6:  (NOTE: On a scale of 1 to 10, where 1 is 'not at all' and 10 is 'extremely', please tell whether this warning message) <br/><br/> ...speaks to people like you", value: 5, minValue: 1, maxValue: 10 
 	},{
 
-	    id: "Controlaccept0-concern", text: "CA7:  (NOTE: On a scale of 1 to 10, where 1 is ‘not at all’ and 10 is ‘extremely’, please tell whether this warning message) <br/><br/> ...makes you more concerned about the dangers of smoking", value: 5, minValue: 1, maxValue: 10
+	    id: "Controlaccept0-concern", text: "CA7:  (NOTE: On a scale of 1 to 10, where 1 is 'not at all' and 10 is 'extremely', please tell whether this warning message) <br/><br/> ...makes you more concerned about the dangers of smoking", value: 5, minValue: 1, maxValue: 10
 	},{
-	    id: "Controlaccept0-quit", text: "CA8:  (NOTE: On a scale of 1 to 10, where 1 is ‘not at all’ and 10 is ‘extremely’, please tell whether this warning message) <br/><br/> ...makes you want to quit", value: 5, minValue: 1, maxValue: 10
+	    id: "Controlaccept0-quit", text: "CA8:  (NOTE: On a scale of 1 to 10, where 1 is 'not at all' and 10 is 'extremely', please tell whether this warning message) <br/><br/> ...makes you want to quit", value: 5, minValue: 1, maxValue: 10
 	},{
 	    id: "Controlaccept0-overall", text: "CA9:  Overall, on a scale of 1 to 10, how effective is this health warning?", value: 5, minValue: 1, maxValue: 10
 	}],
@@ -102,21 +102,21 @@ var controlGroupTemplate = [
 	text: "Control question 2"},{
 	    id: "Controlaccept1-grab", text:"CB1:  On a scale of 1 to 10, where 1 is 'not at all' and 10 is 'extremely', please tell me whether this warning message<br/><br/> ...grabs your attention", value: 5, minValue: 1, maxValue: 10 
 	},{
-	    id: "Controlaccept1-alarm", text: "CB2:  (NOTE: ONLY REPEAT PREAMBLE IF NECESSARY: On a scale of 1 to 10, where 1 is ‘not at all’ and 10 is ‘extremely’, please tell whether this warning message) <br/><br/> ...is alarming", value: 5, minValue: 1, maxValue: 10
+	    id: "Controlaccept1-alarm", text: "CB2:  (NOTE: ONLY REPEAT PREAMBLE IF NECESSARY: On a scale of 1 to 10, where 1 is 'not at all' and 10 is 'extremely', please tell whether this warning message) <br/><br/> ...is alarming", value: 5, minValue: 1, maxValue: 10
 	},{
-	    id: "Controlaccept1-fright", text: "CB3:  (NOTE: On a scale of 1 to 10, where 1 is ‘not at all’ and 10 is ‘extremely’, please tell whether this warning message) <br/><br/> ...is frightening", value: 5, minValue: 1, maxValue: 10
+	    id: "Controlaccept1-fright", text: "CB3:  (NOTE: On a scale of 1 to 10, where 1 is 'not at all' and 10 is 'extremely', please tell whether this warning message) <br/><br/> ...is frightening", value: 5, minValue: 1, maxValue: 10
 	},{
-	    id: "Controlaccept1-unpleas", text: "CB4:  (NOTE: On a scale of 1 to 10, where 1 is ‘not at all’ and 10 is ‘extremely’, please tell whether this warning message) <br/><br/> ...is unpleasant", value: 5, minValue: 1, maxValue: 10
+	    id: "Controlaccept1-unpleas", text: "CB4:  (NOTE: On a scale of 1 to 10, where 1 is 'not at all' and 10 is 'extremely', please tell whether this warning message) <br/><br/> ...is unpleasant", value: 5, minValue: 1, maxValue: 10
 	},{
 	    
 	    id: "Controlaccept1-believable", text: "CB5:  (NOTE: On a scale of 1 to 10, where 1 is 'not at all' and 10 is 'extremely', please tell me whether this warning message) <br/><br/> ...is believable", value: 5, minValue: 1, maxValue: 10 
 	},{
-	    id: "Controlaccept1-relevant", text: "CB6:  (NOTE: On a scale of 1 to 10, where 1 is ‘not at all’ and 10 is ‘extremely’, please tell whether this warning message) <br/><br/> ...speaks to people like you", value: 5, minValue: 1, maxValue: 10 
+	    id: "Controlaccept1-relevant", text: "CB6:  (NOTE: On a scale of 1 to 10, where 1 is 'not at all' and 10 is 'extremely', please tell whether this warning message) <br/><br/> ...speaks to people like you", value: 5, minValue: 1, maxValue: 10 
 	},{
 	    
-	    id: "Controlaccept1-concern", text: "CB7:  (NOTE: On a scale of 1 to 10, where 1 is ‘not at all’ and 10 is ‘extremely’, please tell whether this warning message) <br/><br/> ...makes you more concerned about the dangers of smoking", value: 5, minValue: 1, maxValue: 10
+	    id: "Controlaccept1-concern", text: "CB7:  (NOTE: On a scale of 1 to 10, where 1 is 'not at all' and 10 is 'extremely', please tell whether this warning message) <br/><br/> ...makes you more concerned about the dangers of smoking", value: 5, minValue: 1, maxValue: 10
 	},{
-	    id: "Controlaccept1-quit", text: "CB8:  (NOTE: On a scale of 1 to 10, where 1 is ‘not at all’ and 10 is ‘extremely’, please tell whether this warning message) <br/><br/> ...makes you want to quit", value: 5, minValue: 1, maxValue: 10
+	    id: "Controlaccept1-quit", text: "CB8:  (NOTE: On a scale of 1 to 10, where 1 is 'not at all' and 10 is 'extremely', please tell whether this warning message) <br/><br/> ...makes you want to quit", value: 5, minValue: 1, maxValue: 10
 	},{
 	    id: "Controlaccept1-overall", text: "CB9:  Overall, on a scale of 1 to 10, how effective is this health warning?", value: 5, minValue: 1, maxValue: 10
 	}],
@@ -125,20 +125,20 @@ var controlGroupTemplate = [
 	text: "Control question 3"},{
 	    id: "Controlaccept2-grab", text:"CC1:  On a scale of 1 to 10, where 1 is 'not at all' and 10 is 'extremely', please tell me whether this warning message <br/><br/> ...grabs your attention", value: 5, minValue: 1, maxValue: 10 
 	},{
-	    id: "Controlaccept2-alarm", text: "CC2:  (NOTE: ONLY REPEAT PREAMBLE IF NECESSARY: On a scale of 1 to 10, where 1 is ‘not at all’ and 10 is ‘extremely’, please tell whether this warning message) <br/><br/> ...is alarming", value: 5, minValue: 1, maxValue: 10
+	    id: "Controlaccept2-alarm", text: "CC2:  (NOTE: ONLY REPEAT PREAMBLE IF NECESSARY: On a scale of 1 to 10, where 1 is 'not at all' and 10 is 'extremely', please tell whether this warning message) <br/><br/> ...is alarming", value: 5, minValue: 1, maxValue: 10
 	},{
-	    id: "Controlaccept2-fright", text: "CC3:  (NOTE: On a scale of 1 to 10, where 1 is ‘not at all’ and 10 is ‘extremely’, please tell whether this warning message) <br/><br/> ...is frightening", value: 5, minValue: 1, maxValue: 10
+	    id: "Controlaccept2-fright", text: "CC3:  (NOTE: On a scale of 1 to 10, where 1 is 'not at all' and 10 is 'extremely', please tell whether this warning message) <br/><br/> ...is frightening", value: 5, minValue: 1, maxValue: 10
 	},{
-	    id: "Controlaccept2-unpleas", text: "CC4:  (NOTE: On a scale of 1 to 10, where 1 is ‘not at all’ and 10 is ‘extremely’, please tell whether this warning message) <br/><br/> ...is unpleasant", value: 5, minValue: 1, maxValue: 10
+	    id: "Controlaccept2-unpleas", text: "CC4:  (NOTE: On a scale of 1 to 10, where 1 is 'not at all' and 10 is 'extremely', please tell whether this warning message) <br/><br/> ...is unpleasant", value: 5, minValue: 1, maxValue: 10
 	},{
 	    id: "Controlaccept2-believable", text: "CC5:  (NOTE: On a scale of 1 to 10, where 1 is 'not at all' and 10 is 'extremely', please tell me whether this warning message) <br/><br/> ...is believable", value: 5, minValue: 1, maxValue: 10 
 	},{
-	    id: "Controlaccept2-relevant", text: "CC6:  (NOTE: On a scale of 1 to 10, where 1 is ‘not at all’ and 10 is ‘extremely’, please tell whether this warning message) <br/><br/> ...speaks to people like you", value: 5, minValue: 1, maxValue: 10 
+	    id: "Controlaccept2-relevant", text: "CC6:  (NOTE: On a scale of 1 to 10, where 1 is 'not at all' and 10 is 'extremely', please tell whether this warning message) <br/><br/> ...speaks to people like you", value: 5, minValue: 1, maxValue: 10 
 	},{
 	    
-	    id: "Controlaccept2-concern", text: "CC7:  (NOTE: On a scale of 1 to 10, where 1 is ‘not at all’ and 10 is ‘extremely’, please tell whether this warning message) <br/><br/> ...makes you more concerned about the dangers of smoking", value: 5, minValue: 1, maxValue: 10
+	    id: "Controlaccept2-concern", text: "CC7:  (NOTE: On a scale of 1 to 10, where 1 is 'not at all' and 10 is 'extremely', please tell whether this warning message) <br/><br/> ...makes you more concerned about the dangers of smoking", value: 5, minValue: 1, maxValue: 10
 	},{
-	    id: "Controlaccept2-quit", text: "CC8:  (NOTE: On a scale of 1 to 10, where 1 is ‘not at all’ and 10 is ‘extremely’, please tell whether this warning message) <br/><br/> ...makes you want to quit", value: 5, minValue: 1, maxValue: 10
+	    id: "Controlaccept2-quit", text: "CC8:  (NOTE: On a scale of 1 to 10, where 1 is 'not at all' and 10 is 'extremely', please tell whether this warning message) <br/><br/> ...makes you want to quit", value: 5, minValue: 1, maxValue: 10
 	},{
 	    id: "Controlaccept2-overall", text: "CC9:  Overall, on a scale of 1 to 10, how effective is this health warning?", value: 5, minValue: 1, maxValue: 10
 	}],
@@ -147,19 +147,19 @@ var controlGroupTemplate = [
 	text: "Control question 4"},{
 	    id: "Controlaccept3-grab", text:"CD1:  On a scale of 1 to 10, where 1 is 'not at all' and 10 is 'extremely', please tell me whether this warning message... grabs your attention", value: 5, minValue: 1, maxValue: 10 
 	},{
-	    id: "Controlaccept3-alarm", text: "CD2:  (NOTE: ONLY REPEAT PREAMBLE IF NECESSARY: On a scale of 1 to 10, where 1 is ‘not at all’ and 10 is ‘extremely’, please tell whether this warning message) <br/><br/> ...is alarming", value: 5, minValue: 1, maxValue: 10
+	    id: "Controlaccept3-alarm", text: "CD2:  (NOTE: ONLY REPEAT PREAMBLE IF NECESSARY: On a scale of 1 to 10, where 1 is 'not at all' and 10 is 'extremely', please tell whether this warning message) <br/><br/> ...is alarming", value: 5, minValue: 1, maxValue: 10
 	},{
-	    id: "Controlaccept3-fright", text: "CD3:  (NOTE: On a scale of 1 to 10, where 1 is ‘not at all’ and 10 is ‘extremely’, please tell whether this warning message) <br/><br/> ...is frightening", value: 5, minValue: 1, maxValue: 10
+	    id: "Controlaccept3-fright", text: "CD3:  (NOTE: On a scale of 1 to 10, where 1 is 'not at all' and 10 is 'extremely', please tell whether this warning message) <br/><br/> ...is frightening", value: 5, minValue: 1, maxValue: 10
 	},{
-	    id: "Controlaccept3-unpleas", text: "CD4:  (NOTE: On a scale of 1 to 10, where 1 is ‘not at all’ and 10 is ‘extremely’, please tell whether this warning message) <br/><br/> ...is unpleasant", value: 5, minValue: 1, maxValue: 10
+	    id: "Controlaccept3-unpleas", text: "CD4:  (NOTE: On a scale of 1 to 10, where 1 is 'not at all' and 10 is 'extremely', please tell whether this warning message) <br/><br/> ...is unpleasant", value: 5, minValue: 1, maxValue: 10
 	},{
 	    id: "Controlaccept3-believable", text: "CD5:  (NOTE: On a scale of 1 to 10, where 1 is 'not at all' and 10 is 'extremely', please tell me whether this warning message) <br/><br/> ...is believable", value: 5, minValue: 1, maxValue: 10 
 	},{
-	    id: "Controlaccept3-relevant", text: "CD6:  (NOTE: On a scale of 1 to 10, where 1 is ‘not at all’ and 10 is ‘extremely’, please tell whether this warning message) <br/><br/> ...speaks to people like you", value: 5, minValue: 1, maxValue: 10 
+	    id: "Controlaccept3-relevant", text: "CD6:  (NOTE: On a scale of 1 to 10, where 1 is 'not at all' and 10 is 'extremely', please tell whether this warning message) <br/><br/> ...speaks to people like you", value: 5, minValue: 1, maxValue: 10 
 	},{
-	    id: "Controlaccept3-concern", text: "CD7:  (NOTE: On a scale of 1 to 10, where 1 is ‘not at all’ and 10 is ‘extremely’, please tell whether this warning message) <br/><br/> ...makes you more concerned about the dangers of smoking", value: 5, minValue: 1, maxValue: 10
+	    id: "Controlaccept3-concern", text: "CD7:  (NOTE: On a scale of 1 to 10, where 1 is 'not at all' and 10 is 'extremely', please tell whether this warning message) <br/><br/> ...makes you more concerned about the dangers of smoking", value: 5, minValue: 1, maxValue: 10
 	},{
-	    id: "Controlaccept3-quit", text: "CD8:  (NOTE: On a scale of 1 to 10, where 1 is ‘not at all’ and 10 is ‘extremely’, please tell whether this warning message) <br/><br/> ...makes you want to quit", value: 5, minValue: 1, maxValue: 10
+	    id: "Controlaccept3-quit", text: "CD8:  (NOTE: On a scale of 1 to 10, where 1 is 'not at all' and 10 is 'extremely', please tell whether this warning message) <br/><br/> ...makes you want to quit", value: 5, minValue: 1, maxValue: 10
 	},{
 	    id: "Controlaccept3-overall", text: "CD9:  Overall, on a scale of 1 to 10, how effective is this health warning?", value: 5, minValue: 1, maxValue: 10
 	}]];
@@ -174,17 +174,17 @@ var cancerGruesome = [
     ],{
 	id: "CancerGrueAccep-grab", text: "CANG1:  On a scale of 1 to 10, where 1 is 'not at all' and 10 is 'extemely', please tell me whether this warning message <br/><br/> ...grabs your attention", value: 5, minValue: 1, maxValue: 10 
     },{
-	id: "CancerGrueAccep-alarm", text: "CANG2:  (NOTE: ONLY REPEAT PREAMBLE IF NECESSARY: On a scale of 1 to 10, where 1 is ‘not at all’ and 10 is ‘extremely’, please tell whether this warning message) <br/><br/> ...is alarming", value: 5, minValue: 1, maxValue: 10
-    },{   id: "CancerGrueAccep-fright", text: "CANG3:  (NOTE: On a scale of 1 to 10, where 1 is ‘not at all’ and 10 is ‘extremely’, please tell whether this warning message) <br/><br/> ...is frightening", value: 5, minValue: 1, maxValue: 10
-      },{   id: "CancerGrueAccep-unpleas", text: "CANG4:  (NOTE: On a scale of 1 to 10, where 1 is ‘not at all’ and 10 is ‘extremely’, please tell whether this warning message) <br/><br/> ...is unpleasant", value: 5, minValue: 1, maxValue: 10
+	id: "CancerGrueAccep-alarm", text: "CANG2:  (NOTE: ONLY REPEAT PREAMBLE IF NECESSARY: On a scale of 1 to 10, where 1 is 'not at all' and 10 is 'extremely', please tell whether this warning message) <br/><br/> ...is alarming", value: 5, minValue: 1, maxValue: 10
+    },{   id: "CancerGrueAccep-fright", text: "CANG3:  (NOTE: On a scale of 1 to 10, where 1 is 'not at all' and 10 is 'extremely', please tell whether this warning message) <br/><br/> ...is frightening", value: 5, minValue: 1, maxValue: 10
+      },{   id: "CancerGrueAccep-unpleas", text: "CANG4:  (NOTE: On a scale of 1 to 10, where 1 is 'not at all' and 10 is 'extremely', please tell whether this warning message) <br/><br/> ...is unpleasant", value: 5, minValue: 1, maxValue: 10
 	},{
 	    id: "CancerGrueAccep-believable", text: "CANG5:  (NOTE: On a scale of 1 to 10, where 1 is 'not at all' and 10 is 'extremely', please tell me whether this warning message) <br/><br/> ... is believable", value: 5, minValue: 1, maxValue: 10 
 	},{
-	    id: "CancerGrueAccep-relevant", text: "CANG6:  (NOTE: On a scale of 1 to 10, where 1 is ‘not at all’ and 10 is ‘extremely’, please tell whether this warning message) <br/><br/> ...speaks to people like you", value: 5, minValue: 1, maxValue: 10 
+	    id: "CancerGrueAccep-relevant", text: "CANG6:  (NOTE: On a scale of 1 to 10, where 1 is 'not at all' and 10 is 'extremely', please tell whether this warning message) <br/><br/> ...speaks to people like you", value: 5, minValue: 1, maxValue: 10 
 	},{
-	    id: "CancerGrueAccep-concern", text: "CANG7:  (NOTE: On a scale of 1 to 10, where 1 is ‘not at all’ and 10 is ‘extremely’, please tell whether this warning message) <br/><br/> ...makes you more concerned about the dangers of smoking", value: 5, minValue: 1, maxValue: 10
+	    id: "CancerGrueAccep-concern", text: "CANG7:  (NOTE: On a scale of 1 to 10, where 1 is 'not at all' and 10 is 'extremely', please tell whether this warning message) <br/><br/> ...makes you more concerned about the dangers of smoking", value: 5, minValue: 1, maxValue: 10
 	},{
-	    id: "CancerGrueAccep-quit", text: "CANG8: (NOTE: On a scale of 1 to 10, where 1 is ‘not at all’ and 10 is ‘extremely’, please tell whether this warning message) <br/><br/> ...makes you want to quit", value: 5, minValue: 1, maxValue: 10
+	    id: "CancerGrueAccep-quit", text: "CANG8: (NOTE: On a scale of 1 to 10, where 1 is 'not at all' and 10 is 'extremely', please tell whether this warning message) <br/><br/> ...makes you want to quit", value: 5, minValue: 1, maxValue: 10
 	},{
 	    id: "CancerGrueAccep-overall", text: "CANG9:  Overall, on a scale of 1 to 10, how effective is this health warning?", value: 5, minValue: 1, maxValue: 10
 	}
@@ -200,17 +200,17 @@ var cancerHumanSuffering = [
     ],{
  	id: "CancerHSAccep-grab", text: "CANHS1:  On a scale of 1 to 10, where 1 is 'not at all' and 10 is 'extemely', please tell me whether this warning message <br/><br/> ...grabs your attention", value: 5, minValue: 1, maxValue: 10 
     },{
-	id: "CancerHSAccep-alarm", text: "CANHS2:  (NOTE: ONLY REPEAT PREAMBLE IF NECESSARY: On a scale of 1 to 10, where 1 is ‘not at all’ and 10 is ‘extremely’, please tell whether this warning message) <br/><br/> ...is alarming", value: 5, minValue: 1, maxValue: 10
-    },{   id: "CancerHSAccep-fright", text: "CANHS3:  (NOTE: On a scale of 1 to 10, where 1 is ‘not at all’ and 10 is ‘extremely’, please tell whether this warning message) <br/><br/> ...is frightening", value: 5, minValue: 1, maxValue: 10
-      },{   id: "CancerHSAccep-unpleas", text: "CANHS4:  (NOTE: On a scale of 1 to 10, where 1 is ‘not at all’ and 10 is ‘extremely’, please tell whether this warning message) <br/><br/> ...is unpleasant", value: 5, minValue: 1, maxValue: 10
+	id: "CancerHSAccep-alarm", text: "CANHS2:  (NOTE: ONLY REPEAT PREAMBLE IF NECESSARY: On a scale of 1 to 10, where 1 is 'not at all' and 10 is 'extremely', please tell whether this warning message) <br/><br/> ...is alarming", value: 5, minValue: 1, maxValue: 10
+    },{   id: "CancerHSAccep-fright", text: "CANHS3:  (NOTE: On a scale of 1 to 10, where 1 is 'not at all' and 10 is 'extremely', please tell whether this warning message) <br/><br/> ...is frightening", value: 5, minValue: 1, maxValue: 10
+      },{   id: "CancerHSAccep-unpleas", text: "CANHS4:  (NOTE: On a scale of 1 to 10, where 1 is 'not at all' and 10 is 'extremely', please tell whether this warning message) <br/><br/> ...is unpleasant", value: 5, minValue: 1, maxValue: 10
 	},{
 	    id: "CancerHSAccep-believable", text: "CANHS5:  (NOTE: On a scale of 1 to 10, where 1 is 'not at all' and 10 is 'extremely', please tell me whether this warning message) <br/><br/> ... is believable", value: 5, minValue: 1, maxValue: 10 
 	},{
-	    id: "CancerHSAccep-relevant", text: "CANHS6:  (NOTE: On a scale of 1 to 10, where 1 is ‘not at all’ and 10 is ‘extremely’, please tell whether this warning message) <br/><br/> ...speaks to people like you", value: 5, minValue: 1, maxValue: 10 
+	    id: "CancerHSAccep-relevant", text: "CANHS6:  (NOTE: On a scale of 1 to 10, where 1 is 'not at all' and 10 is 'extremely', please tell whether this warning message) <br/><br/> ...speaks to people like you", value: 5, minValue: 1, maxValue: 10 
 	},{
-	    id: "CancerHSAccep-concern", text: "CANHS7:  (NOTE: On a scale of 1 to 10, where 1 is ‘not at all’ and 10 is ‘extremely’, please tell whether this warning message) <br/><br/> ...makes you more concerned about the dangers of smoking", value: 5, minValue: 1, maxValue: 10
+	    id: "CancerHSAccep-concern", text: "CANHS7:  (NOTE: On a scale of 1 to 10, where 1 is 'not at all' and 10 is 'extremely', please tell whether this warning message) <br/><br/> ...makes you more concerned about the dangers of smoking", value: 5, minValue: 1, maxValue: 10
 	},{
-	    id: "CancerHSAccep-quit", text: "CANHS8: (NOTE: On a scale of 1 to 10, where 1 is ‘not at all’ and 10 is ‘extremely’, please tell whether this warning message) <br/><br/> ...makes you want to quit", value: 5, minValue: 1, maxValue: 10
+	    id: "CancerHSAccep-quit", text: "CANHS8: (NOTE: On a scale of 1 to 10, where 1 is 'not at all' and 10 is 'extremely', please tell whether this warning message) <br/><br/> ...makes you want to quit", value: 5, minValue: 1, maxValue: 10
 	},{
 	    id: "CancerHSAccep-overall", text: "CANHS9:  Overall, on a scale of 1 to 10, how effective is this health warning?", value: 5, minValue: 1, maxValue: 10
 	}
@@ -226,17 +226,17 @@ var cancerSymbolic = [
     ],{
 	id: "CancerSymAccep-grab", text: "CANSY1:  On a scale of 1 to 10, where 1 is 'not at all' and 10 is 'extemely', please tell me whether this warning message <br/><br/> ...grabs your attention", value: 5, minValue: 1, maxValue: 10 
     },{
-	id: "CancerSymAccep-alarm", text: "CANSY2:  (NOTE: ONLY REPEAT PREAMBLE IF NECESSARY: On a scale of 1 to 10, where 1 is ‘not at all’ and 10 is ‘extremely’, please tell whether this warning message) <br/><br/> ...is alarming", value: 5, minValue: 1, maxValue: 10
-    },{   id: "CancerSymAccep-fright", text: "CANSY3:  (NOTE: On a scale of 1 to 10, where 1 is ‘not at all’ and 10 is ‘extremely’, please tell whether this warning message) <br/><br/> ...is frightening", value: 5, minValue: 1, maxValue: 10
-      },{   id: "CancerSymAccep-unpleas", text: "CANSY4:  (NOTE: On a scale of 1 to 10, where 1 is ‘not at all’ and 10 is ‘extremely’, please tell whether this warning message) <br/><br/> ...is unpleasant", value: 5, minValue: 1, maxValue: 10
+	id: "CancerSymAccep-alarm", text: "CANSY2:  (NOTE: ONLY REPEAT PREAMBLE IF NECESSARY: On a scale of 1 to 10, where 1 is 'not at all' and 10 is 'extremely', please tell whether this warning message) <br/><br/> ...is alarming", value: 5, minValue: 1, maxValue: 10
+    },{   id: "CancerSymAccep-fright", text: "CANSY3:  (NOTE: On a scale of 1 to 10, where 1 is 'not at all' and 10 is 'extremely', please tell whether this warning message) <br/><br/> ...is frightening", value: 5, minValue: 1, maxValue: 10
+      },{   id: "CancerSymAccep-unpleas", text: "CANSY4:  (NOTE: On a scale of 1 to 10, where 1 is 'not at all' and 10 is 'extremely', please tell whether this warning message) <br/><br/> ...is unpleasant", value: 5, minValue: 1, maxValue: 10
 	},{
 	    id: "CancerSymAccep-believable", text: "CANSY5:  (NOTE: On a scale of 1 to 10, where 1 is 'not at all' and 10 is 'extremely', please tell me whether this warning message) <br/><br/> ... is believable", value: 5, minValue: 1, maxValue: 10 
 	},{
-	    id: "CancerSymAccep-relevant", text: "CANSY6:  (NOTE: On a scale of 1 to 10, where 1 is ‘not at all’ and 10 is ‘extremely’, please tell whether this warning message) <br/><br/> ...speaks to people like you", value: 5, minValue: 1, maxValue: 10 
+	    id: "CancerSymAccep-relevant", text: "CANSY6:  (NOTE: On a scale of 1 to 10, where 1 is 'not at all' and 10 is 'extremely', please tell whether this warning message) <br/><br/> ...speaks to people like you", value: 5, minValue: 1, maxValue: 10 
 	},{
-	    id: "CancerSymAccep-concern", text: "CANSY7:  (NOTE: On a scale of 1 to 10, where 1 is ‘not at all’ and 10 is ‘extremely’, please tell whether this warning message) <br/><br/> ...makes you more concerned about the dangers of smoking", value: 5, minValue: 1, maxValue: 10
+	    id: "CancerSymAccep-concern", text: "CANSY7:  (NOTE: On a scale of 1 to 10, where 1 is 'not at all' and 10 is 'extremely', please tell whether this warning message) <br/><br/> ...makes you more concerned about the dangers of smoking", value: 5, minValue: 1, maxValue: 10
 	},{
-	    id: "CancerSymAccep-quit", text: "CANSY8: (NOTE: On a scale of 1 to 10, where 1 is ‘not at all’ and 10 is ‘extremely’, please tell whether this warning message) <br/><br/> ...makes you want to quit", value: 5, minValue: 1, maxValue: 10
+	    id: "CancerSymAccep-quit", text: "CANSY8: (NOTE: On a scale of 1 to 10, where 1 is 'not at all' and 10 is 'extremely', please tell whether this warning message) <br/><br/> ...makes you want to quit", value: 5, minValue: 1, maxValue: 10
 	},{
 	    id: "CancerSymAccep-overall", text: "CANSY9:  Overall, on a scale of 1 to 10, how effective is this health warning?", value: 5, minValue: 1, maxValue: 10
 	}];
@@ -251,19 +251,19 @@ var CVDGruesome = [
     ],{
 	id: "CVDGrueAccep-grab", text: "CVDG1:  On a scale of 1 to 10, where 1 is 'not at all' and 10 is 'extemely', please tell me whether this warning message <br/> <br/> ...grabs your attention", value: 5, minValue: 1, maxValue: 10 
     },{
-	id: "CVDGrueAccep-alarm", text: "CVDG2:  (NOTE: ONLY REPEAT PREAMBLE IF NECESSARY: On a scale of 1 to 10, where 1 is ‘not at all’ and 10 is ‘extremely’, please tell whether this warning message) <br/><br/> ...is alarming", value: 5, minValue: 1, maxValue: 10
+	id: "CVDGrueAccep-alarm", text: "CVDG2:  (NOTE: ONLY REPEAT PREAMBLE IF NECESSARY: On a scale of 1 to 10, where 1 is 'not at all' and 10 is 'extremely', please tell whether this warning message) <br/><br/> ...is alarming", value: 5, minValue: 1, maxValue: 10
     },{
-	id: "CVDGrueAccep-fright", text: "CVDG3:  (NOTE: On a scale of 1 to 10, where 1 is ‘not at all’ and 10 is ‘extremely’, please tell whether this warning message) <br/><br/> ...is frightening", value: 5, minValue: 1, maxValue: 10
+	id: "CVDGrueAccep-fright", text: "CVDG3:  (NOTE: On a scale of 1 to 10, where 1 is 'not at all' and 10 is 'extremely', please tell whether this warning message) <br/><br/> ...is frightening", value: 5, minValue: 1, maxValue: 10
     },{
-	id: "CVDGrueAccep-unpleas", text: "CVDG4:  (NOTE: On a scale of 1 to 10, where 1 is ‘not at all’ and 10 is ‘extremely’, please tell whether this warning message) <br/><br/> ...is unpleasant", value: 5, minValue: 1, maxValue: 10
+	id: "CVDGrueAccep-unpleas", text: "CVDG4:  (NOTE: On a scale of 1 to 10, where 1 is 'not at all' and 10 is 'extremely', please tell whether this warning message) <br/><br/> ...is unpleasant", value: 5, minValue: 1, maxValue: 10
     },{
 	id: "CVDGrueAccep-believable", text: "CVDG5:  (NOTE: On a scale of 1 to 10, where 1 is 'not at all' and 10 is 'extremely', please tell me whether this warning message) <br/><br/> ...is believable", value: 5, minValue: 1, maxValue: 10 
     },{
-	id: "CVDGrueAccep-relevant", text: "CVDG6:  (NOTE: On a scale of 1 to 10, where 1 is ‘not at all’ and 10 is ‘extremely’, please tell whether this warning message) <br/><br/> ...speaks to people like you", value: 5, minValue: 1, maxValue: 10 
+	id: "CVDGrueAccep-relevant", text: "CVDG6:  (NOTE: On a scale of 1 to 10, where 1 is 'not at all' and 10 is 'extremely', please tell whether this warning message) <br/><br/> ...speaks to people like you", value: 5, minValue: 1, maxValue: 10 
     },{
-	id: "CVDGrueAccep-concern", text: "CVDG7:  (NOTE: On a scale of 1 to 10, where 1 is ‘not at all’ and 10 is ‘extremely’, please tell whether this warning message) <br/><br/> ...makes you more concerned about the dangers of smoking", value: 5, minValue: 1, maxValue: 10
+	id: "CVDGrueAccep-concern", text: "CVDG7:  (NOTE: On a scale of 1 to 10, where 1 is 'not at all' and 10 is 'extremely', please tell whether this warning message) <br/><br/> ...makes you more concerned about the dangers of smoking", value: 5, minValue: 1, maxValue: 10
     },{
-	id: "CVDGrueAccep-quit", text: "CVDG8:  (NOTE: On a scale of 1 to 10, where 1 is ‘not at all’ and 10 is ‘extremely’, please tell whether this warning message) <br/><br/> ...makes you want to quit", value: 5, minValue: 1, maxValue: 10
+	id: "CVDGrueAccep-quit", text: "CVDG8:  (NOTE: On a scale of 1 to 10, where 1 is 'not at all' and 10 is 'extremely', please tell whether this warning message) <br/><br/> ...makes you want to quit", value: 5, minValue: 1, maxValue: 10
     },{
 	id: "CVDGrueAccep-overall", text: "CVDG9:  Overall, on a scale of 1 to 10, how effective is this health warning?", value: 5, minValue: 1, maxValue: 10
     }];
@@ -278,19 +278,19 @@ var CVDHumanSuffering = [
     ],{
 	id: "CVDHSAccep-grab", text: "CVDHS1:  On a scale of 1 to 10, where 1 is 'not at all' and 10 is 'extemely', please tell me whether this warning message <br/> <br/> ...grabs your attention", value: 5, minValue: 1, maxValue: 10 
     },{
-	id: "CVDHSAccep-alarm", text: "CVDHS2:  (NOTE: ONLY REPEAT PREAMBLE IF NECESSARY: On a scale of 1 to 10, where 1 is ‘not at all’ and 10 is ‘extremely’, please tell whether this warning message) <br/><br/> ...is alarming", value: 5, minValue: 1, maxValue: 10
+	id: "CVDHSAccep-alarm", text: "CVDHS2:  (NOTE: ONLY REPEAT PREAMBLE IF NECESSARY: On a scale of 1 to 10, where 1 is 'not at all' and 10 is 'extremely', please tell whether this warning message) <br/><br/> ...is alarming", value: 5, minValue: 1, maxValue: 10
     },{
-	id: "CVDHSAccep-fright", text: "CVDHS3:  (NOTE: On a scale of 1 to 10, where 1 is ‘not at all’ and 10 is ‘extremely’, please tell whether this warning message) <br/><br/> ...is frightening", value: 5, minValue: 1, maxValue: 10
+	id: "CVDHSAccep-fright", text: "CVDHS3:  (NOTE: On a scale of 1 to 10, where 1 is 'not at all' and 10 is 'extremely', please tell whether this warning message) <br/><br/> ...is frightening", value: 5, minValue: 1, maxValue: 10
     },{
-	id: "CVDHSAccep-unpleas", text: "CVDHS4:  (NOTE: On a scale of 1 to 10, where 1 is ‘not at all’ and 10 is ‘extremely’, please tell whether this warning message) <br/><br/> ...is unpleasant", value: 5, minValue: 1, maxValue: 10
+	id: "CVDHSAccep-unpleas", text: "CVDHS4:  (NOTE: On a scale of 1 to 10, where 1 is 'not at all' and 10 is 'extremely', please tell whether this warning message) <br/><br/> ...is unpleasant", value: 5, minValue: 1, maxValue: 10
     },{
 	id: "CVDHSAccep-believable", text: "CVDHS5:  (NOTE: On a scale of 1 to 10, where 1 is 'not at all' and 10 is 'extremely', please tell me whether this warning message) <br/><br/> ...is believable", value: 5, minValue: 1, maxValue: 10 
     },{
-	id: "CVDHSAccep-relevant", text: "CVDHS6:  (NOTE: On a scale of 1 to 10, where 1 is ‘not at all’ and 10 is ‘extremely’, please tell whether this warning message) <br/><br/> ...speaks to people like you", value: 5, minValue: 1, maxValue: 10 
+	id: "CVDHSAccep-relevant", text: "CVDHS6:  (NOTE: On a scale of 1 to 10, where 1 is 'not at all' and 10 is 'extremely', please tell whether this warning message) <br/><br/> ...speaks to people like you", value: 5, minValue: 1, maxValue: 10 
     },{
-	id: "CVDHSAccep-concern", text: "CVDHS7:  (NOTE: On a scale of 1 to 10, where 1 is ‘not at all’ and 10 is ‘extremely’, please tell whether this warning message) <br/><br/> ...makes you more concerned about the dangers of smoking", value: 5, minValue: 1, maxValue: 10
+	id: "CVDHSAccep-concern", text: "CVDHS7:  (NOTE: On a scale of 1 to 10, where 1 is 'not at all' and 10 is 'extremely', please tell whether this warning message) <br/><br/> ...makes you more concerned about the dangers of smoking", value: 5, minValue: 1, maxValue: 10
     },{
-	id: "CVDHSAccep-quit", text: "CVDHS8:  (NOTE: On a scale of 1 to 10, where 1 is ‘not at all’ and 10 is ‘extremely’, please tell whether this warning message) <br/><br/> ...makes you want to quit", value: 5, minValue: 1, maxValue: 10
+	id: "CVDHSAccep-quit", text: "CVDHS8:  (NOTE: On a scale of 1 to 10, where 1 is 'not at all' and 10 is 'extremely', please tell whether this warning message) <br/><br/> ...makes you want to quit", value: 5, minValue: 1, maxValue: 10
     },{
 	id: "CVDHSAccep-overall", text: "CVDHS9:  Overall, on a scale of 1 to 10, how effective is this health warning?", value: 5, minValue: 1, maxValue: 10
     }
@@ -306,19 +306,19 @@ var CVDSymbolic = [
     ],{
 	id: "CVDSYAccep-grab", text: "CVDSY1:  On a scale of 1 to 10, where 1 is 'not at all' and 10 is 'extemely', please tell me whether this warning message <br/> <br/> ...grabs your attention", value: 5, minValue: 1, maxValue: 10 
     },{
-	id: "CVDSYAccep-alarm", text: "CVDSY2:  (NOTE: ONLY REPEAT PREAMBLE IF NECESSARY: On a scale of 1 to 10, where 1 is ‘not at all’ and 10 is ‘extremely’, please tell whether this warning message) <br/><br/> ...is alarming", value: 5, minValue: 1, maxValue: 10
+	id: "CVDSYAccep-alarm", text: "CVDSY2:  (NOTE: ONLY REPEAT PREAMBLE IF NECESSARY: On a scale of 1 to 10, where 1 is 'not at all' and 10 is 'extremely', please tell whether this warning message) <br/><br/> ...is alarming", value: 5, minValue: 1, maxValue: 10
     },{
-	id: "CVDSYAccep-fright", text: "CVDSY3:  (NOTE: On a scale of 1 to 10, where 1 is ‘not at all’ and 10 is ‘extremely’, please tell whether this warning message) <br/><br/> ...is frightening", value: 5, minValue: 1, maxValue: 10
+	id: "CVDSYAccep-fright", text: "CVDSY3:  (NOTE: On a scale of 1 to 10, where 1 is 'not at all' and 10 is 'extremely', please tell whether this warning message) <br/><br/> ...is frightening", value: 5, minValue: 1, maxValue: 10
     },{
-	id: "CVDSYAccep-unpleas", text: "CVDSY4:  (NOTE: On a scale of 1 to 10, where 1 is ‘not at all’ and 10 is ‘extremely’, please tell whether this warning message) <br/><br/> ...is unpleasant", value: 5, minValue: 1, maxValue: 10
+	id: "CVDSYAccep-unpleas", text: "CVDSY4:  (NOTE: On a scale of 1 to 10, where 1 is 'not at all' and 10 is 'extremely', please tell whether this warning message) <br/><br/> ...is unpleasant", value: 5, minValue: 1, maxValue: 10
     },{
 	id: "CVDSYAccep-believable", text: "CVDGSY5:  (NOTE: On a scale of 1 to 10, where 1 is 'not at all' and 10 is 'extremely', please tell me whether this warning message) <br/><br/> ...is believable", value: 5, minValue: 1, maxValue: 10 
     },{
-	id: "CVDSYAccep-relevant", text: "CVDSY6:  (NOTE: On a scale of 1 to 10, where 1 is ‘not at all’ and 10 is ‘extremely’, please tell whether this warning message) <br/><br/> ...speaks to people like you", value: 5, minValue: 1, maxValue: 10 
+	id: "CVDSYAccep-relevant", text: "CVDSY6:  (NOTE: On a scale of 1 to 10, where 1 is 'not at all' and 10 is 'extremely', please tell whether this warning message) <br/><br/> ...speaks to people like you", value: 5, minValue: 1, maxValue: 10 
     },{
-	id: "CVDSYAccep-concern", text: "CVDSY7:  (NOTE: On a scale of 1 to 10, where 1 is ‘not at all’ and 10 is ‘extremely’, please tell whether this warning message) <br/><br/> ...makes you more concerned about the dangers of smoking", value: 5, minValue: 1, maxValue: 10
+	id: "CVDSYAccep-concern", text: "CVDSY7:  (NOTE: On a scale of 1 to 10, where 1 is 'not at all' and 10 is 'extremely', please tell whether this warning message) <br/><br/> ...makes you more concerned about the dangers of smoking", value: 5, minValue: 1, maxValue: 10
     },{
-	id: "CVDSYAccep-quit", text: "CVDSY8:  (NOTE: On a scale of 1 to 10, where 1 is ‘not at all’ and 10 is ‘extremely’, please tell whether this warning message) <br/><br/> ...makes you want to quit", value: 5, minValue: 1, maxValue: 10
+	id: "CVDSYAccep-quit", text: "CVDSY8:  (NOTE: On a scale of 1 to 10, where 1 is 'not at all' and 10 is 'extremely', please tell whether this warning message) <br/><br/> ...makes you want to quit", value: 5, minValue: 1, maxValue: 10
     },{
 	id: "CVDSYAccep-overall", text: "CVDSY9:  Overall, on a scale of 1 to 10, how effective is this health warning?", value: 5, minValue: 1, maxValue: 10
     }
@@ -334,19 +334,19 @@ var SHSGruesome = [
     ],{
 	id: "SHSGrueAccep-grab", text: "SHSG1:  On a scale of 1 to 10, where 1 is 'not at all' and 10 is 'extemely', please tell me whether this warning message <br/><br/> ...grabs your attention", value: 5, minValue: 1, maxValue: 10 
     },{
-	id: "SHSGrueAccep-alarm", text: "SHSG2:  (NOTE: ONLY REPEAT PREAMBLE IF NECESSARY: On a scale of 1 to 10, where 1 is ‘not at all’ and 10 is ‘extremely’, please tell whether this warning message) <br/><br/> ...is alarming", value: 5, minValue: 1, maxValue: 10
+	id: "SHSGrueAccep-alarm", text: "SHSG2:  (NOTE: ONLY REPEAT PREAMBLE IF NECESSARY: On a scale of 1 to 10, where 1 is 'not at all' and 10 is 'extremely', please tell whether this warning message) <br/><br/> ...is alarming", value: 5, minValue: 1, maxValue: 10
     },{
-	id: "SHSGrueAccep-fright", text: "SHSG3:  (NOTE: On a scale of 1 to 10, where 1 is ‘not at all’ and 10 is ‘extremely’, please tell whether this warning message) <br/><br/> ...is frightening", value: 5, minValue: 1, maxValue: 10
+	id: "SHSGrueAccep-fright", text: "SHSG3:  (NOTE: On a scale of 1 to 10, where 1 is 'not at all' and 10 is 'extremely', please tell whether this warning message) <br/><br/> ...is frightening", value: 5, minValue: 1, maxValue: 10
     },{
-	id: "SHSGrueAccep-unpleas", text: "SHSG4:  (NOTE: On a scale of 1 to 10, where 1 is ‘not at all’ and 10 is ‘extremely’, please tell whether this warning message) <br/><br/> ...is unpleasant", value: 5, minValue: 1, maxValue: 10
+	id: "SHSGrueAccep-unpleas", text: "SHSG4:  (NOTE: On a scale of 1 to 10, where 1 is 'not at all' and 10 is 'extremely', please tell whether this warning message) <br/><br/> ...is unpleasant", value: 5, minValue: 1, maxValue: 10
     },{
 	id: "SHSGrueAccep-believable", text: "SHSG5:  (NOTE: On a scale of 1 to 10, where 1 is 'not at all' and 10 is 'extremely', please tell me whether this warning message) <br/><br/> ...is believable", value: 5, minValue: 1, maxValue: 10 
     },{
-	id: "SHSGrueAccep-relevant", text: "SHSG6:  (NOTE: On a scale of 1 to 10, where 1 is ‘not at all’ and 10 is ‘extremely’, please tell whether this warning message) <br/><br/> ...speaks to people like you", value: 5, minValue: 1, maxValue: 10 
+	id: "SHSGrueAccep-relevant", text: "SHSG6:  (NOTE: On a scale of 1 to 10, where 1 is 'not at all' and 10 is 'extremely', please tell whether this warning message) <br/><br/> ...speaks to people like you", value: 5, minValue: 1, maxValue: 10 
     },{
-	id: "SHSGrueAccep-concern", text: "SHSG7:  (NOTE: On a scale of 1 to 10, where 1 is ‘not at all’ and 10 is ‘extremely’, please tell whether this warning message) <br/><br/> ...makes you more concerned about the dangers of smoking", value: 5, minValue: 1, maxValue: 10
+	id: "SHSGrueAccep-concern", text: "SHSG7:  (NOTE: On a scale of 1 to 10, where 1 is 'not at all' and 10 is 'extremely', please tell whether this warning message) <br/><br/> ...makes you more concerned about the dangers of smoking", value: 5, minValue: 1, maxValue: 10
     },{
-	id: "SHSGrueAccep-quit", text: "SHSG8:  (NOTE: On a scale of 1 to 10, where 1 is ‘not at all’ and 10 is ‘extremely’, please tell whether this warning message) <br/><br/> ...makes you want to quit", value: 5, minValue: 1, maxValue: 10
+	id: "SHSGrueAccep-quit", text: "SHSG8:  (NOTE: On a scale of 1 to 10, where 1 is 'not at all' and 10 is 'extremely', please tell whether this warning message) <br/><br/> ...makes you want to quit", value: 5, minValue: 1, maxValue: 10
     },{
 	id: "SHSGrueAccep-overall", text: "SHSG9:  Overall, on a scale of 1 to 10, how effective is this health warning?", value: 5, minValue: 1, maxValue: 10
     }];
@@ -361,19 +361,19 @@ var SHSHumanSuffering = [
     ],{
 	id: "SHSHSAccep-grab", text: "SHSHS1: On a scale of 1 to 10, where 1 is 'not at all' and 10 is 'extemely', please tell me whether this warning message <br/><br/> ...grabs your attention", value: 5, minValue: 1, maxValue: 10 
     },{
-	id: "SHSHSAccep-alarm", text: "SHSHS2:  (NOTE: ONLY REPEAT PREAMBLE IF NECESSARY: On a scale of 1 to 10, where 1 is ‘not at all’ and 10 is ‘extremely’, please tell whether this warning message) <br/><br/> ...is alarming", value: 5, minValue: 1, maxValue: 10
+	id: "SHSHSAccep-alarm", text: "SHSHS2:  (NOTE: ONLY REPEAT PREAMBLE IF NECESSARY: On a scale of 1 to 10, where 1 is 'not at all' and 10 is 'extremely', please tell whether this warning message) <br/><br/> ...is alarming", value: 5, minValue: 1, maxValue: 10
     },{
-	id: "SHSHSAccep-fright", text: "SHSHS3:  (NOTE: On a scale of 1 to 10, where 1 is ‘not at all’ and 10 is ‘extremely’, please tell whether this warning message) <br/><br/> ...is frightening", value: 5, minValue: 1, maxValue: 10
+	id: "SHSHSAccep-fright", text: "SHSHS3:  (NOTE: On a scale of 1 to 10, where 1 is 'not at all' and 10 is 'extremely', please tell whether this warning message) <br/><br/> ...is frightening", value: 5, minValue: 1, maxValue: 10
     },{
-	id: "SHSHSAccep-unpleas", text: "SHSHS4:  (NOTE: On a scale of 1 to 10, where 1 is ‘not at all’ and 10 is ‘extremely’, please tell whether this warning message) <br/><br/> ...is unpleasant", value: 5, minValue: 1, maxValue: 10
+	id: "SHSHSAccep-unpleas", text: "SHSHS4:  (NOTE: On a scale of 1 to 10, where 1 is 'not at all' and 10 is 'extremely', please tell whether this warning message) <br/><br/> ...is unpleasant", value: 5, minValue: 1, maxValue: 10
     },{
 	id: "SHSHSAccep-believable", text: "SHSHS5: (NOTE: On a scale of 1 to 10, where 1 is 'not at all' and 10 is 'extremely', please tell me whether this warning message) <br/><br/> ...is believable", value: 5, minValue: 1, maxValue: 10 
     },{
-	id: "SHSHSAccep-relevant", text: "SHSHS6:  (NOTE: On a scale of 1 to 10, where 1 is ‘not at all’ and 10 is ‘extremely’, please tell whether this warning message) <br/><br/> ...speaks to people like you", value: 5, minValue: 1, maxValue: 10 
+	id: "SHSHSAccep-relevant", text: "SHSHS6:  (NOTE: On a scale of 1 to 10, where 1 is 'not at all' and 10 is 'extremely', please tell whether this warning message) <br/><br/> ...speaks to people like you", value: 5, minValue: 1, maxValue: 10 
     },{
-	id: "SHSHSAccep-concern", text: "SHSHS7:  (NOTE: On a scale of 1 to 10, where 1 is ‘not at all’ and 10 is ‘extremely’, please tell whether this warning message) <br/><br/> ...makes you more concerned about the dangers of smoking", value: 5, minValue: 1, maxValue: 10
+	id: "SHSHSAccep-concern", text: "SHSHS7:  (NOTE: On a scale of 1 to 10, where 1 is 'not at all' and 10 is 'extremely', please tell whether this warning message) <br/><br/> ...makes you more concerned about the dangers of smoking", value: 5, minValue: 1, maxValue: 10
     },{
-	id: "SHSHSAccep-quit", text: "SHSHS8:  (NOTE: On a scale of 1 to 10, where 1 is ‘not at all’ and 10 is ‘extremely’, please tell whether this warning message) <br/><br/> ...makes you want to quit", value: 5, minValue: 1, maxValue: 10
+	id: "SHSHSAccep-quit", text: "SHSHS8:  (NOTE: On a scale of 1 to 10, where 1 is 'not at all' and 10 is 'extremely', please tell whether this warning message) <br/><br/> ...makes you want to quit", value: 5, minValue: 1, maxValue: 10
     },{
 	id: "SHSHSAccep-overall", text: "SHSHS9:  Overall, on a scale of 1 to 10, how effective is this health warning?", value: 5, minValue: 1, maxValue: 10
     }
@@ -389,19 +389,19 @@ var SHSSymbolic = [
     ],{
 	id: "SHSSSAccep-grab", text: "SHSSY1:  On a scale of 1 to 10, where 1 is 'not at all' and 10 is 'extemely', please tell me whether this warning message <br/><br/> ...grabs your attention", value: 5, minValue: 1, maxValue: 10 
     },{
-	id: "SHSSymbolicAccep-alarm", text: "SHSSY2:  (NOTE: ONLY REPEAT PREAMBLE IF NECESSARY: On a scale of 1 to 10, where 1 is ‘not at all’ and 10 is ‘extremely’, please tell whether this warning message) <br/><br/> ...is alarming", value: 5, minValue: 1, maxValue: 10
+	id: "SHSSymbolicAccep-alarm", text: "SHSSY2:  (NOTE: ONLY REPEAT PREAMBLE IF NECESSARY: On a scale of 1 to 10, where 1 is 'not at all' and 10 is 'extremely', please tell whether this warning message) <br/><br/> ...is alarming", value: 5, minValue: 1, maxValue: 10
     },{
-	id: "SHSSymbolicAccep-fright", text: "SHSSY3:  (NOTE: On a scale of 1 to 10, where 1 is ‘not at all’ and 10 is ‘extremely’, please tell whether this warning message) <br/><br/> ...is frightening", value: 5, minValue: 1, maxValue: 10
+	id: "SHSSymbolicAccep-fright", text: "SHSSY3:  (NOTE: On a scale of 1 to 10, where 1 is 'not at all' and 10 is 'extremely', please tell whether this warning message) <br/><br/> ...is frightening", value: 5, minValue: 1, maxValue: 10
     },{
-	id: "SHSSymbolicAccep-unpleas", text: "SHSSY4:  (NOTE: On a scale of 1 to 10, where 1 is ‘not at all’ and 10 is ‘extremely’, please tell whether this warning message) <br/><br/> ...is unpleasant", value: 5, minValue: 1, maxValue: 10
+	id: "SHSSymbolicAccep-unpleas", text: "SHSSY4:  (NOTE: On a scale of 1 to 10, where 1 is 'not at all' and 10 is 'extremely', please tell whether this warning message) <br/><br/> ...is unpleasant", value: 5, minValue: 1, maxValue: 10
     },{
 	id: "SHSSymbolicAccep-believable", text: "SHSSY5:  (NOTE: On a scale of 1 to 10, where 1 is 'not at all' and 10 is 'extremely', please tell me whether this warning message) <br/><br/> ...is believable", value: 5, minValue: 1, maxValue: 10 
     },{
-	id: "SHSSymbolicAccep-relevant", text: "SHSSY6:  (NOTE: On a scale of 1 to 10, where 1 is ‘not at all’ and 10 is ‘extremely’, please tell whether this warning message) <br/><br/> ...speaks to people like you", value: 5, minValue: 1, maxValue: 10 
+	id: "SHSSymbolicAccep-relevant", text: "SHSSY6:  (NOTE: On a scale of 1 to 10, where 1 is 'not at all' and 10 is 'extremely', please tell whether this warning message) <br/><br/> ...speaks to people like you", value: 5, minValue: 1, maxValue: 10 
     },{
-	id: "SHSSymbolicAccep-concern", text: "SHSSY7:  (NOTE: On a scale of 1 to 10, where 1 is ‘not at all’ and 10 is ‘extremely’, please tell whether this warning message) <br/><br/> ...makes you more concerned about the dangers of smoking", value: 5, minValue: 1, maxValue: 10
+	id: "SHSSymbolicAccep-concern", text: "SHSSY7:  (NOTE: On a scale of 1 to 10, where 1 is 'not at all' and 10 is 'extremely', please tell whether this warning message) <br/><br/> ...makes you more concerned about the dangers of smoking", value: 5, minValue: 1, maxValue: 10
     },{
-	id: "SHSSymbolicAccep-quit", text: "SHSSY8:  (NOTE: On a scale of 1 to 10, where 1 is ‘not at all’ and 10 is ‘extremely’, please tell whether this warning message) <br/><br/> ...makes you want to quit", value: 5, minValue: 1, maxValue: 10
+	id: "SHSSymbolicAccep-quit", text: "SHSSY8:  (NOTE: On a scale of 1 to 10, where 1 is 'not at all' and 10 is 'extremely', please tell whether this warning message) <br/><br/> ...makes you want to quit", value: 5, minValue: 1, maxValue: 10
     },{
 	id: "SHSSymbolicAccep-overall", text: "SHSSY9:  Overall, on a scale of 1 to 10, how effective is this health warning?", value: 5, minValue: 1, maxValue: 10
     }];
