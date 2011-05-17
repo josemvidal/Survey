@@ -444,7 +444,6 @@ var surveyTemplate = {
           text: "D1:  Select gender of respondent (DO NOT READ)",
           answers: ["MALE", "FEMALE"]
         },{
-     
              id: "age",
              text: "D2:  To begin, may I ask your age? (IF AGE<18- UNFORTUNATELY, WE CAN ONLY INCLUDE PEOPLE WHO ARE 18 AND OLDER IN THIS STUDY. SORRY, YOU ARE NOT ELIGIBLE TO PARTICIPATE, BUT THANK YOU FOR YOUR TIME.)"
         },{
@@ -452,9 +451,9 @@ var surveyTemplate = {
                text: "D3:  What is the highest level of education that you have completed?",
             answers: ["Less than high school", "High school or GED completed", "Technical or vocational school completed", "University (incomplete)", "University (complete)", "Post graduate"]
         },{
-	
-			id: "race",
+		    id: "race",
             text: "D4:  Which racial or ethnic group BEST describes you? (READ RESPONSES, CHECK MORE THAN ONE)",
+            multiplechoice: true,
             answers: ["White", "Black or African American", "Hispanic or Latino", "American Indian", "Other"]
         },{
      

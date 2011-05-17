@@ -415,18 +415,21 @@ function restoreAllQuestionStates(){
 var o;
 function makeQuestion(q){
 	var answerItems = [];
+	var xtype = (q.multiplechoice) ? 'checkboxfield' : 'radiofield'; 
+	var baseName = 'answer';
+	var name = baseName;
 	if (q.answers) {
 		for (var i = 0; i < q.answers.length; i++){
-			if (q.switches){
+			if (q.switches){ //multiple questions
 				answerItems.push({ 
-					name: "answer", labelWidth: '70%', label: q.answers[i], value: String(i),
+					name: 'answer', labelWidth: '70%', label: q.answers[i], value: String(i),
 					listeners: {
 						check: makeHandleChoiceCheck(q.switches[i])
 					}});
 			}
 			else {
 				answerItems.push({ 
-					name: "answer", labelWidth: '70%', label: q.answers[i], value: String(i)});
+					name: name, labelWidth: '70%', xtype: xtype, label: q.answers[i], value: String(i)});
 			}
 		};
 //		answerItems.push({name: "answer", labelWidth: '70%', componentCls: "noanswer", label: "No Answer", value: String(i)});
@@ -467,16 +470,17 @@ function makeQuestion(q){
 		    	if (!(creatingSurvey)) {saveCurrentQuestionState();};
 		    	//now color the background of the selection, ugly hack.
 				var children = this.items.items[0].items.items 
-				o = e;
-				for (var i=0;i<children.length;i++){
-					// children[i].setLoading(false);
-					Ext.destroy(children[i].loadMask);
-					children[i].loadMask = null;
+				if (children[0].xtype == 'radiofield') {
+					for (var i=0;i<children.length;i++){
+						Ext.destroy(children[i].loadMask);
+						children[i].loadMask = null;
+					}
+					e.loadMask = e.loadMask || new myLoadMask(e.el, Ext.applyIf({msgCls: 'selected', msg: ''}));
+					e.loadMask.show();
 				}
-				e.loadMask = e.loadMask || new myLoadMask(e.el, Ext.applyIf({msgCls: 'selected', msg: ''}));
-				e.loadMask.show();
 			},
-			uncheck: function() {this.setLoading(false)},},
+			uncheck: function() { this.setLoading(false);
+			 },},
 		items: [{
 			xtype: 'fieldset',
 			defaults: {margin: 20, xtype: 'radiofield', bubbleEvents: ['check']},
@@ -517,10 +521,11 @@ function getAnswers(){
     	var comp = Ext.getCmp(id);
     	var ans;
     	if (comp) {
-    		ans = comp.getValues().answer;}
+    		ans = comp.getValues().answer;
+    	}
     	else {
     		ans = 'N/A';};
-    	result[id] = ans instanceof Array ? null : ans;
+    	result[id] = ans instanceof Array ? ans.toString() : ans;
     };
     return {
     	protocolId: csurvey.id,
