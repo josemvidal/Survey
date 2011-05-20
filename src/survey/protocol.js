@@ -416,7 +416,7 @@ var healthTopicCancer  = [
 	cancerHumanSuffering,
 	cancerSymbolic],{
 	    id: "mostimapactCancer", 
-	    text: "7. MI1: MI2:  (NOTE: Show the participant all three packs that they just evaluated) <br/><br/>  Overall, which warning do you think is the <u>most effective</u> for motivating you to quit?",  
+	    text: "MI1: (NOTE: Show the participant the packs that they just evaluated) <br/><br/>  Overall, which warning do you think is the <u>most effective</u> for motivating you to quit?",  
 	    answers: ["gruesome img", "human suffering image", "symbolic image"],
 	    switches: true}
 ];
@@ -429,7 +429,7 @@ var healthTopicCVD = [
 	CVDSymbolic], 
     {
         id: "mostimapactCVD", 
-        text: "7. MI2:  (NOTE: Remove the pack that they selected previously and ask the participant to examine the two that remain) <br/><br/>  Of the two remaining warnings, which do you think is the <u>next most effective</u> in motivating you to quit?",  
+        text: "MI: (NOTE: Show the participant the packs that they just evaluated) <br/><br/>  Overall, which warning do you think is the <u>most effective</u> for motivating you to quit?",  
         answers: ["Gruesome image", "Human suffering image", "Symbolic image"],
         switches: true
     }
@@ -443,7 +443,7 @@ var healthTopicSHS = [
 	SHSSymbolic],
     {
         id: "mostimapactSHS", 
-        text: "MI3:  (NOTE: Remove the pack that they selected previously and ask the participant to examine the two that remain) <br/><br/> Of the two remaining warnings, which do you think is the <u>next most effective</u> in motivating you to quit?",  
+        text: "MI: (NOTE: Show the participant the packs that they just evaluated) <br/><br/> Overall, which warning do you think is the <u>most effective</u> for motivating you to quit?",  
         answers: ["Gruesome image", "Human suffering image", "Symbolic image"],
         switches: true
     }
@@ -474,7 +474,7 @@ var surveyTemplate = {
         },{
 	    id: "race",
 	    multiplechoice: true,
-	    text: "D4:  Which racial or ethnic group <u>best</u> describes you? (NOTE: Read responses. Respondent can check more than one, if they want, but should be encouraged to select the 'Best' one for them)",
+	    text: "D4:  Which racial or ethnic group <u>best</u> describes you? (NOTE: Read responses. Respondent can check more than one, if they want, but should be encouraged to select the <u>best</u> one for them)",
 	    answers: ["White", "Black or African American", "Hispanic or Latino", "American Indian", "Other"]
         },{
 	    
@@ -518,27 +518,27 @@ var surveyTemplate = {
 
         },{
 	    id: "intendmo",
-	    text: "D14.  (NOTE:  If participant does not use 1 to 10 response format, read the following statement: 'For this question, you should use a number from one to 10, where 1 means 'not at all' and 10 means 'extremely'.') <br/><br/> Using the same scale, where 1 is 'not at all' and 10 is 'extremely', how much would you say that you intend to quit <u>in the next month</u>?", value: 5, minValue: 1, maxValue: 10 
+	    text: "D14.  (NOTE:  If participant does not use 1 to 10 response format, read the following statement: For this question, you should use a number from one to 10, where 1 means 'not at all' and 10 means 'extremely'.) <br/><br/> Using the same scale, where 1 is 'not at all' and 10 is 'extremely', how much would you say that you intend to quit <u>in the next month</u>?", value: 5, minValue: 1, maxValue: 10 
         },{
 
 	    id: "intendsix",
-	    text: "D15.  (NOTE:  If participant does not use 1 to 10 response format, read the following statement: 'For this question, you should use a number from one to 10, where 1 means 'not at all' and 10 means 'extremely'.') <br/><br/> Using the same scale, where 1 is 'not at all' and 10 is 'extremely', how much would you say that you intend to quit <u>in the next 6 months</u>? ", value: 5, minValue: 1, maxValue: 10 
+	    text: "D15.  (NOTE:  If participant does not use 1 to 10 response format, read the following statement: For this question, you should use a number from one to 10, where 1 means 'not at all' and 10 means 'extremely'.) <br/><br/> Using the same scale, where 1 is 'not at all' and 10 is 'extremely', how much would you say that you intend to quit <u>in the next 6 months</u>? ", value: 5, minValue: 1, maxValue: 10 
         },{
 
 	    id: "quitassist",
-	    text: "D16.  (NOTE:  If participant does not use 1 to 10 response format, read the following statement: 'For this question, you should use a number from one to 10, where 1 means 'not at all' and 10 means 'extremely'.') <br/><br/> Using the same scale, where 1 is 'not at all' and 10 is 'extremely', how likely are you to get help, like medications or counselling, the <u>next time</u> you try to quit? ", value: 5, minValue: 1, maxValue: 10 
+	    text: "D16.  (NOTE:  If participant does not use 1 to 10 response format, read the following statement: For this question, you should use a number from one to 10, where 1 means 'not at all' and 10 means 'extremely'.) <br/><br/> Using the same scale, where 1 is 'not at all' and 10 is 'extremely', how likely are you to get help, like medications or counselling, the <u>next time</u> you try to quit? ", value: 5, minValue: 1, maxValue: 10 
         },{
 
 	    id: "quitimprove",
-	    text: "D17. (NOTE:  If participant does not use 1 to 10 response format, read the following statement: 'For this question, you should use a number from one to 10, where 1 means 'not at all' and 10 means 'extremely'.') <br/><br/> Using the same scale, where 1 is 'not at all' and 10 is 'extremely', how much would quitting smoking improve your health?", value: 5, minValue: 1, maxValue: 10 
+	    text: "D17. (NOTE:  If participant does not use 1 to 10 response format, read the following statement: For this question, you should use a number from one to 10, where 1 means 'not at all' and 10 means 'extremely'.) <br/><br/> Using the same scale, where 1 is 'not at all' and 10 is 'extremely', how much would quitting smoking improve your health?", value: 5, minValue: 1, maxValue: 10 
         },{
 
 	    id: "quitns",
-	    text: "D18. (NOTE:  If participant does not use 1 to 10 response format, read the following statement: 'For this question, you should use a number from one to 10, where 1 means 'not at all' and 10 means 'extremely'.') <br/><br/> Using the same scale, where 1 is 'not at all' and 10 is 'extremely', how dangerous is it for non-smokers to breathe cigarette smoke?", value: 5, minValue: 1, maxValue: 10 
+	    text: "D18. (NOTE:  If participant does not use 1 to 10 response format, read the following statement: For this question, you should use a number from one to 10, where 1 means 'not at all' and 10 means 'extremely'.) <br/><br/> Using the same scale, where 1 is 'not at all' and 10 is 'extremely', how dangerous is it for non-smokers to breathe cigarette smoke?", value: 5, minValue: 1, maxValue: 10 
         },{
 
 	    id: "society",
-	    text: "D19. (NOTE:  If participant does not use 1 to 10 response format, read the following statement: 'For this question, you should use a number from one to 10, where 1 means 'not at all' and 10 means 'extremely'.') <br/><br/> Using the same scale, where 1 is 'not at all' and 10 is 'extremely', how much does society <u>disapprove</u> of smoking?", value: 5, minValue: 1, maxValue: 10 
+	    text: "D19. (NOTE:  If participant does not use 1 to 10 response format, read the following statement: For this question, you should use a number from one to 10, where 1 means 'not at all' and 10 means 'extremely'.) <br/><br/> Using the same scale, where 1 is 'not at all' and 10 is 'extremely', how much does society <u>disapprove</u> of smoking?", value: 5, minValue: 1, maxValue: 10 
         },{
 	    
 	    id: "notice",
