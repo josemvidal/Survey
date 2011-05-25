@@ -552,6 +552,15 @@ function updateAnswerCount(){
 }
 var creatingSurvey = false; //used to ignore all the events that fire while creating a survey.
 var car; //the carousel
+
+var lastTime = 0;
+function timeit(){
+	var d = new Date();
+	var diff = d.getTime() - lastTime;
+	lastTime = lastTime + diff;
+	return diff;
+}
+
 new Ext.Application({
 	launch: function() {
 	car = makeSurveyCarousel(); //global for debugging
@@ -564,19 +573,25 @@ new Ext.Application({
 		handler: function(){ car.next();},
 	});
 	
-    var loadSurvey = function(news) { 		
+    var loadSurvey = function(news) {
+//    	console.log('loadSurvey-' + timeit());
 		setCurrentSurvey(news);
+//		console.log('loadSurvey:a=' + timeit());
 		news['questions'].filter(function(q){return ! q.starthidden}).map(getQuestionForm).map(function(q){car.add(q);});
+//		console.log('loadSurvey:b=' + timeit());
 		var content = Ext.getCmp('content');
 		buttons.hide();
-		car.show();
+//		console.log('loadSurvey:b1=' + timeit());
+		car.show();  //this is the one that is SLOW....
+//		console.log('loadSurvey:b2=' + timeit());		
 		car.doLayout();
+//		console.log('loadSurvey:c=' + timeit());
 		Ext.getCmp('backButton').show();
 		nextButton.show();
 		doneButton.show();
-		setStartTime();
+//		console.log('loadSurvey:d=' + timeit());		
 	};
-	
+
 	var createSurvey = function() {
 		creatingSurvey = true; //global variable
 		news = getNewSurvey();
@@ -597,7 +612,6 @@ new Ext.Application({
 				var pastAnswers = JSON.parse(localStorage.getItem('answers'));
 				pastAnswers.push(getAnswers());
 				setKey('answers', JSON.stringify(pastAnswers));
-				console.log('saved it');
 				var content = Ext.getCmp('content');
 				if (car.getActiveIndex() == 0) {car.setActiveItem(1);} //ugly hack to get around sencha bug.
 				car.removeAll(false);
@@ -741,7 +755,7 @@ new Ext.Application({
 	dockedItems: [{
 		dock: 'top',
 		xtype: 'toolbar',
-		title: 'Survey v.31',
+		title: 'Survey v.32',
 		items: [backButton,
 		        {xtype: 'spacer'},
 		        {text: '', id: 'surveyCount'}]
