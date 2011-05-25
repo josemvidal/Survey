@@ -522,6 +522,12 @@ function getAnswers(){
     	var ans;
     	if (comp) {
     		ans = comp.getValues().answer;
+    		if (ans instanceof Array) {
+    			ans = ans.map(function(x){return Number(x) + 1});
+    		}
+    		else if (csurvey.questions[i].answers){ //it is a checkbox question
+    			ans = 1 + Number(ans);
+    		}
     	}
     	else {
     		ans = 'N/A';};
@@ -598,6 +604,7 @@ new Ext.Application({
 		loadSurvey(news);
 		localStorage.setItem('activeIndex',0);
 		creatingSurvey = false;
+		setStartTime();
 	}
 	
 	var doneButton = new Ext.Button({
@@ -755,7 +762,7 @@ new Ext.Application({
 	dockedItems: [{
 		dock: 'top',
 		xtype: 'toolbar',
-		title: 'Survey v.32',
+		title: 'Survey v.35',
 		items: [backButton,
 		        {xtype: 'spacer'},
 		        {text: '', id: 'surveyCount'}]

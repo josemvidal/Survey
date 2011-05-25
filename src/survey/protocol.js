@@ -628,7 +628,7 @@ var surveyTemplate = {
     },{
     id: "income",
     text: "HL8. (NOTE: Show respondent the options on the screen)<br/><br/> What was your annual household income from all sources during 2010? ",
-    answers: ["Less than $10,000","$10,000- $15,000", "$15,000-$25,000", "$25,000-$35,000", "$35,000-$45,000", "$45,000-$55,000", "$55,000-$75,000", "$75,000-$95,000","More than $95,000"]
+    answers: ["No Response", "Less than $10,000","$10,000- $15,000", "$15,000-$25,000", "$25,000-$35,000", "$35,000-$45,000", "$45,000-$55,000", "$55,000-$75,000", "$75,000-$95,000","More than $95,000"]
     },{
     	id: "zipcode",
     	text: "HL9. Finally, can you tell me the zip code for the place where you live most of the time?"
