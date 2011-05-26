@@ -1,11 +1,12 @@
 CACHE MANIFEST
-#comment. v.01
+#comment. v.02
 survey.js
 protocol.js
 jquery.mobile-1.0a4.1.min.css
 jquery-1.6.1.min.js
 jquery.mobile-1.0a4.1.min.js
-images/*
+images/ajax-loader.png
+images/icons-18-white.png
 
 
 NETWORK:

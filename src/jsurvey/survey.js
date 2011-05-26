@@ -323,6 +323,27 @@ $(document).ready(function(){
 		eraseSurvey();
 		$('#savedsurveys').html(answers.length);
 	});
+	
+	$('#uploadbutton').live('click', function(e){ //upload
+		var answers = getKey('answers');
+		var fname = $('#filenameinput')[0].value;
+		console.log(fname);
+		$.ajax({
+			url: '/data/',
+			type: 'POST',
+			data: {
+				filename: fname,
+				file: JSON.stringify(answers),
+				keys: JSON.stringify(surveyTemplate.keys)
+			},
+			success: function (){
+
+			},
+			error: function (){
+				console.log('ERROR uploading');
+			}
+		});
+	});
 
 	$('.question').live('change', function(e){
 		var qid = this.id;

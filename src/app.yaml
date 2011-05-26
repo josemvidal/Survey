@@ -9,11 +9,19 @@ handlers:
   mime_type: text/cache-manifest
   upload: survey/(.*\.manifest)
   
+- url: /jsurvey/(.*\.manifest)
+  static_files: jsurvey/\1
+  mime_type: text/cache-manifest
+  upload: jsurvey/(.*\.manifest)  
+  
 - url: /css
   static_dir: css
   
 - url: /survey
   static_dir: survey
+  
+- url: /jsurvey
+  static_dir: jsurvey
   
 - url: /.*
   script: main.py 

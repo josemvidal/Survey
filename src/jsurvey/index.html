@@ -26,7 +26,7 @@
 	 <a id="startsurveybutton" href="#gender" data-role="button" data-transition="flip" data-inline="true">Start Survey</a><br/>
 
 
-	 <a id="uploadbutton" href="#" data-role="button" data-rel="dialog" data-inline="true">Upload Survey Answers</a><br/><br/><br/>
+	 <a href="#filenamedialog" data-role="button" data-rel="dialog" data-inline="true">Upload Survey Answers</a><br/><br/><br/>
 
 	 <a href="#deleteyndialog" data-role="button" data-rel="dialog" data-inline="true">Delete Survey Answers</a><br/><br/><br/>
 
@@ -69,6 +69,22 @@
 	<p>Do you want to finish this survey and save it?</p>
 	 <a id="savesurveybutton" href="#homepage" data-role="button">Yes</a><br/>
 	 <a href="#" data-role="button" data-rel="back">Cancel</a><br/>
+	</div>
+</div><!-- /page -->
+
+
+<div data-role="page" id="filenamedialog">
+	<div data-role="header">
+		<h1>Filename for Upload</h1>
+	</div>
+	<div data-role="content">
+	<p>Enter a name for this upload:</p>
+	<div data-role="fieldcontain">
+    	<label for="name">File name:</label>
+    	<input type="text" name="filename" id="filenameinput" value=""  />
+	</div>	
+	 <a id="uploadbutton" href="#homepage" data-role="button">Upload</a><br/>
+	 <a href="#homepage" data-role="button" data-rel="back">Cancel</a><br/>
 	</div>
 </div><!-- /page -->
 
