@@ -223,7 +223,7 @@ function makeQuestion(q,prev,next){
 		result += makeTextQuestion(q,prev,next);
 	};
 
-	result += '</div></div><div data-role="footer" data-id="quitsave" class="ui-bar" data-position="inline"><a href="#homepage" data-role="button" class="ui-btn-left" data-icon="delete" id="quitbutton" data-transition="flip">Quit</a><a href="#homepage" data-role="button" id="savebutton" data-icon="check" data-transition="flip">Save</a></div></div>';
+	result += '</div></div><div data-role="footer" data-id="quitsave" class="ui-bar" data-position="inline"><a href="#quitsurveydialog" data-role="button" class="ui-btn-left" data-icon="delete" data-rel="dialog">Quit</a><a href="#savesurveydialog" data-role="button" data-icon="check" data-rel="dialog">Save</a></div></div>';
 	return result;
 }
 
@@ -306,7 +306,7 @@ $(document).ready(function(){
 		return true;
 	});
 
-	$('#quitbutton').live('click', function(e){
+	$('#quitsurveybutton').live('click', function(e){
 		eraseSurvey();
 	});
 
@@ -315,7 +315,7 @@ $(document).ready(function(){
 		$('#savedsurveys').html("0");
 	});
 
-	$('#savebutton').live('click', function(e){
+	$('#savesurveybutton').live('click', function(e){
 		setKey('endTime',new Date());
 		var answers = getKey('answers');
 		answers.push(getAnswers());

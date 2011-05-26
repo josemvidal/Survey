@@ -26,7 +26,7 @@
 	 <a id="startsurveybutton" href="#gender" data-role="button" data-transition="flip" data-inline="true">Start Survey</a><br/>
 
 
-	 <a id="uploadbutton" href="#" data-role="button" data-transition="flip" data-inline="true">Upload Survey Answers</a><br/><br/><br/>
+	 <a id="uploadbutton" href="#" data-role="button" data-rel="dialog" data-inline="true">Upload Survey Answers</a><br/><br/><br/>
 
 	 <a href="#deleteyndialog" data-role="button" data-rel="dialog" data-inline="true">Delete Survey Answers</a><br/><br/><br/>
 
@@ -40,22 +40,37 @@
 
 
 <div data-role="page" id="deleteyndialog">
-
 	<div data-role="header">
-		<h1>Are you sure?</h1>
-	</div><!-- /header -->
-
+		<h1>Erase all surveys?</h1>
+	</div>
+	<p>Are you sure you want to erase all the survey answers?</p>
 	<div data-role="content">
 	 <a id="deletebutton" href="#homepage" data-role="button" data-rel="back">Yes</a><br/>
-
-	 <a href="#homepage" data-role="button" data-rel="back">Cancel</a><br/>
+	 <a href="#homepage" data-role="button" data-rel="back" data-theme="b">Cancel</a><br/>
 	</div><!-- /content -->
-
 </div><!-- /page -->
 
+<div data-role="page" id="quitsurveydialog">
+	<div data-role="header">
+		<h1>Delete Survey?</h1>
+	</div>
+	<div data-role="content">
+	<p>Are you sure you want to cancel this survey and delete its data?</p>
+	 <a id="quitsurveybutton" href="#homepage" data-role="button">Yes</a><br/>
+	 <a href="#" data-role="button" data-rel="back">Cancel</a><br/>
+	</div>
+</div><!-- /page -->
 
-
-
+<div data-role="page" id="savesurveydialog">
+	<div data-role="header">
+		<h1>Save Survey?</h1>
+	</div>
+	<div data-role="content">
+	<p>Do you want to finish this survey and save it?</p>
+	 <a id="savesurveybutton" href="#homepage" data-role="button">Yes</a><br/>
+	 <a href="#" data-role="button" data-rel="back">Cancel</a><br/>
+	</div>
+</div><!-- /page -->
 
 
 
