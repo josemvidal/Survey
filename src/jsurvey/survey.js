@@ -182,10 +182,12 @@ function makeRadioQuestion(q,prev,next){
 
 
 function makeCheckboxQuestion(q,prev,next){
-	var result ='';
+	var result ='<fieldset data-role="control-group">';
 	for (var i=0; i < q.answers.length; i++){
-		result += '<input type="checkbox" name="answer" id="answer' + i + '" value="' + i + '"/><label for="answer' + i + '">' + q.answers[i] + '</label>';
+		var name = 'answer' + i;
+		result += '<input type="checkbox" name="'+ name +'" id="'+ name + '" value="' + i + '"/><label for="' + name + '">' + q.answers[i] + '</label>';
 	}
+	result += '</fieldset>';
 	return result;
 }
 
@@ -394,10 +396,10 @@ $(document).ready(function(){
 
 	// These two are needed to prevent dragging of the whole screen (with the finger) on the ios.
 	$('a').live('touchstart', function(e){ //we assume touches are handled by an <a
-		e.stopPropagation();
+//		e.stopPropagation();
 	});
 	$('body').live('touchstart', function(e){
-		e.preventDefault()
+//		e.preventDefault()
 	});
 	
 	if (getKey('questions')) { //there is a survey already there, load it.
