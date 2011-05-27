@@ -1,0 +1,2 @@
+curl http://code.jquery.com/mobile/latest/jquery.mobile.min.css > jquery.mobile.min.css
+curl http://code.jquery.com/mobile/latest/jquery.mobile.min.js > jquery.mobile.min.js

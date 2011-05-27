@@ -1,7 +1,8 @@
-var SEQUENTIAL = 0;  //constants
-var ONE_OF = 1;
-var RANDOM_ORDER = 2;
-
+/**
+ * @author Jose M Vidal <jmvidal@gmail.com>
+ * 
+ * TODO: does not implement the switches:true
+ */
 
 var webappCache = window.applicationCache;
 function updateCache(){
@@ -223,16 +224,24 @@ function makeQuestion(q,prev,next){
 		result += makeTextQuestion(q,prev,next);
 	};
 
-	result += '</div></div><div data-role="footer" data-id="quitsave" class="ui-bar" data-position="inline"><a href="#quitsurveydialog" data-role="button" class="ui-btn-left" data-icon="delete" data-rel="dialog">Quit</a><a href="#savesurveydialog" data-role="button" data-icon="check" data-rel="dialog">Save</a></div></div>';
+	result += '</div></div><div data-role="footer" data-id="quitsave" data-position="fixed"><a href="#quitsurveydialog" data-role="button" class="ui-btn-left" data-icon="delete" data-rel="dialog">Quit</a><a href="#savesurveydialog" data-role="button" data-icon="check" data-rel="dialog">Save</a></div></div>';
 	return result;
 }
 
-/** Returns a json object representing the answers to currentSurvey.*/
+/** Returns a json object representing the answers to currentSurvey. This object is used only for uploading.*/
 function getAnswers(){
 	var result = {};
 	var qids = getKey('questions');
 	for (var i =0; i < qids.length; i++){
-		var resp = getKey(qids[i]).response;
+		var q = getKey(qids[i]);
+		var resp = q.response;
+		if (resp && q.answers) { //if radio or checkbox then add 1 to all choices, so it stars with 1 instead of 0.
+			if (q.multiplechoice){ //checkbox, multiple answers
+				resp = resp.map(function(x){return Number(x) + 1});
+			} else {
+				resp = Number(resp) + 1;
+			};
+		};
 		result[qids[i]] = resp instanceof Array ? resp.toString() : resp;
 	};
 	return {
@@ -383,6 +392,14 @@ $(document).ready(function(){
 		}
 	});
 
+	// These two are needed to prevent dragging of the whole screen (with the finger) on the ios.
+	$('a').live('touchstart', function(e){ //we assume touches are handled by an <a
+		e.stopPropagation();
+	});
+	$('body').live('touchstart', function(e){
+		e.preventDefault()
+	});
+	
 	if (getKey('questions')) { //there is a survey already there, load it.
 		createHTMLQuestions();
 		console.log('reloaded questions');
@@ -393,3 +410,6 @@ $(document).ready(function(){
 	if (answers) {
 		$('#savedsurveys').html(answers.length);};
 });
+
+
+
