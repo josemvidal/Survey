@@ -100,13 +100,16 @@ class DataHandler(webapp.RequestHandler): #/data/*
             if self.request.get('fmt') == 'csv':
                 self.response.headers['Content-Type'] = 'application/octet-stream'
                 self.response.headers['Content-Disposition'] = 'attachment;filename="%s.csv"' % theFile.fileName
-                self.response.out.write('"protocolId","surveyName","start time","end time"')
+                self.response.out.write('"protocolId","surveyName","start time","end time","order"')
                 for k in questionKeys:
                     self.response.out.write(',"%s"' % k)
                 self.response.out.write('\n')                    
-                for survey in contents:                
-                    self.response.out.write('%s,"%s","%s","%s"' % (survey['protocolId'], survey['surveyName'],
-                                                                   survey['start'], survey['end']))
+                for survey in contents:
+                    order = 'N/A'
+                    if survey.has_key('order'): #backwards compatability
+                        order = survey['order']                
+                    self.response.out.write('%s,"%s","%s","%s","%s"' % (survey['protocolId'], survey['surveyName'],
+                                                                   survey['start'], survey['end'],order))
                     for k in questionKeys:
                         if survey['answers'].has_key(k):                        
                             ans = survey['answers'][k]
@@ -119,13 +122,16 @@ class DataHandler(webapp.RequestHandler): #/data/*
                     self.response.out.write('\n')
             else: #html
                 templateValues['fileName'] = theFile.fileName
-                table = '<table><thead><tr><th>protocolId</th><th>surveyName</th><th>start time</th><th>end time</th>'
+                table = '<table><thead><tr><th>protocolId</th><th>surveyName</th><th>start time</th><th>end time</th><th>order</th>'
                 for k in questionKeys:
                     table += '<th>%s</th>' % k
                 table += '</tr></thead><tbody>'
-                for survey in contents:                
-                    table += '<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td>' % (survey['protocolId'], survey['surveyName'],
-                                                                   survey['start'], survey['end'])
+                for survey in contents:
+                    order = 'N/A'
+                    if survey.has_key('order'): #backwards compatability
+                        order = survey['order']                    
+                    table += '<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td width="40">%s</td>' % (survey['protocolId'], survey['surveyName'],
+                                                                   survey['start'], survey['end'],order)
                     for k in questionKeys:
                         if survey['answers'].has_key(k):
                             ans = survey['answers'][k]

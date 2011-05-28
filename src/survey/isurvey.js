@@ -484,7 +484,7 @@ function makeQuestion(q){
 		items: [{
 			xtype: 'fieldset',
 			defaults: {margin: 20, xtype: 'radiofield', bubbleEvents: ['check']},
-			title: q["text"],
+			title: '<em style="float:right">(id: ' + q['id'] + ')</em>' + q["text"],
 			items: answerItems
 	}]};
 }
@@ -533,11 +533,13 @@ function getAnswers(){
     		ans = 'N/A';};
     	result[id] = ans instanceof Array ? ans.toString() : ans;
     };
+    var order = csurvey.questions.map(function(q){return q.id;}).toString();
     return {
     	protocolId: csurvey.id,
     	surveyName: csurvey.name,
     	start: csurvey.startTime,
     	end: csurvey.endTime,
+    	order: order,
     	answers: result
     };
 }
@@ -762,7 +764,7 @@ new Ext.Application({
 	dockedItems: [{
 		dock: 'top',
 		xtype: 'toolbar',
-		title: 'Survey v.36',
+		title: 'Survey v.37',
 		items: [backButton,
 		        {xtype: 'spacer'},
 		        {text: '', id: 'surveyCount'}]
