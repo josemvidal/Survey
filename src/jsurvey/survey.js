@@ -55,38 +55,6 @@ Array.prototype.shuffle = function() {
 	return this;
 }
 
-/**
- * returns all subsets of size 'min' or more of the array
- */
-Array.prototype.combine = function(min) {
-	var fn = function(n, src, got, all) {
-		if (n == 0) {
-			if (got.length > 0) {
-				all[all.length] = got;
-			}
-			return;
-		}
-		for (var j = 0; j < src.length; j++) {
-			fn(n - 1, src.slice(j + 1), got.concat([src[j]]), all);
-		}
-		return;
-	}
-	var all = [];
-	for (var i = min; i < this.length ; i++) {
-		fn(i, this, [], all);
-	}
-	all.push(this);
-	return all;
-}
-
-Array.prototype.toID = function(){
-	result = "";
-	for (var i=0; i < this.length; i++){
-		result += this[i];
-	}
-	return result;
-}
-
 Array.prototype.contains = function (x){
 	for (var i=0;i<this.length;i++){
 		if (x == this[i]) {return true;}};
@@ -197,17 +165,18 @@ function makeSliderQuestion(q,prev,next){
 }
 
 function makeTextQuestion(q,prev,next){
-	return '<label for="textarea"></label><textarea cols="40" rows="8" name="answer" id="textarea" value=""></textarea>';
+	return '<label for="textarea'+q.id+'"></label><textarea cols="40" rows="8" name="textarea'+ q.id +'" id="textarea'+q.id+'"></textarea>';
 }
 
 /**
  * Return the HTML for the question represented by q
+ * TODO: get rid of prev,next as they are already in q.
  * @param prev the id of the previous question, or null
  * @param next the id of the next question, or null
  */
 function makeQuestion(q,prev,next){
-	var prevHTML = (prev) ? '<a href="#' + prev + '" class="ui-btn-left" data-direction="reverse" data-icon="arrow-l">Prev</a>' : '';
-	var nextHtml = (next) ? '<a href="#' + next + '" class="ui-btn-right" data-icon="arrow-r">Next</a>' : '';
+	var prevHTML = (prev) ? '<a href="#' + prev + '" class="ui-btn-left" data-direction="reverse" data-icon="arrow-l" data-transition="none">Prev</a>' : '';
+	var nextHtml = (next) ? '<a href="#' + next + '" class="ui-btn-right" data-icon="arrow-r" data-transition="none">Next</a>' : '';
 
 	var result = '<div class="question" data-role="page" id="' + q.id + '" data-url="' + q.id + '" data-add-back-btn="false"><div data-role="header">'+ prevHTML +'<h1>'+ q.id + '</h1>' + nextHtml + '</div><div data-role="content"><div data-role="fieldcontain"><legend>' + 	q.text + '</legend>';
 
@@ -357,6 +326,7 @@ $(document).ready(function(){
 	});
 
 	$('.question').live('change', function(e){
+		console.log('.question change');
 		var qid = this.id;
 		var question = getKey(qid);
 		if (e.target.type == 'radio' || e.target.type == 'textarea' || e.target.type == 'number') {
@@ -375,6 +345,7 @@ $(document).ready(function(){
 	});
 
 	$('.question').live('pageshow', function (e, ui){
+		console.log('.question pageshow');		
 		setKey('currentPage', e.target.id);
 		//set the checked choices
 		var question = getKey(e.target.id);
@@ -396,11 +367,15 @@ $(document).ready(function(){
 
 	// These two are needed to prevent dragging of the whole screen (with the finger) on the ios.
 	$('a').live('touchstart', function(e){ //we assume touches are handled by an <a
-//		e.stopPropagation();
+		console.log('a touchstart');
+		e.stopPropagation();
 	});
 	$('body').live('touchstart', function(e){
-//		e.preventDefault()
+		console.log('body touchstart');
+		e.preventDefault()
 	});
+	
+	$.mobile.pageLoading(true); //turn off the page loader
 	
 	if (getKey('questions')) { //there is a survey already there, load it.
 		createHTMLQuestions();
