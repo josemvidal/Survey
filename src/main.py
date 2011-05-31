@@ -106,10 +106,16 @@ class DataHandler(webapp.RequestHandler): #/data/*
                 self.response.out.write('\n')                    
                 for survey in contents:
                     order = 'N/A'
-                    if survey.has_key('order'): #backwards compatability
-                        order = survey['order']                
+                    if survey.has_key('order'): #backwards compatibility
+                        order = survey['order']
+                    start = 'N/A'
+                    if survey.has_key('start'): #backwards compatibility
+                        start = survey['start']                        
+                    end = 'N/A'
+                    if survey.has_key('end'): #backwards compatibility
+                        end = survey['end']                                                
                     self.response.out.write('%s,"%s","%s","%s","%s"' % (survey['protocolId'], survey['surveyName'],
-                                                                   survey['start'], survey['end'],order))
+                                                                   start, end,order))
                     for k in questionKeys:
                         if survey['answers'].has_key(k):                        
                             ans = survey['answers'][k]
@@ -128,10 +134,16 @@ class DataHandler(webapp.RequestHandler): #/data/*
                 table += '</tr></thead><tbody>'
                 for survey in contents:
                     order = 'N/A'
-                    if survey.has_key('order'): #backwards compatability
-                        order = survey['order']                    
+                    if survey.has_key('order'): #backwards compatibility
+                        order = survey['order']
+                    start = 'N/A'
+                    if survey.has_key('start'): #backwards compatibility
+                        start = survey['start']                        
+                    end = 'N/A'
+                    if survey.has_key('end'): #backwards compatibility
+                        end = survey['end']                                                
                     table += '<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td width="40">%s</td>' % (survey['protocolId'], survey['surveyName'],
-                                                                   survey['start'], survey['end'],order)
+                                                                   start, end,order)
                     for k in questionKeys:
                         if survey['answers'].has_key(k):
                             ans = survey['answers'][k]
